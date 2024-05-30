@@ -1,23 +1,26 @@
 package org.acme.infra.database.mysql.model.pedido;
 
+import java.io.Serializable;
+
 import org.acme.infra.database.mysql.model.loja.Cliente;
 import org.acme.infra.database.mysql.model.loja.Loja;
 import org.acme.infra.database.mysql.model.loja.Vendedor;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
+@Entity
 @Table(name = "ativo")
-public class Pedido extends PanacheEntity {
+public class Pedido extends PanacheEntity implements Serializable {
 
-    @Column(name = "id_loja")
     private Loja loja;
 
-    @Column(name = "id_cliente")
     private Cliente cliente;
 
-    @Column(name = "id_vendedor")
     private Vendedor vendedor;
 
     private String status;

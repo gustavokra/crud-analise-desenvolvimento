@@ -1,10 +1,14 @@
 package org.acme.infra.database.mysql.model.endereco;
 
+import java.io.Serializable;
+
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
+@Entity
 @Table(name = "estado")
-public class Estado extends PanacheEntity {
+public class Estado extends PanacheEntity implements Serializable {
     
     private String descricao;
 

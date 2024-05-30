@@ -1,4 +1,4 @@
-package org.acme.domain.entities;
+package org.acme.domain.entities.endereco;
 
 public class CidadeBO {
 

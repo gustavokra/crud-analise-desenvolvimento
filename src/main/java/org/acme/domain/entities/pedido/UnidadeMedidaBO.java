@@ -1,20 +1,11 @@
-package org.acme.infra.database.mysql.model.pedido;
+package org.acme.domain.entities.pedido;
 
-import java.io.Serializable;
+public class UnidadeMedidaBO {
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-
-@Entity
-@Table(name = "unidade_medida")
-public class UnidadeMedida extends PanacheEntity implements Serializable {
-    
     private String sigla;
 
     private String descricao;
-    
+
     private boolean ativo;
 
     public String getSigla() {

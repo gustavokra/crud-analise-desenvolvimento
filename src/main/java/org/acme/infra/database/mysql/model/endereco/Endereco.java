@@ -1,21 +1,29 @@
 package org.acme.infra.database.mysql.model.endereco;
 
+import java.io.Serializable;
+
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
+@Entity
 @Table(name = "endereco")
-public class Endereco extends PanacheEntity{
+public class Endereco extends PanacheEntity implements Serializable {
     
     private Cidade cidade;
 
     private Estado estado;
-
+    
     private Pais pais;
 
     private String rua;
 
     private String numero;
 
+    @Column(name = "ativo")
     private boolean ativo;
 
     public Cidade getCidade() {

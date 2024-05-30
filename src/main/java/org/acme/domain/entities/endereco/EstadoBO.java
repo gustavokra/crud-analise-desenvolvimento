@@ -1,18 +1,20 @@
-package org.acme.infra.database.mysql.model.endereco;
+package org.acme.domain.entities.endereco;
 
-import java.io.Serializable;
-
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-
-@Entity
-@Table(name = "pais")
-public class Pais extends PanacheEntity implements Serializable {
+public class EstadoBO {
     
+    private Long id;
+
     private String descricao;
 
     private String sigla;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getDescricao() {
         return descricao;
@@ -31,4 +33,5 @@ public class Pais extends PanacheEntity implements Serializable {
     }
 
     
+
 }
