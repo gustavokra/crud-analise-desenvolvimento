@@ -3,6 +3,8 @@ package org.acme.infra.database.mysql.model;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import org.acme.domain.entities.enums.EnumOrderStatus;
+
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -12,16 +14,18 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "item_order")
-public class ItemOrder extends PanacheEntity implements Serializable {
+@Table(name = "demand")
+public class Demand extends PanacheEntity implements Serializable {
 
-    private Order order;
+    private MySqlUser user;
 
-    private Product product;
+    private Client client;
 
-    private UnitMeasure unitMeasure;
+    private Seller seller;
 
-    private Long amount;
+    private EnumOrderStatus status;
+
+    private boolean active;
 
     private LocalDateTime createdAt;
 

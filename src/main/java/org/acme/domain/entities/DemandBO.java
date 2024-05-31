@@ -2,16 +2,21 @@ package org.acme.domain.entities;
 
 import java.time.LocalDateTime;
 
+import org.acme.domain.entities.enums.EnumOrderStatus;
 import org.acme.domain.entities.vo.CreatedAtVO;
 import org.acme.domain.repositories.ICrudBO;
 
-public class ProductBO implements ICrudBO {
+public class DemandBO implements ICrudBO {
 
     private Long id;
 
-    private StockBO stockBO;
+    private UserBO userBO;
 
-    private String description;
+    private ClientBO clientBO;
+
+    private SellerBO sellerBO;
+
+    private EnumOrderStatus status;
 
     private boolean active;
 
@@ -21,11 +26,13 @@ public class ProductBO implements ICrudBO {
 
     private LocalDateTime disabledAt;
 
-    public ProductBO(Long id, StockBO stockBO, String description, boolean active, CreatedAtVO createdAt,
-            LocalDateTime updatedAt, LocalDateTime disabledAt) {
+    public DemandBO(Long id, UserBO userBO, ClientBO clientBO, SellerBO sellerBO, EnumOrderStatus status, boolean active,
+            CreatedAtVO createdAt, LocalDateTime updatedAt, LocalDateTime disabledAt) {
         this.id = id;
-        this.stockBO = stockBO;
-        this.description = description;
+        this.userBO = userBO;
+        this.clientBO = clientBO;
+        this.sellerBO = sellerBO;
+        this.status = status;
         this.active = active;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
@@ -36,12 +43,20 @@ public class ProductBO implements ICrudBO {
         return id;
     }
 
-    public StockBO getStockBO() {
-        return stockBO;
+    public UserBO getUserBO() {
+        return userBO;
     }
 
-    public String getDescription() {
-        return description;
+    public ClientBO getClientBO() {
+        return clientBO;
+    }
+
+    public SellerBO getSellerBO() {
+        return sellerBO;
+    }
+
+    public EnumOrderStatus getStatus() {
+        return status;
     }
 
     public boolean isActive() {

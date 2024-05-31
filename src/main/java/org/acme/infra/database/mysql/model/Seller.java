@@ -19,7 +19,7 @@ public class Seller extends PanacheEntity implements Serializable {
 
     private Address address;
 
-    private Store store;
+    private MySqlUser user;
 
     private boolean active;
 

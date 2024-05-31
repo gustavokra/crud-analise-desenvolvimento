@@ -3,7 +3,9 @@ package org.acme.domain.entities.dto;
 import java.time.LocalDateTime;
 
 public class ProductDTO {
-    
+
+    private Long id;
+
     private StockDTO stockDTO;
 
     private String description;
@@ -64,6 +66,12 @@ public class ProductDTO {
         this.disabledAt = disabledAt;
     }
 
-    
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
 }

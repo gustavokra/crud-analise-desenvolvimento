@@ -5,28 +5,28 @@ import java.time.LocalDateTime;
 import org.acme.domain.entities.vo.CreatedAtVO;
 import org.acme.domain.repositories.ICrudBO;
 
-public class ProductBO implements ICrudBO {
+public class UserBO implements ICrudBO {
 
     private Long id;
 
-    private StockBO stockBO;
+    private String name;
 
-    private String description;
+    private String username;
 
-    private boolean active;
+    private String password;
 
     private CreatedAtVO createdAt;
 
     private LocalDateTime updatedAt;
 
     private LocalDateTime disabledAt;
-
-    public ProductBO(Long id, StockBO stockBO, String description, boolean active, CreatedAtVO createdAt,
+    
+    public UserBO(Long id, String name, String username, String password, CreatedAtVO createdAt,
             LocalDateTime updatedAt, LocalDateTime disabledAt) {
         this.id = id;
-        this.stockBO = stockBO;
-        this.description = description;
-        this.active = active;
+        this.name = name;
+        this.username = username;
+        this.password = password;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.disabledAt = disabledAt;
@@ -36,16 +36,16 @@ public class ProductBO implements ICrudBO {
         return id;
     }
 
-    public StockBO getStockBO() {
-        return stockBO;
+    public String getName() {
+        return name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getUsername() {
+        return username;
     }
 
-    public boolean isActive() {
-        return active;
+    public String getPassword() {
+        return password;
     }
 
     public CreatedAtVO getCreatedAt() {
@@ -59,5 +59,7 @@ public class ProductBO implements ICrudBO {
     public LocalDateTime getDisabledAt() {
         return disabledAt;
     }
+
+   
 
 }

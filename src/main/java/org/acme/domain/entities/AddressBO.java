@@ -3,9 +3,10 @@ package org.acme.domain.entities;
 import java.time.LocalDateTime;
 
 import org.acme.domain.entities.vo.CreatedAtVO;
+import org.acme.domain.repositories.ICrudBO;
 
-public class AddressBO {
-    
+public class AddressBO implements ICrudBO {
+
     private Long id;
 
     private CountryBO countryBO;
@@ -44,82 +45,40 @@ public class AddressBO {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public CountryBO getCountryBO() {
         return countryBO;
-    }
-
-    public void setCountryBO(CountryBO countryBO) {
-        this.countryBO = countryBO;
     }
 
     public StateBO getStateBO() {
         return stateBO;
     }
 
-    public void setStateBO(StateBO stateBO) {
-        this.stateBO = stateBO;
-    }
-
     public CityBO getCityBO() {
         return cityBO;
-    }
-
-    public void setCityBO(CityBO cityBO) {
-        this.cityBO = cityBO;
     }
 
     public String getStreet() {
         return street;
     }
 
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
     public String getNumber() {
         return number;
-    }
-
-    public void setNumber(String number) {
-        this.number = number;
     }
 
     public boolean isActive() {
         return active;
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
-    }
-
     public CreatedAtVO getCreatedAt() {
         return createdAt;
-    }
-
-    public void setCreatedAt(CreatedAtVO createdAt) {
-        this.createdAt = createdAt;
     }
 
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
     public LocalDateTime getDisabledAt() {
         return disabledAt;
     }
 
-    public void setDisabledAt(LocalDateTime disabledAt) {
-        this.disabledAt = disabledAt;
-    }
-
-    
-    
 }

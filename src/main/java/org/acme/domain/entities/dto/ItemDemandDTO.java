@@ -2,9 +2,11 @@ package org.acme.domain.entities.dto;
 
 import java.time.LocalDateTime;
 
-public class ItemOrderDTO {
+public class ItemDemandDTO {
 
-    private OrderDTO orderDTO;
+    private Long id;
+
+    private DemandDTO demandDTO;
 
     private ProductDTO productDTO;
 
@@ -18,12 +20,12 @@ public class ItemOrderDTO {
 
     private LocalDateTime disabledAt;
 
-    public OrderDTO getOrderDTO() {
-        return orderDTO;
+    public DemandDTO getDemandDTO() {
+        return demandDTO;
     }
 
-    public void setOrderDTO(OrderDTO orderDTO) {
-        this.orderDTO = orderDTO;
+    public void setOrderDTO(DemandDTO demandDTO) {
+        this.demandDTO = demandDTO;
     }
 
     public ProductDTO getProductDTO() {
@@ -74,6 +76,12 @@ public class ItemOrderDTO {
         this.disabledAt = disabledAt;
     }
 
-    
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
 }

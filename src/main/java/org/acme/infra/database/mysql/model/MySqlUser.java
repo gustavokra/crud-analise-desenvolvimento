@@ -1,14 +1,27 @@
-package org.acme.domain.entities.dto;
+package org.acme.infra.database.mysql.model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class UnitMeasureDTO {
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
-    private Long id;
+@Entity
+@Table(name = "mysql_user")
+public class MySqlUser extends PanacheEntityBase implements Serializable {
 
-    private String acronym;
+    @Id
+    @GeneratedValue
+    public Long id;
 
-    private String description;
+    private String name;
+
+    private String username;
+
+    private String password;
 
     private boolean active;
 
@@ -26,20 +39,28 @@ public class UnitMeasureDTO {
         this.id = id;
     }
 
-    public String getAcronym() {
-        return acronym;
+    public String getName() {
+        return name;
     }
 
-    public void setAcronym(String acronym) {
-        this.acronym = acronym;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getUsername() {
+        return username;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public boolean isActive() {

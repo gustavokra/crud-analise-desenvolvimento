@@ -2,11 +2,15 @@ package org.acme.domain.entities.dto;
 
 import java.time.LocalDateTime;
 
-public class StoreDTO {
+public class UserDTO {
+
+    private Long id;
     
     private String name;
 
-    private AddressDTO addressDTO;
+    private String username;
+
+    private String password;
 
     private LocalDateTime createdAt;
 
@@ -14,20 +18,29 @@ public class StoreDTO {
 
     private LocalDateTime disabledAt;
 
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public AddressDTO getAddressDTO() {
-        return addressDTO;
-    }
-
-    public void setAddressDTO(AddressDTO addressDTO) {
-        this.addressDTO = addressDTO;
     }
 
     public LocalDateTime getCreatedAt() {
@@ -52,6 +65,14 @@ public class StoreDTO {
 
     public void setDisabledAt(LocalDateTime disabledAt) {
         this.disabledAt = disabledAt;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
 }

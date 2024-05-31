@@ -1,34 +1,37 @@
 package org.acme.domain.entities.enums;
 
-public enum EnumOrderStatus {
+import org.acme.domain.utils.EnumUtil;
+
+public enum EnumOrderStatus implements IEnum {
     
-    OP("Open", "OP");
+    OP("OPEN");
 
-    private EnumOrderStatus(String description, String abreviacao) {
-        this.description = description;
-        this.abreviacao = abreviacao;
+    private EnumOrderStatus(String key) {
+        this.key = key;
     }
 
-    private String description;
+    private String key;
 
-    private String abreviacao;
-
-    public String getdescription() {
-        return description;
+    public String getkey() {
+        return key;
     }
 
-    public void setdescription(String description) {
-        this.description = description;
+    public void setkey(String key) {
+        this.key = key;
     }
 
-    public String getAbreviacao() {
-        return abreviacao;
+    @Override
+    public String getKey() {
+        return key;
     }
 
-    public void setAbreviacao(String abreviacao) {
-        this.abreviacao = abreviacao;
+    @Override
+    public boolean containsInEnum(String key) {
+        return parseByKey(key) != null;
     }
-
     
+    public static EnumOrderStatus parseByKey(String key) {
+        return (EnumOrderStatus) EnumUtil.parseByKey(EnumOrderStatus.class, key);
+    }
 
 }

@@ -18,7 +18,7 @@ public class Address extends PanacheEntity implements Serializable {
 
     private State state;
     
-    private Order country;
+    private Country country;
 
     private String street;
 

@@ -3,14 +3,15 @@ package org.acme.domain.entities;
 import java.time.LocalDateTime;
 
 import org.acme.domain.entities.vo.CreatedAtVO;
+import org.acme.domain.repositories.ICrudBO;
 
-public class StockBO {
+public class StockBO implements ICrudBO {
 
     private Long id;
 
     private String description;
 
-    private StoreBO storeBO;
+    private UserBO userBO;
 
     private boolean active;
 
@@ -20,38 +21,14 @@ public class StockBO {
 
     private LocalDateTime disabledAt;
 
-    public StockBO(Long id, String description, StoreBO storeBO, boolean active, CreatedAtVO createdAt,
+    public StockBO(Long id, String description, UserBO userBO, boolean active, CreatedAtVO createdAt,
             LocalDateTime updatedAt, LocalDateTime disabledAt) {
         this.id = id;
         this.description = description;
-        this.storeBO = storeBO;
+        this.userBO = userBO;
         this.active = active;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
-        this.disabledAt = disabledAt;
-    }
-
-    public CreatedAtVO getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(CreatedAtVO createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public LocalDateTime getDisabledAt() {
-        return disabledAt;
-    }
-
-    public void setDisabledAt(LocalDateTime disabledAt) {
         this.disabledAt = disabledAt;
     }
 
@@ -59,32 +36,28 @@ public class StockBO {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getdescription() {
+    public String getDescription() {
         return description;
     }
 
-    public void setdescription(String description) {
-        this.description = description;
+    public UserBO getUserBO() {
+        return userBO;
     }
 
-    public StoreBO getstoreBO() {
-        return storeBO;
-    }
-
-    public void setstoreBO(StoreBO storeBO) {
-        this.storeBO = storeBO;
-    }
-
-    public boolean isactive() {
+    public boolean isActive() {
         return active;
     }
 
-    public void setactive(boolean active) {
-        this.active = active;
+    public CreatedAtVO getCreatedAt() {
+        return createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public LocalDateTime getDisabledAt() {
+        return disabledAt;
     }
 
 }

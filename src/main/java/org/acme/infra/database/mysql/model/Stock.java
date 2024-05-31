@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,8 +18,6 @@ import lombok.Setter;
 public class Stock extends PanacheEntity implements Serializable {
 
     private String description;
-
-    private Order order;
 
     private boolean active;
 

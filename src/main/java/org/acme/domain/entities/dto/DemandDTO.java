@@ -4,9 +4,11 @@ import java.time.LocalDateTime;
 
 import org.acme.domain.entities.enums.EnumOrderStatus;
 
-public class OrderDTO {
+public class DemandDTO {
 
-    private StoreDTO storeDTO;
+    private Long id;
+
+    private UserDTO userDTO;
 
     private ClientDTO clientDTO;
 
@@ -22,12 +24,12 @@ public class OrderDTO {
 
     private LocalDateTime disabledAt;
 
-    public StoreDTO getStoreDTO() {
-        return storeDTO;
+    public UserDTO getUserDTO() {
+        return userDTO;
     }
 
-    public void setStoreDTO(StoreDTO storeDTO) {
-        this.storeDTO = storeDTO;
+    public void setUserDTO(UserDTO userDTO) {
+        this.userDTO = userDTO;
     }
 
     public ClientDTO getClientDTO() {
@@ -84,6 +86,14 @@ public class OrderDTO {
 
     public void setDisabledAt(LocalDateTime disabledAt) {
         this.disabledAt = disabledAt;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
 }

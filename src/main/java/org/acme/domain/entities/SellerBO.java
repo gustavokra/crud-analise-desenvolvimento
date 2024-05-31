@@ -3,14 +3,17 @@ package org.acme.domain.entities;
 import java.time.LocalDateTime;
 
 import org.acme.domain.entities.vo.CreatedAtVO;
+import org.acme.domain.repositories.ICrudBO;
 
-public class SellerBO {
+public class SellerBO implements ICrudBO {
+
+    private Long id;
 
     private String name;
 
     private AddressBO addressBO;
 
-    private StoreBO storeBO;
+    private UserBO userBO;
 
     private boolean active;
 
@@ -20,71 +23,48 @@ public class SellerBO {
 
     private LocalDateTime disabledAt;
 
-    public SellerBO(String name, AddressBO addressBO, StoreBO storeBO, boolean active, CreatedAtVO createdAt,
+    public SellerBO(Long id, String name, AddressBO addressBO, UserBO userBO, boolean active, CreatedAtVO createdAt,
             LocalDateTime updatedAt, LocalDateTime disabledAt) {
+        this.id = id;
         this.name = name;
         this.addressBO = addressBO;
-        this.storeBO = storeBO;
+        this.userBO = userBO;
         this.active = active;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.disabledAt = disabledAt;
     }
 
-    public CreatedAtVO getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(CreatedAtVO createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public LocalDateTime getDisabledAt() {
-        return disabledAt;
-    }
-
-    public void setDisabledAt(LocalDateTime disabledAt) {
-        this.disabledAt = disabledAt;
+    public Long getId() {
+        return id;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public AddressBO getaddressBO() {
+    public AddressBO getAddressBO() {
         return addressBO;
     }
 
-    public void setaddressBO(AddressBO addressBO) {
-        this.addressBO = addressBO;
+    public UserBO getUserBO() {
+        return userBO;
     }
 
-    public StoreBO getstoreBO() {
-        return storeBO;
-    }
-
-    public void setLoja(StoreBO storeBO) {
-        this.storeBO = storeBO;
-    }
-
-    public boolean isactive() {
+    public boolean isActive() {
         return active;
     }
 
-    public void setactive(boolean active) {
-        this.active = active;
+    public CreatedAtVO getCreatedAt() {
+        return createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public LocalDateTime getDisabledAt() {
+        return disabledAt;
     }
 
 }

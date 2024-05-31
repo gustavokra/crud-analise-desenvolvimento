@@ -4,11 +4,13 @@ import java.time.LocalDateTime;
 
 public class SellerDTO {
 
+    private Long id;
+
     private String name;
 
     private AddressDTO addressDTO;
 
-    private StoreDTO storeDTO;
+    private UserDTO userDTO;
 
     private boolean active;
 
@@ -34,12 +36,12 @@ public class SellerDTO {
         this.addressDTO = addressDTO;
     }
 
-    public StoreDTO getStoreDTO() {
-        return storeDTO;
+    public UserDTO getUserDTO() {
+        return userDTO;
     }
 
-    public void setStoreDTO(StoreDTO storeDTO) {
-        this.storeDTO = storeDTO;
+    public void setUserDTO(UserDTO userDTO) {
+        this.userDTO = userDTO;
     }
 
     public boolean isActive() {
@@ -72,6 +74,14 @@ public class SellerDTO {
 
     public void setDisabledAt(LocalDateTime disabledAt) {
         this.disabledAt = disabledAt;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
 }

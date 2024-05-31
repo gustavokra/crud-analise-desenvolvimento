@@ -8,7 +8,7 @@ public class StockDTO {
 
     private String description;
 
-    private StoreDTO storeDTO;
+    private UserDTO userDTO;
 
     private boolean active;
 
@@ -34,12 +34,12 @@ public class StockDTO {
         this.description = description;
     }
 
-    public StoreDTO getStoreDTO() {
-        return storeDTO;
+    public UserDTO getUserDTO() {
+        return userDTO;
     }
 
-    public void setStoreDTO(StoreDTO storeDTO) {
-        this.storeDTO = storeDTO;
+    public void setUserDTO(UserDTO userDTO) {
+        this.userDTO = userDTO;
     }
 
     public boolean isActive() {

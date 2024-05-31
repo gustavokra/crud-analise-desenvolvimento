@@ -3,14 +3,17 @@ package org.acme.domain.entities;
 import java.time.LocalDateTime;
 
 import org.acme.domain.entities.vo.CreatedAtVO;
+import org.acme.domain.repositories.ICrudBO;
 
-public class ClientBO {
+public class ClientBO implements ICrudBO {
+
+    private Long id;
 
     private String name;
 
     private AddressBO addressBO;
 
-    private StoreBO storeBO;
+    private UserBO userBO;
 
     private boolean active;
 
@@ -20,73 +23,49 @@ public class ClientBO {
 
     private LocalDateTime disabledAt;
 
-    public ClientBO(String name, AddressBO addressBO, StoreBO storeBO, boolean active, CreatedAtVO createdAt,
+    public ClientBO(Long id, String name, AddressBO addressBO, UserBO userBO, boolean active, CreatedAtVO createdAt,
             LocalDateTime updatedAt, LocalDateTime disabledAt) {
+        this.id = id;
         this.name = name;
         this.addressBO = addressBO;
-        this.storeBO = storeBO;
+        this.userBO = userBO;
         this.active = active;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.disabledAt = disabledAt;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public AddressBO getAddressBO() {
         return addressBO;
     }
 
-    public void setAddressBO(AddressBO addressBO) {
-        this.addressBO = addressBO;
-    }
-
-    public StoreBO getStoreBO() {
-        return storeBO;
-    }
-
-    public void setStoreBO(StoreBO storeBO) {
-        this.storeBO = storeBO;
+    public UserBO getUserBO() {
+        return userBO;
     }
 
     public boolean isActive() {
         return active;
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
-    }
-
     public CreatedAtVO getCreatedAt() {
         return createdAt;
-    }
-
-    public void setCreatedAt(CreatedAtVO createdAt) {
-        this.createdAt = createdAt;
     }
 
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
     public LocalDateTime getDisabledAt() {
         return disabledAt;
     }
 
-    public void setDisabledAt(LocalDateTime disabledAt) {
-        this.disabledAt = disabledAt;
-    }
-
-    
 
 }
