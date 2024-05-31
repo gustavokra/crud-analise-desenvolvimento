@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS `cidade`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cidade` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `descricao` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -47,14 +47,14 @@ DROP TABLE IF EXISTS `cliente`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cliente` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `nome` varchar(50) NOT NULL,
-  `id_endereco` int NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `id_address` int NOT NULL,
   `id_loja` int NOT NULL,
-  `ativo` int NOT NULL DEFAULT '1',
+  `active` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
-  KEY `id_endereco` (`id_endereco`),
+  KEY `id_address` (`id_address`),
   KEY `id_loja` (`id_loja`),
-  CONSTRAINT `cliente_ibfk_1` FOREIGN KEY (`id_endereco`) REFERENCES `endereco` (`id`),
+  CONSTRAINT `cliente_ibfk_1` FOREIGN KEY (`id_address`) REFERENCES `address` (`id`),
   CONSTRAINT `cliente_ibfk_2` FOREIGN KEY (`id_loja`) REFERENCES `loja` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -69,37 +69,37 @@ LOCK TABLES `cliente` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `endereco`
+-- Table structure for table `address`
 --
 
-DROP TABLE IF EXISTS `endereco`;
+DROP TABLE IF EXISTS `address`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `endereco` (
+CREATE TABLE `address` (
   `id` int NOT NULL AUTO_INCREMENT,
   `id_pais` int DEFAULT NULL,
   `id_estado` int DEFAULT NULL,
   `id_cidade` int DEFAULT NULL,
   `rua` varchar(255) DEFAULT NULL,
   `numero` varchar(10) DEFAULT NULL,
-  `ativo` int NOT NULL DEFAULT '1',
+  `active` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `id_pais` (`id_pais`),
   KEY `id_estado` (`id_estado`),
   KEY `id_cidade` (`id_cidade`),
-  CONSTRAINT `endereco_ibfk_1` FOREIGN KEY (`id_pais`) REFERENCES `pais` (`id`),
-  CONSTRAINT `endereco_ibfk_2` FOREIGN KEY (`id_estado`) REFERENCES `estado` (`id`),
-  CONSTRAINT `endereco_ibfk_3` FOREIGN KEY (`id_cidade`) REFERENCES `cidade` (`id`)
+  CONSTRAINT `address_ibfk_1` FOREIGN KEY (`id_pais`) REFERENCES `pais` (`id`),
+  CONSTRAINT `address_ibfk_2` FOREIGN KEY (`id_estado`) REFERENCES `estado` (`id`),
+  CONSTRAINT `address_ibfk_3` FOREIGN KEY (`id_cidade`) REFERENCES `cidade` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `endereco`
+-- Dumping data for table `address`
 --
 
-LOCK TABLES `endereco` WRITE;
-/*!40000 ALTER TABLE `endereco` DISABLE KEYS */;
-/*!40000 ALTER TABLE `endereco` ENABLE KEYS */;
+LOCK TABLES `address` WRITE;
+/*!40000 ALTER TABLE `address` DISABLE KEYS */;
+/*!40000 ALTER TABLE `address` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -111,7 +111,7 @@ DROP TABLE IF EXISTS `estado`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `estado` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `descricao` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -126,30 +126,30 @@ LOCK TABLES `estado` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `estoque`
+-- Table structure for table `stock`
 --
 
-DROP TABLE IF EXISTS `estoque`;
+DROP TABLE IF EXISTS `stock`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `estoque` (
+CREATE TABLE `stock` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `descricao` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
   `id_loja` int NOT NULL,
-  `ativo` int NOT NULL DEFAULT '1',
+  `active` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `id_loja` (`id_loja`),
-  CONSTRAINT `estoque_ibfk_1` FOREIGN KEY (`id_loja`) REFERENCES `loja` (`id`)
+  CONSTRAINT `stock_ibfk_1` FOREIGN KEY (`id_loja`) REFERENCES `loja` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `estoque`
+-- Dumping data for table `stock`
 --
 
-LOCK TABLES `estoque` WRITE;
-/*!40000 ALTER TABLE `estoque` DISABLE KEYS */;
-/*!40000 ALTER TABLE `estoque` ENABLE KEYS */;
+LOCK TABLES `stock` WRITE;
+/*!40000 ALTER TABLE `stock` DISABLE KEYS */;
+/*!40000 ALTER TABLE `stock` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -161,8 +161,8 @@ DROP TABLE IF EXISTS `loja`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `loja` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `nome` varchar(50) NOT NULL,
-  `ativo` int NOT NULL DEFAULT '1',
+  `name` varchar(50) NOT NULL,
+  `active` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -185,8 +185,8 @@ DROP TABLE IF EXISTS `pais`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `pais` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `descricao` varchar(255) NOT NULL,
-  `sigla` varchar(2) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `acronym` varchar(2) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -213,7 +213,7 @@ CREATE TABLE `pedido` (
   `id_cliente` int NOT NULL,
   `id_vendedor` int NOT NULL,
   `status` varchar(3) NOT NULL,
-  `ativo` int NOT NULL DEFAULT '1',
+  `active` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `id_loja` (`id_loja`),
   KEY `id_cliente` (`id_cliente`),
@@ -273,12 +273,12 @@ DROP TABLE IF EXISTS `produto`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `produto` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `id_estoque` int NOT NULL,
-  `descricao` varchar(255) NOT NULL,
-  `ativo` int NOT NULL DEFAULT '1',
+  `id_stock` int NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `active` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
-  KEY `id_estoque` (`id_estoque`),
-  CONSTRAINT `produto_ibfk_1` FOREIGN KEY (`id_estoque`) REFERENCES `estoque` (`id`)
+  KEY `id_stock` (`id_stock`),
+  CONSTRAINT `produto_ibfk_1` FOREIGN KEY (`id_stock`) REFERENCES `stock` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -300,8 +300,8 @@ DROP TABLE IF EXISTS `unidade_medida`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `unidade_medida` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `sigla` varchar(3) NOT NULL,
-  `ativo` int NOT NULL DEFAULT '1',
+  `acronym` varchar(3) NOT NULL,
+  `active` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -324,14 +324,14 @@ DROP TABLE IF EXISTS `vendedor`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `vendedor` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `nome` varchar(50) NOT NULL,
-  `id_endereco` int NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `id_address` int NOT NULL,
   `id_loja` int NOT NULL,
-  `ativo` int NOT NULL DEFAULT '1',
+  `active` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
-  KEY `id_endereco` (`id_endereco`),
+  KEY `id_address` (`id_address`),
   KEY `id_loja` (`id_loja`),
-  CONSTRAINT `vendedor_ibfk_1` FOREIGN KEY (`id_endereco`) REFERENCES `endereco` (`id`),
+  CONSTRAINT `vendedor_ibfk_1` FOREIGN KEY (`id_address`) REFERENCES `address` (`id`),
   CONSTRAINT `vendedor_ibfk_2` FOREIGN KEY (`id_loja`) REFERENCES `loja` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
