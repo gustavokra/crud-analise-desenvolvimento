@@ -12,7 +12,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "unit_measure")
 public class UnitMeasure extends PanacheEntity implements Serializable {
 
     private String acronym;

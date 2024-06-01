@@ -5,7 +5,9 @@ import java.time.LocalDateTime;
 public class UserDTO {
 
     private Long id;
-    
+
+    private String document;
+
     private String name;
 
     private String username;
@@ -17,7 +19,6 @@ public class UserDTO {
     private LocalDateTime updatedAt;
 
     private LocalDateTime disabledAt;
-
 
     public String getUsername() {
         return username;
@@ -73,6 +74,14 @@ public class UserDTO {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getDocument() {
+        return document;
+    }
+
+    public void setDocument(String document) {
+        this.document = document;
     }
 
 }

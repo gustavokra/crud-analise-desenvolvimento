@@ -9,6 +9,7 @@ public class MYSQLUserMapper {
     public static UserBO toDomain(MySqlUser entity) {
         var bo = new UserBO(
                 entity.getId(),
+                entity.getDocument(),
                 entity.getName(),
                 entity.getUsername(),
                 entity.getPassword(),
@@ -23,6 +24,7 @@ public class MYSQLUserMapper {
         var panacheUser = new MySqlUser();
 
         panacheUser.setId(bo.getId());
+        panacheUser.setDocument(bo.getDocument());
         panacheUser.setName(bo.getName());
         panacheUser.setUsername(bo.getUsername());
         panacheUser.setPassword(bo.getPassword());

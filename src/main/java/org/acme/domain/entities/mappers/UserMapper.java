@@ -9,6 +9,7 @@ public class UserMapper {
     public static UserDTO toDTO(UserBO bo) {
         var dto = new UserDTO();
         dto.setId(bo.getId());
+        dto.setDocument(bo.getDocument());
         dto.setName(bo.getName());
         dto.setUsername(bo.getUsername());
         dto.setPassword(bo.getPassword());
@@ -21,6 +22,7 @@ public class UserMapper {
 
     public static UserBO toBO(UserDTO dto) {
         var bo = new UserBO(dto.getId(),
+                dto.getDocument(),
                 dto.getName(),
                 dto.getUsername(),
                 dto.getPassword(),

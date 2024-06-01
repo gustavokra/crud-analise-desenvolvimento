@@ -12,7 +12,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "product")
 public class Product extends PanacheEntity implements Serializable {
 
     private Stock stock;

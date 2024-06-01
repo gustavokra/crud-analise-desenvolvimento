@@ -12,7 +12,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "client")
 public class Client extends PanacheEntity implements Serializable {
 
     private String name;

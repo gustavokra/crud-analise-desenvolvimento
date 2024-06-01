@@ -10,20 +10,20 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "mysql_user")
+@Table(name = "user")
 public class MySqlUser extends PanacheEntityBase implements Serializable {
 
     @Id
     @GeneratedValue
-    public Long id;
+    private Long id;
+
+    private String document;
 
     private String name;
 
     private String username;
 
     private String password;
-
-    private boolean active;
 
     private LocalDateTime createdAt;
 
@@ -63,14 +63,6 @@ public class MySqlUser extends PanacheEntityBase implements Serializable {
         this.password = password;
     }
 
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
-    }
-
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
@@ -93,6 +85,14 @@ public class MySqlUser extends PanacheEntityBase implements Serializable {
 
     public void setDisabledAt(LocalDateTime disabledAt) {
         this.disabledAt = disabledAt;
+    }
+
+    public String getDocument() {
+        return document;
+    }
+
+    public void setDocument(String document) {
+        this.document = document;
     }
 
 }
