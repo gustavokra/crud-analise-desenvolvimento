@@ -11,8 +11,6 @@ public class StockBO implements ICrudBO {
 
     private String description;
 
-    private UserBO userBO;
-
     private boolean active;
 
     private CreatedAtVO createdAt;
@@ -21,11 +19,10 @@ public class StockBO implements ICrudBO {
 
     private LocalDateTime disabledAt;
 
-    public StockBO(Long id, String description, UserBO userBO, boolean active, CreatedAtVO createdAt,
+    public StockBO(Long id, String description, boolean active, CreatedAtVO createdAt,
             LocalDateTime updatedAt, LocalDateTime disabledAt) {
         this.id = id;
         this.description = description;
-        this.userBO = userBO;
         this.active = active;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
@@ -38,10 +35,6 @@ public class StockBO implements ICrudBO {
 
     public String getDescription() {
         return description;
-    }
-
-    public UserBO getUserBO() {
-        return userBO;
     }
 
     public boolean isActive() {

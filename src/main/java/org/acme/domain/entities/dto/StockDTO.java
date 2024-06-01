@@ -8,8 +8,6 @@ public class StockDTO {
 
     private String description;
 
-    private UserDTO userDTO;
-
     private boolean active;
 
     private LocalDateTime createdAt;
@@ -32,14 +30,6 @@ public class StockDTO {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public UserDTO getUserDTO() {
-        return userDTO;
-    }
-
-    public void setUserDTO(UserDTO userDTO) {
-        this.userDTO = userDTO;
     }
 
     public boolean isActive() {
