@@ -13,8 +13,6 @@ public class ClientBO implements ICrudBO {
 
     private AddressBO addressBO;
 
-    private UserBO userBO;
-
     private boolean active;
 
     private CreatedAtVO createdAt;
@@ -23,12 +21,11 @@ public class ClientBO implements ICrudBO {
 
     private LocalDateTime disabledAt;
 
-    public ClientBO(Long id, String name, AddressBO addressBO, UserBO userBO, boolean active, CreatedAtVO createdAt,
+    public ClientBO(Long id, String name, AddressBO addressBO, boolean active, CreatedAtVO createdAt,
             LocalDateTime updatedAt, LocalDateTime disabledAt) {
         this.id = id;
         this.name = name;
         this.addressBO = addressBO;
-        this.userBO = userBO;
         this.active = active;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
@@ -45,10 +42,6 @@ public class ClientBO implements ICrudBO {
 
     public AddressBO getAddressBO() {
         return addressBO;
-    }
-
-    public UserBO getUserBO() {
-        return userBO;
     }
 
     public boolean isActive() {

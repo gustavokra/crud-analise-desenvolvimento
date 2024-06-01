@@ -10,8 +10,6 @@ public class ClientDTO {
 
     private AddressDTO addressDTO;
 
-    private UserDTO userDTO;
-
     private boolean active;
 
     private LocalDateTime createdAt;
@@ -34,14 +32,6 @@ public class ClientDTO {
 
     public void setAddressDTO(AddressDTO addressDTO) {
         this.addressDTO = addressDTO;
-    }
-
-    public UserDTO getUserDTO() {
-        return userDTO;
-    }
-
-    public void setUserDTO(UserDTO userDTO) {
-        this.userDTO = userDTO;
     }
 
     public boolean isActive() {
