@@ -39,6 +39,12 @@ public class PgUserRepository implements IUserRepository {
         throw new UnsupportedOperationException("Unimplemented method 'getType'");
     }
 
+    @Override
+    public List<UserBO> findAll() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
+    }
+
 
     
 }

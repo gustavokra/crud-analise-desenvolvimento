@@ -8,9 +8,6 @@ import org.acme.domain.entities.mappers.UserMapper;
 import org.acme.domain.entities.vo.QueryFieldInfoVO;
 import org.acme.domain.repositories.IUserRepository;
 import org.acme.domain.utils.exception.CrudException;
-import org.acme.infra.database.mysql.repositories.MySqlUserRepository;
-import org.acme.infra.database.mysql.repositories.PgUserRepository;
-
 public class CreateUser {
     
     private IUserRepository userRepository;

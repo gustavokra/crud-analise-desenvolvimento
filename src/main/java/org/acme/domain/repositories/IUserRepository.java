@@ -13,6 +13,8 @@ public interface IUserRepository {
     UserBO merge(UserBO bo);
 
     List<UserBO> findAllBy(List<QueryFieldInfoVO> queryFieldInfo);
+
+    List<UserBO> findAll();
     
     UserBO findFirstBy(List<QueryFieldInfoVO> queryFieldInfo);
 

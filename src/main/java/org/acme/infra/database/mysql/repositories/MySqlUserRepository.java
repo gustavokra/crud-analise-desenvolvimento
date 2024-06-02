@@ -16,6 +16,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
 public class MySqlUserRepository implements IUserRepository {
+    
     @Override
     public UserBO create(UserBO bo) {
         var panacheUser = MYSQLUserMapper.toEntity(bo);
@@ -26,17 +27,10 @@ public class MySqlUserRepository implements IUserRepository {
     }
 
     @Override
-    public UserBO merge(UserBO bo) {
-        var entity = MYSQLUserMapper.toEntity(bo);
-
-        MySqlUser.getEntityManager().merge(entity);
-
-        return bo;
-    }
-
-    @Override
-    public UserBO findFirstBy(List<QueryFieldInfoVO> queryFieldsInfoVO) {
-        return ListUtil.first(findAllBy(queryFieldsInfoVO));
+    public List<UserBO> findAll() {
+        return ListUtil.stream(MySqlUser.listAll())
+            .map(value -> MYSQLUserMapper.toDomain(((MySqlUser) value)))
+            .collect(Collectors.toList());
     }
 
     @Override
@@ -64,6 +58,20 @@ public class MySqlUserRepository implements IUserRepository {
         return ListUtil.stream(MySqlUser.list(query.toString(), params))
                 .map(value -> MYSQLUserMapper.toDomain(((MySqlUser) value)))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public UserBO findFirstBy(List<QueryFieldInfoVO> queryFieldsInfoVO) {
+        return ListUtil.first(findAllBy(queryFieldsInfoVO));
+    }
+
+    @Override
+    public UserBO merge(UserBO bo) {
+        var entity = MYSQLUserMapper.toEntity(bo);
+
+        MySqlUser.getEntityManager().merge(entity);
+
+        return bo;
     }
 
     @Override

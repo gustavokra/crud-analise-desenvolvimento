@@ -27,7 +27,7 @@ public class FindUserBy {
                     .map(QueryFieldInfoVO::getFieldName)
                     .collect(Collectors.joining(", "));
 
-            throw new CrudException(EnumErrorCode.NAO_ENCONTRADO_FILTROS, fields);
+            throw new CrudException(EnumErrorCode.USUARIO_NAO_ENCONTRADO_FILTROS, fields);
         }
 
         return userBO != null ? UserMapper.toDTO(userBO) : null;
