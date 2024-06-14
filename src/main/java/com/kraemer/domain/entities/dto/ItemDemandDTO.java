@@ -2,9 +2,9 @@ package com.kraemer.domain.entities.dto;
 
 import java.time.LocalDateTime;
 
-public class ItemDemandDTO {
+public class ItemDemandDTO extends CrudDTO {
 
-    private Long id;
+
 
     private DemandDTO demandDTO;
 
@@ -14,11 +14,11 @@ public class ItemDemandDTO {
 
     private Integer amount;
 
-    private LocalDateTime createdAt;
+    
 
-    private LocalDateTime updatedAt;
+   
 
-    private LocalDateTime disabledAt;
+   
 
     public DemandDTO getDemandDTO() {
         return demandDTO;
@@ -52,36 +52,19 @@ public class ItemDemandDTO {
         this.amount = amount;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
 
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
 
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
 
-    public LocalDateTime getDisabledAt() {
-        return disabledAt;
-    }
 
-    public void setDisabledAt(LocalDateTime disabledAt) {
-        this.disabledAt = disabledAt;
-    }
 
-    public Long getId() {
-        return id;
-    }
+    
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    
+
+
+
+
+
 
 }

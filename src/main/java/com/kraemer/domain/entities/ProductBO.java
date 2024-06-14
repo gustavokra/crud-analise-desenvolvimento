@@ -3,23 +3,14 @@ package com.kraemer.domain.entities;
 import java.time.LocalDateTime;
 
 import com.kraemer.domain.entities.vo.CreatedAtVO;
-import com.kraemer.domain.repositories.ICrudBO;
 
-public class ProductBO implements ICrudBO {
-
-    private Long id;
+public class ProductBO extends CrudBO {
 
     private StockBO stockBO;
 
     private String description;
 
     private boolean active;
-
-    private CreatedAtVO createdAt;
-
-    private LocalDateTime updatedAt;
-
-    private LocalDateTime disabledAt;
 
     public ProductBO(Long id, StockBO stockBO, String description, boolean active, CreatedAtVO createdAt,
             LocalDateTime updatedAt, LocalDateTime disabledAt) {
@@ -32,10 +23,6 @@ public class ProductBO implements ICrudBO {
         this.disabledAt = disabledAt;
     }
 
-    public Long getId() {
-        return id;
-    }
-
     public StockBO getStockBO() {
         return stockBO;
     }
@@ -46,18 +33,6 @@ public class ProductBO implements ICrudBO {
 
     public boolean isActive() {
         return active;
-    }
-
-    public CreatedAtVO getCreatedAt() {
-        return createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public LocalDateTime getDisabledAt() {
-        return disabledAt;
     }
 
 }

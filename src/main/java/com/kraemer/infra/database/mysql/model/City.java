@@ -27,10 +27,10 @@ public class City extends PanacheEntityBase implements Serializable {
     @ManyToOne
     private State state;
 
-    private LocalDateTime createdAt;
+    
 
-    private LocalDateTime updatedAt;
+   
 
-    private LocalDateTime disabledAt;
+   
 
 }

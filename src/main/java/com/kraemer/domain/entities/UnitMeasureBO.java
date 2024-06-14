@@ -3,23 +3,16 @@ package com.kraemer.domain.entities;
 import java.time.LocalDateTime;
 
 import com.kraemer.domain.entities.vo.CreatedAtVO;
-import com.kraemer.domain.repositories.ICrudBO;
 
-public class UnitMeasureBO implements ICrudBO {
+public class UnitMeasureBO extends CrudBO {
 
-    private Long id;
+
 
     private String acronym;
 
     private String description;
 
     private boolean active;
-
-    private CreatedAtVO createdAt;
-
-    private LocalDateTime updatedAt;
-
-    private LocalDateTime disabledAt;
 
     public UnitMeasureBO(Long id, String acronym, String description, boolean active, CreatedAtVO createdAt,
             LocalDateTime updatedAt, LocalDateTime disabledAt) {
@@ -32,10 +25,6 @@ public class UnitMeasureBO implements ICrudBO {
         this.disabledAt = disabledAt;
     }
 
-    public Long getId() {
-        return id;
-    }
-
     public String getAcronym() {
         return acronym;
     }
@@ -46,18 +35,6 @@ public class UnitMeasureBO implements ICrudBO {
 
     public boolean isActive() {
         return active;
-    }
-
-    public CreatedAtVO getCreatedAt() {
-        return createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public LocalDateTime getDisabledAt() {
-        return disabledAt;
     }
 
 }

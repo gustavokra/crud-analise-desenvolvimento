@@ -30,8 +30,8 @@ public class Country extends PanacheEntityBase implements Serializable {
 
     private LocalDateTime createdAt;
 
-    private LocalDateTime updatedAt;
+   
 
-    private LocalDateTime disabledAt;
+   
 
 }

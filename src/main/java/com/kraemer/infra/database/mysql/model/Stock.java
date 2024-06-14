@@ -19,8 +19,8 @@ public class Stock extends PanacheEntity implements Serializable {
 
     private LocalDateTime createdAt;
 
-    private LocalDateTime updatedAt;
+   
 
-    private LocalDateTime disabledAt;
+   
 
 }

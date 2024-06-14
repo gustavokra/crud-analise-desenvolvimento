@@ -21,8 +21,8 @@ public class UnitMeasure extends PanacheEntity implements Serializable {
 
     private LocalDateTime createdAt;
 
-    private LocalDateTime updatedAt;
+   
 
-    private LocalDateTime disabledAt;
+   
 
 }

@@ -29,10 +29,10 @@ public class Address extends PanacheEntity implements Serializable {
 
     private boolean active;
 
-    private LocalDateTime createdAt;
+    
 
-    private LocalDateTime updatedAt;
+   
 
-    private LocalDateTime disabledAt;
+   
 
 }

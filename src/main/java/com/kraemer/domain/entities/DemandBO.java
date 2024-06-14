@@ -4,11 +4,8 @@ import java.time.LocalDateTime;
 
 import com.kraemer.domain.entities.enums.EnumOrderStatus;
 import com.kraemer.domain.entities.vo.CreatedAtVO;
-import com.kraemer.domain.repositories.ICrudBO;
 
-public class DemandBO implements ICrudBO {
-
-    private Long id;
+public class DemandBO extends CrudBO {
 
     private UserBO userBO;
 
@@ -20,13 +17,8 @@ public class DemandBO implements ICrudBO {
 
     private boolean active;
 
-    private CreatedAtVO createdAt;
-
-    private LocalDateTime updatedAt;
-
-    private LocalDateTime disabledAt;
-
-    public DemandBO(Long id, UserBO userBO, ClientBO clientBO, SellerBO sellerBO, EnumOrderStatus status, boolean active,
+    public DemandBO(Long id, UserBO userBO, ClientBO clientBO, SellerBO sellerBO, EnumOrderStatus status,
+            boolean active,
             CreatedAtVO createdAt, LocalDateTime updatedAt, LocalDateTime disabledAt) {
         this.id = id;
         this.userBO = userBO;
@@ -37,10 +29,6 @@ public class DemandBO implements ICrudBO {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.disabledAt = disabledAt;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public UserBO getUserBO() {
@@ -61,18 +49,6 @@ public class DemandBO implements ICrudBO {
 
     public boolean isActive() {
         return active;
-    }
-
-    public CreatedAtVO getCreatedAt() {
-        return createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public LocalDateTime getDisabledAt() {
-        return disabledAt;
     }
 
 }

@@ -3,12 +3,11 @@ package com.kraemer.domain.entities;
 import java.time.LocalDateTime;
 
 import com.kraemer.domain.entities.vo.CreatedAtVO;
-import com.kraemer.domain.repositories.ICrudBO;
 import com.kraemer.domain.utils.StringUtil;
 
-public class UserBO implements ICrudBO {
+public class UserBO extends CrudBO {
 
-    private Long id;
+
 
     private String document;
 
@@ -17,12 +16,6 @@ public class UserBO implements ICrudBO {
     private String username;
 
     private String password;
-
-    private CreatedAtVO createdAt;
-
-    private LocalDateTime updatedAt;
-
-    private LocalDateTime disabledAt;
 
     public UserBO(Long id, String document, String name, String username, String password,
             CreatedAtVO createdAt,
@@ -37,8 +30,27 @@ public class UserBO implements ICrudBO {
         this.disabledAt = disabledAt;
     }
 
-    public Long getId() {
-        return id;
+    public void handleUpdateInfo(UserBO userBO) {
+        if (StringUtil.isNotNullOrEmpty(userBO.getName()) && !userBO.getName().equalsIgnoreCase(this.name)) {
+            this.name = userBO.getName();
+        }
+
+        if (StringUtil.isNotNullOrEmpty(userBO.getDocument())
+                && !userBO.getDocument().equalsIgnoreCase(this.document)) {
+            this.document = userBO.getDocument();
+        }
+
+        if (StringUtil.isNotNullOrEmpty(userBO.getUsername())
+                && !userBO.getUsername().equalsIgnoreCase(this.username)) {
+            this.username = userBO.getUsername();
+        }
+
+        if (StringUtil.isNotNullOrEmpty(userBO.getPassword())
+                && !userBO.getPassword().equalsIgnoreCase(this.password)) {
+            this.password = userBO.getPassword();
+        }
+
+        this.updatedAt = LocalDateTime.now();
     }
 
     public String getName() {
@@ -53,44 +65,12 @@ public class UserBO implements ICrudBO {
         return password;
     }
 
-    public CreatedAtVO getCreatedAt() {
-        return createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public LocalDateTime getDisabledAt() {
-        return disabledAt;
-    }
-
     public String getDocument() {
         return document;
     }
 
     public void handleDisable() {
         this.disabledAt = LocalDateTime.now();
-    }
-
-    public void handleUpdateInfo(UserBO userBO) {
-        if (StringUtil.isNotNullOrEmpty(userBO.getName()) && !userBO.getName().equalsIgnoreCase(this.name)) {
-            this.name = userBO.getName();
-        }
-
-        if (StringUtil.isNotNullOrEmpty(userBO.getDocument()) && !userBO.getDocument().equalsIgnoreCase(this.document)) {
-            this.document = userBO.getDocument();
-        }
-
-        if (StringUtil.isNotNullOrEmpty(userBO.getUsername()) && !userBO.getUsername().equalsIgnoreCase(this.username)) {
-            this.username = userBO.getUsername();
-        }
-
-        if (StringUtil.isNotNullOrEmpty(userBO.getPassword()) && !userBO.getPassword().equalsIgnoreCase(this.password)) {
-            this.password = userBO.getPassword();
-        }
-
-        this.updatedAt = LocalDateTime.now();
     }
 
 }

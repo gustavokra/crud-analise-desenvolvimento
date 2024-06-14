@@ -38,8 +38,8 @@ public class State extends PanacheEntityBase implements Serializable {
 
     private LocalDateTime createdAt;
 
-    private LocalDateTime updatedAt;
+   
 
-    private LocalDateTime disabledAt;
+   
 
 }

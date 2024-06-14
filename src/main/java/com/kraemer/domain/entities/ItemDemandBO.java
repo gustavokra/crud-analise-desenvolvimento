@@ -3,11 +3,8 @@ package com.kraemer.domain.entities;
 import java.time.LocalDateTime;
 
 import com.kraemer.domain.entities.vo.CreatedAtVO;
-import com.kraemer.domain.repositories.ICrudBO;
 
-public class ItemDemandBO implements ICrudBO {
-
-    private Long id;
+public class ItemDemandBO extends CrudBO {
 
     private DemandBO demandBO;
 
@@ -16,12 +13,6 @@ public class ItemDemandBO implements ICrudBO {
     private UnitMeasureBO unitMeasureBO;
 
     private Integer amount;
-
-    private CreatedAtVO createdAt;
-
-    private LocalDateTime updatedAt;
-
-    private LocalDateTime disabledAt;
 
     public ItemDemandBO(Long id, DemandBO demandBO, ProductBO productBO, UnitMeasureBO unitMeasureBO, Integer amount,
             CreatedAtVO createdAt, LocalDateTime updatedAt, LocalDateTime disabledAt) {
@@ -33,10 +24,6 @@ public class ItemDemandBO implements ICrudBO {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.disabledAt = disabledAt;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public DemandBO getDemandBO() {
@@ -53,18 +40,6 @@ public class ItemDemandBO implements ICrudBO {
 
     public Integer getAmount() {
         return amount;
-    }
-
-    public CreatedAtVO getCreatedAt() {
-        return createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public LocalDateTime getDisabledAt() {
-        return disabledAt;
     }
 
 }

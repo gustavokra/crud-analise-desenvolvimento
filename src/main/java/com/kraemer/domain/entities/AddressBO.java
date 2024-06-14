@@ -3,11 +3,8 @@ package com.kraemer.domain.entities;
 import java.time.LocalDateTime;
 
 import com.kraemer.domain.entities.vo.CreatedAtVO;
-import com.kraemer.domain.repositories.ICrudBO;
 
-public class AddressBO implements ICrudBO {
-
-    private Long id;
+public class AddressBO extends CrudBO {
 
     private CountryBO countryBO;
 
@@ -21,12 +18,6 @@ public class AddressBO implements ICrudBO {
 
     private boolean active;
 
-    private CreatedAtVO createdAt;
-
-    private LocalDateTime updatedAt;
-
-    private LocalDateTime disabledAt;
-
     public AddressBO(Long id, CountryBO countryBO, StateBO stateBO, CityBO cityBO, String street, String number,
             boolean active, CreatedAtVO createdAt, LocalDateTime updatedAt, LocalDateTime disabledAt) {
         this.id = id;
@@ -39,10 +30,6 @@ public class AddressBO implements ICrudBO {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.disabledAt = disabledAt;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public CountryBO getCountryBO() {
@@ -67,18 +54,6 @@ public class AddressBO implements ICrudBO {
 
     public boolean isActive() {
         return active;
-    }
-
-    public CreatedAtVO getCreatedAt() {
-        return createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public LocalDateTime getDisabledAt() {
-        return disabledAt;
     }
 
 }
