@@ -9,7 +9,7 @@ import com.kraemer.domain.entities.vo.QueryFieldInfoVO;
 import com.kraemer.domain.repositories.IUserRepository;
 import com.kraemer.domain.utils.ListUtil;
 import com.kraemer.domain.utils.StringUtil;
-import com.kraemer.infra.database.mysql.mappers.MYSQLUserMapper;
+import com.kraemer.infra.database.mysql.mappers.MysqlUserMapper;
 import com.kraemer.infra.database.mysql.model.MySqlUser;
 
 import jakarta.enterprise.context.ApplicationScoped;
@@ -19,17 +19,17 @@ public class MySqlUserRepository implements IUserRepository {
     
     @Override
     public UserBO create(UserBO bo) {
-        var panacheUser = MYSQLUserMapper.toEntity(bo);
+        var panacheUser = MysqlUserMapper.toEntity(bo);
 
         panacheUser.persist();
 
-        return MYSQLUserMapper.toDomain(panacheUser);
+        return MysqlUserMapper.toDomain(panacheUser);
     }
 
     @Override
     public List<UserBO> findAll() {
         return ListUtil.stream(MySqlUser.listAll())
-            .map(value -> MYSQLUserMapper.toDomain(((MySqlUser) value)))
+            .map(value -> MysqlUserMapper.toDomain(((MySqlUser) value)))
             .collect(Collectors.toList());
     }
 
@@ -56,7 +56,7 @@ public class MySqlUserRepository implements IUserRepository {
         });
 
         return ListUtil.stream(MySqlUser.list(query.toString(), params))
-                .map(value -> MYSQLUserMapper.toDomain(((MySqlUser) value)))
+                .map(value -> MysqlUserMapper.toDomain(((MySqlUser) value)))
                 .collect(Collectors.toList());
     }
 
@@ -67,7 +67,7 @@ public class MySqlUserRepository implements IUserRepository {
 
     @Override
     public UserBO merge(UserBO bo) {
-        var entity = MYSQLUserMapper.toEntity(bo);
+        var entity = MysqlUserMapper.toEntity(bo);
 
         MySqlUser.getEntityManager().merge(entity);
 

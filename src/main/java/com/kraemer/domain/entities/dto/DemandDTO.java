@@ -1,12 +1,8 @@
 package com.kraemer.domain.entities.dto;
 
-import java.time.LocalDateTime;
-
 import com.kraemer.domain.entities.enums.EnumOrderStatus;
 
 public class DemandDTO extends CrudDTO {
-
-
 
     private UserDTO userDTO;
 
@@ -17,12 +13,6 @@ public class DemandDTO extends CrudDTO {
     private EnumOrderStatus status;
 
     private boolean active;
-
-    
-
-   
-
-   
 
     public UserDTO getUserDTO() {
         return userDTO;
@@ -63,20 +53,5 @@ public class DemandDTO extends CrudDTO {
     public void setActive(boolean active) {
         this.active = active;
     }
-
-
-
-
-
-
-
-    
-
-    
-
-
-
-
-
 
 }

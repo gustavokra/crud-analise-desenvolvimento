@@ -6,11 +6,11 @@ public enum EnumErrorCode implements IEnum {
     // Internal errors
     CAMPO_OBRIGATORIO("001", "O campo {0} é obrigatório!", 400),
     JA_CADASTRADO("002", "Já existe cadastro ativo!", 400),
-    USUARIO_NAO_ENCONTRADO_FILTROS("003", "Nenhum cadastro encontrado para ({0}) informado!", 404),
+    ITEM_NAO_ENCONTRADO_FILTROS("003", "Nenhum cadastro encontrado para ({0}) informado!", 404),
     CAMPO_INVALIDO("004", "{0} informado inválido!", 404),
-    USUARIO_CADASTRADO("005", "Usuário já cadastrado!", 400),
+    ITEM_CADASTRADO("005", "Usuário já cadastrado!", 400),
     ERRO_LISTAR_USUARIOS("006", "Erro ao listar os usuários!", 400),
-    USUARIO_NAO_EXISTE("007", "Usuário não existe!", 400),
+    ITEM_NAO_EXISTE("007", "Usuário não existe!", 400),
     USERNAME_CADASTRADO("008", "Já existe um usuário com esse username!", 400),
     // External errors
     ERRO_COMUNICACAO("050", "A requisição enviada ao parceiro retornou com erro!", 502);

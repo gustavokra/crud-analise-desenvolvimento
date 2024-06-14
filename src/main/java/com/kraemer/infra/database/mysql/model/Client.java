@@ -15,14 +15,10 @@ public class Client extends PanacheEntity implements Serializable {
 
     private String name;
 
-    private Address address;
+    private MysqlAddress address;
 
     private boolean active;
 
     private LocalDateTime createdAt;
-
-   
-
-   
 
 }

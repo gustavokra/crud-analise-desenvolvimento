@@ -1,23 +1,10 @@
 package com.kraemer.domain.entities.dto;
 
-import java.time.LocalDateTime;
-
-public class StateDTO  extends CrudDTO{
-
-
+public class StateDTO extends CrudDTO {
 
     private String description;
 
     private String acronym;
-
-    
-
-   
-
-   
-
-
-
 
     public String getDescription() {
         return description;
@@ -35,18 +22,4 @@ public class StateDTO  extends CrudDTO{
         this.acronym = acronym;
     }
 
-
-
-
-
-
-
-    
-
-    
-
-
-
-
-    
 }

@@ -1,4 +1,4 @@
-package com.kraemer.domain.usecases;
+package com.kraemer.domain.usecases.user;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,11 +11,11 @@ import com.kraemer.domain.repositories.IUserRepository;
 import com.kraemer.domain.utils.ListUtil;
 import com.kraemer.domain.utils.exception.CrudException;
 
-public class ListUsersBy {
+public class FindUsersBy {
 
     private IUserRepository userRepository;
 
-    public ListUsersBy(IUserRepository userRepository) {
+    public FindUsersBy(IUserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
@@ -27,7 +27,7 @@ public class ListUsersBy {
                     .map(QueryFieldInfoVO::getFieldName)
                     .collect(Collectors.joining(", "));
 
-            throw new CrudException(EnumErrorCode.USUARIO_NAO_ENCONTRADO_FILTROS, fields);
+            throw new CrudException(EnumErrorCode.ITEM_NAO_ENCONTRADO_FILTROS, fields);
         }
 
         return ListUtil.stream(usersBO)

@@ -2,8 +2,6 @@ package com.kraemer.domain.entities.dto;
 
 import java.time.LocalDateTime;
 
-import com.kraemer.domain.entities.vo.CreatedAtVO;
-
 public class CrudDTO {
 
     public Long id;

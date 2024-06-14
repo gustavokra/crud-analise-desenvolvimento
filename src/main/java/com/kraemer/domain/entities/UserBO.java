@@ -7,8 +7,6 @@ import com.kraemer.domain.utils.StringUtil;
 
 public class UserBO extends CrudBO {
 
-
-
     private String document;
 
     private String name;
@@ -67,10 +65,6 @@ public class UserBO extends CrudBO {
 
     public String getDocument() {
         return document;
-    }
-
-    public void handleDisable() {
-        this.disabledAt = LocalDateTime.now();
     }
 
 }

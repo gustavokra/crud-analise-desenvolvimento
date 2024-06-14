@@ -33,7 +33,6 @@ public class AddressMapper {
                 cityBO,
                 dto.getStreet(),
                 dto.getNumber(),
-                dto.isActive(),
                 new CreatedAtVO(dto.getCreatedAt()),
                 dto.getUpdatedAt(),
                 dto.getDisabledAt());
@@ -53,7 +52,6 @@ public class AddressMapper {
         }
         dto.setStreet(bo.getStreet());
         dto.setNumber(bo.getNumber());
-        dto.setActive(bo.isActive());
         dto.setCreatedAt(bo.getCreatedAt().getValue());
         dto.setUpdatedAt(bo.getUpdatedAt());
         dto.setDisabledAt(bo.getDisabledAt());

@@ -1,23 +1,10 @@
 package com.kraemer.domain.entities.dto;
 
-import java.time.LocalDateTime;
-
-public class StockDTO extends CrudDTO{
-
-
+public class StockDTO extends CrudDTO {
 
     private String description;
 
     private boolean active;
-
-    
-
-   
-
-   
-
-
-
 
     public String getDescription() {
         return description;
@@ -34,19 +21,5 @@ public class StockDTO extends CrudDTO{
     public void setActive(boolean active) {
         this.active = active;
     }
-
-
-
-
-
-
-
-    
-
-    
-
-
-
-    
 
 }

@@ -1,4 +1,4 @@
-package com.kraemer.domain.usecases;
+package com.kraemer.domain.usecases.user;
 
 import java.util.List;
 
@@ -9,28 +9,29 @@ import com.kraemer.domain.entities.vo.QueryFieldInfoVO;
 import com.kraemer.domain.repositories.IUserRepository;
 import com.kraemer.domain.utils.exception.CrudException;
 
-public class UpdateUserInfo {
+public class DisableUser {
+    
     private IUserRepository userRepository;
 
-    public UpdateUserInfo(IUserRepository userRepository) {
+    public DisableUser(IUserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
-    public UserDTO execute(UserDTO dto, Long userId) {
+    public UserDTO execute(Long userId) {
 
         var queryFieldDoc = new QueryFieldInfoVO("id", userId);
-
         var existingUserBO = userRepository.findFirstBy(List.of(queryFieldDoc));
 
         if (existingUserBO == null) {
-            throw new CrudException(EnumErrorCode.USUARIO_NAO_ENCONTRADO_FILTROS, "identificador");
+            throw new CrudException(EnumErrorCode.ITEM_NAO_ENCONTRADO_FILTROS, "identificador");
         }
 
-        existingUserBO.handleUpdateInfo(UserMapper.toBO(dto));
+        existingUserBO.handleDisable();
 
         userRepository.merge(existingUserBO);
 
         return UserMapper.toDTO(existingUserBO);
 
     }
+
 }

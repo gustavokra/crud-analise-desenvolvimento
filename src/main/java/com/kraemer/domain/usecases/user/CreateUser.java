@@ -1,4 +1,4 @@
-package com.kraemer.domain.usecases;
+package com.kraemer.domain.usecases.user;
 
 import java.util.List;
 
@@ -33,7 +33,7 @@ public class CreateUser {
         var existingUserBO = userRepository.findFirstBy(List.of(queryFieldDoc, queryFieldDisabled));
 
         if (existingUserBO != null) {
-            throw new CrudException(EnumErrorCode.USUARIO_CADASTRADO);
+            throw new CrudException(EnumErrorCode.ITEM_CADASTRADO);
         }
     }
 

@@ -6,12 +6,12 @@ import com.kraemer.domain.entities.dto.UserDTO;
 import com.kraemer.domain.entities.enums.EnumDBImpl;
 import com.kraemer.domain.entities.enums.EnumErrorCode;
 import com.kraemer.domain.entities.vo.QueryFieldInfoVO;
-import com.kraemer.domain.usecases.CreateUser;
-import com.kraemer.domain.usecases.DisableUser;
-import com.kraemer.domain.usecases.FindUserBy;
-import com.kraemer.domain.usecases.ListAllUsers;
-import com.kraemer.domain.usecases.ListUsersBy;
-import com.kraemer.domain.usecases.UpdateUserInfo;
+import com.kraemer.domain.usecases.user.CreateUser;
+import com.kraemer.domain.usecases.user.DisableUser;
+import com.kraemer.domain.usecases.user.FindUserBy;
+import com.kraemer.domain.usecases.user.FindAllUsers;
+import com.kraemer.domain.usecases.user.FindUsersBy;
+import com.kraemer.domain.usecases.user.UpdateUserInfo;
 import com.kraemer.domain.utils.StringUtil;
 import com.kraemer.domain.utils.exception.CrudException;
 
@@ -31,7 +31,7 @@ public class UserService extends AbstractService {
 
     public List<UserDTO> listAll(EnumDBImpl dbImpl) {
         var repository = dbFactory.getImpl(dbImpl);
-        var listAll = new ListAllUsers(repository);
+        var listAll = new FindAllUsers(repository);
 
         return listAll.execute(true);
     }
@@ -43,7 +43,7 @@ public class UserService extends AbstractService {
         }
 
         var repository = dbFactory.getImpl(dbImpl);
-        var findAllBy = new ListUsersBy(repository);
+        var findAllBy = new FindUsersBy(repository);
         var queryFieldUserId = new QueryFieldInfoVO("document", document);
 
         return findAllBy.execute(List.of(queryFieldUserId), true);

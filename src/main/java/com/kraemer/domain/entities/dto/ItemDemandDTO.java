@@ -1,10 +1,6 @@
 package com.kraemer.domain.entities.dto;
 
-import java.time.LocalDateTime;
-
 public class ItemDemandDTO extends CrudDTO {
-
-
 
     private DemandDTO demandDTO;
 
@@ -13,12 +9,6 @@ public class ItemDemandDTO extends CrudDTO {
     private UnitMeasureDTO unitMeasureDTO;
 
     private Integer amount;
-
-    
-
-   
-
-   
 
     public DemandDTO getDemandDTO() {
         return demandDTO;
@@ -51,20 +41,5 @@ public class ItemDemandDTO extends CrudDTO {
     public void setAmount(Integer amount) {
         this.amount = amount;
     }
-
-
-
-
-
-
-
-    
-
-    
-
-
-
-
-
 
 }

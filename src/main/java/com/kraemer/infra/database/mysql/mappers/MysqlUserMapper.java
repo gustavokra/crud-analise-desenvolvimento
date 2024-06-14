@@ -4,7 +4,7 @@ import com.kraemer.domain.entities.UserBO;
 import com.kraemer.domain.entities.vo.CreatedAtVO;
 import com.kraemer.infra.database.mysql.model.MySqlUser;
 
-public class MYSQLUserMapper {
+public class MysqlUserMapper {
 
     public static UserBO toDomain(MySqlUser entity) {
         var bo = new UserBO(

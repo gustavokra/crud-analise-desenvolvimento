@@ -1,25 +1,12 @@
 package com.kraemer.domain.entities.dto;
 
-import java.time.LocalDateTime;
-
-public class UnitMeasureDTO extends CrudDTO{
-
-
+public class UnitMeasureDTO extends CrudDTO {
 
     private String acronym;
 
     private String description;
 
     private boolean active;
-
-    
-
-   
-
-   
-
-
-
 
     public String getAcronym() {
         return acronym;
@@ -44,17 +31,5 @@ public class UnitMeasureDTO extends CrudDTO{
     public void setActive(boolean active) {
         this.active = active;
     }
-
-
-
-
-
-
-
-    
-
-    
-
-
 
 }

@@ -1,4 +1,4 @@
-package com.kraemer.domain.usecases;
+package com.kraemer.domain.usecases.user;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,11 +11,11 @@ import com.kraemer.domain.repositories.IUserRepository;
 import com.kraemer.domain.utils.ListUtil;
 import com.kraemer.domain.utils.exception.CrudException;
 
-public class ListAllUsers {
+public class FindAllUsers {
 
     private IUserRepository userRepository;
 
-    public ListAllUsers(IUserRepository userRepository) {
+    public FindAllUsers(IUserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
