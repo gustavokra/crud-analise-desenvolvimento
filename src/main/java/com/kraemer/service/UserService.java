@@ -14,23 +14,28 @@ import com.kraemer.domain.usecases.user.FindUsersBy;
 import com.kraemer.domain.usecases.user.UpdateUserInfo;
 import com.kraemer.domain.utils.StringUtil;
 import com.kraemer.domain.utils.exception.CrudException;
+import com.kraemer.infra.database.mysql.repositories.MySqlUserRepository;
 
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 
 @ApplicationScoped
 public class UserService extends AbstractService {
 
+    @Inject
+    MySqlUserRepository mySqlUserRepository;
+
     @Transactional
     public UserDTO create(UserDTO dto, EnumDBImpl dbImpl) {
-        var repository = dbFactory.getImpl(dbImpl);
+        var repository = dbFactory.getUserRepoImpl(dbImpl);
         var createUser = new CreateUser(repository);
 
         return createUser.execute(dto);
     }
 
     public List<UserDTO> listAll(EnumDBImpl dbImpl) {
-        var repository = dbFactory.getImpl(dbImpl);
+        var repository = dbFactory.getUserRepoImpl(dbImpl);
         var listAll = new FindAllUsers(repository);
 
         return listAll.execute(true);
@@ -42,7 +47,7 @@ public class UserService extends AbstractService {
             throw new CrudException(EnumErrorCode.CAMPO_OBRIGATORIO, "document");
         }
 
-        var repository = dbFactory.getImpl(dbImpl);
+        var repository = dbFactory.getUserRepoImpl(dbImpl);
         var findAllBy = new FindUsersBy(repository);
         var queryFieldUserId = new QueryFieldInfoVO("document", document);
 
@@ -55,7 +60,7 @@ public class UserService extends AbstractService {
             throw new CrudException(EnumErrorCode.CAMPO_OBRIGATORIO, "userId");
         }
 
-        var repository = dbFactory.getImpl(dbImpl);
+        var repository = dbFactory.getUserRepoImpl(dbImpl);
         var findUserBy = new FindUserBy(repository);
         var queryFieldUserId = new QueryFieldInfoVO("id", userId);
 
@@ -64,7 +69,7 @@ public class UserService extends AbstractService {
 
     @Transactional
     public UserDTO updateInfo(UserDTO dto, Long userId, EnumDBImpl dbImpl) {
-        var repository = dbFactory.getImpl(dbImpl);
+        var repository = dbFactory.getUserRepoImpl(dbImpl);
         var updateUserInfo = new UpdateUserInfo(repository);
 
         return updateUserInfo.execute(dto, userId);
@@ -72,7 +77,7 @@ public class UserService extends AbstractService {
 
     @Transactional
     public UserDTO disable(Long userId, EnumDBImpl dbImpl) {
-        var repository = dbFactory.getImpl(dbImpl);
+        var repository = dbFactory.getUserRepoImpl(dbImpl);
         var disableUser = new DisableUser(repository);
 
         return disableUser.execute(userId);
@@ -88,7 +93,7 @@ public class UserService extends AbstractService {
             throw new CrudException(EnumErrorCode.CAMPO_OBRIGATORIO, password);
         }
 
-        var repository = dbFactory.getImpl(dbImpl);
+        var repository = dbFactory.getUserRepoImpl(dbImpl);
         var findUserBy = new FindUserBy(repository);
         var queryFieldUsername = new QueryFieldInfoVO("username", username);
         var queryFieldPassword = new QueryFieldInfoVO("password", password);

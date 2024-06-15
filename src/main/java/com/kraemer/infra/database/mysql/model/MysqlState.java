@@ -1,22 +1,22 @@
 package com.kraemer.infra.database.mysql.model;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
-public class City extends PanacheEntityBase implements Serializable {
+@Table(name = "crud_state")
+public class MysqlState extends CrudModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,13 +24,9 @@ public class City extends PanacheEntityBase implements Serializable {
 
     private String description;
 
+    private String acronym; 
+
     @ManyToOne
-    private State state;
-
-    
-
-   
-
-   
+    private MysqlCountry country;
 
 }

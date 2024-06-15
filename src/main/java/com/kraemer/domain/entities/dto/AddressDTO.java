@@ -8,6 +8,8 @@ public class AddressDTO extends CrudDTO {
 
     private CityDTO cityDTO;
 
+    private String neigborhood;
+
     private String street;
 
     private String number;
@@ -52,4 +54,11 @@ public class AddressDTO extends CrudDTO {
         this.number = number;
     }
 
+    public String getNeigborhood() {
+        return neigborhood;
+    }
+
+    public void setNeigborhood(String neigborhood) {
+        this.neigborhood = neigborhood;
+    }
 }

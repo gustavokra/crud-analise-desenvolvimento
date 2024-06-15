@@ -15,17 +15,17 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "crud_address")
-public class MysqlAddress extends PanacheEntityBase implements Serializable {
+public class MysqlAddress extends CrudModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    private City city;
+    private MysqlCity city;
 
     @ManyToOne
-    private State state;
+    private MysqlState state;
 
     @ManyToOne
     private MysqlCountry country;

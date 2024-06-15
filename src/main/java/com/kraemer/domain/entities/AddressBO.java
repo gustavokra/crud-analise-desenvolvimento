@@ -21,11 +21,12 @@ public class AddressBO extends CrudBO {
     private String number;
 
     public AddressBO(Long id, CountryBO countryBO, StateBO stateBO, CityBO cityBO, String street, String number,
-            CreatedAtVO createdAt, LocalDateTime updatedAt, LocalDateTime disabledAt) {
+            String neighborhood, CreatedAtVO createdAt, LocalDateTime updatedAt, LocalDateTime disabledAt) {
         this.id = id;
         this.countryBO = countryBO;
         this.stateBO = stateBO;
         this.cityBO = cityBO;
+        this.neighborhood = neighborhood;
         this.street = street;
         this.number = number;
         this.createdAt = createdAt;

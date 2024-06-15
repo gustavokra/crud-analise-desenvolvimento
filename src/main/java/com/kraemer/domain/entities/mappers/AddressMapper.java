@@ -31,6 +31,7 @@ public class AddressMapper {
                 countryBO,
                 stateBO,
                 cityBO,
+                dto.getNeigborhood(),
                 dto.getStreet(),
                 dto.getNumber(),
                 new CreatedAtVO(dto.getCreatedAt()),
@@ -50,6 +51,7 @@ public class AddressMapper {
         if (bo.getCityBO() != null) {
             dto.setCityDTO(CityMapper.toDTO(bo.getCityBO()));
         }
+        dto.setNeigborhood(bo.getNeighborhood());
         dto.setStreet(bo.getStreet());
         dto.setNumber(bo.getNumber());
         dto.setCreatedAt(bo.getCreatedAt().getValue());
