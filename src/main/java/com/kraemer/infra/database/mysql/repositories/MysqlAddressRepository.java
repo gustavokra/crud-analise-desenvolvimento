@@ -6,13 +6,13 @@ import java.util.stream.Collectors;
 import com.kraemer.domain.entities.AddressBO;
 import com.kraemer.domain.entities.enums.EnumDBImpl;
 import com.kraemer.domain.entities.vo.QueryFieldInfoVO;
-import com.kraemer.domain.repositories.IAddressRepository;
+import com.kraemer.domain.repositories.ICrudRepository;
 import com.kraemer.domain.utils.ListUtil;
 import com.kraemer.domain.utils.StringUtil;
 import com.kraemer.infra.database.mysql.mappers.MysqlAddressMapper;
 import com.kraemer.infra.database.mysql.model.MysqlAddress;
 
-public class MysqlAddressRepository implements IAddressRepository {
+public class MysqlAddressRepository implements ICrudRepository<AddressBO> {
 
     @Override
     public AddressBO create(AddressBO bo) {

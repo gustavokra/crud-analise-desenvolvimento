@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import com.kraemer.domain.entities.UserBO;
 import com.kraemer.domain.entities.enums.EnumDBImpl;
 import com.kraemer.domain.entities.vo.QueryFieldInfoVO;
-import com.kraemer.domain.repositories.IUserRepository;
+import com.kraemer.domain.repositories.ICrudRepository;
 import com.kraemer.domain.utils.ListUtil;
 import com.kraemer.domain.utils.StringUtil;
 import com.kraemer.infra.database.mysql.mappers.MysqlUserMapper;
@@ -15,7 +15,7 @@ import com.kraemer.infra.database.mysql.model.MySqlUser;
 import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
-public class MySqlUserRepository implements IUserRepository {
+public class MySqlUserRepository implements ICrudRepository<UserBO> {
     
     @Override
     public UserBO create(UserBO bo) {

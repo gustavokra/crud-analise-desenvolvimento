@@ -7,15 +7,15 @@ import com.kraemer.domain.entities.AddressBO;
 import com.kraemer.domain.entities.dto.AddressDTO;
 import com.kraemer.domain.entities.enums.EnumErrorCode;
 import com.kraemer.domain.entities.mappers.AddressMapper;
-import com.kraemer.domain.repositories.IAddressRepository;
+import com.kraemer.domain.repositories.ICrudRepository;
 import com.kraemer.domain.utils.ListUtil;
 import com.kraemer.domain.utils.exception.CrudException;
 
 public class FindAllAddress {
 
-    private IAddressRepository addressRepository;
+    private ICrudRepository<AddressBO> addressRepository;
 
-    public FindAllAddress(IAddressRepository addressRepository) {
+    public FindAllAddress(ICrudRepository<AddressBO> addressRepository) {
         this.addressRepository = addressRepository;
     }
 

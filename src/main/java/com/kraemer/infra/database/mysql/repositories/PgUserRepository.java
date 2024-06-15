@@ -5,9 +5,9 @@ import java.util.List;
 import com.kraemer.domain.entities.UserBO;
 import com.kraemer.domain.entities.enums.EnumDBImpl;
 import com.kraemer.domain.entities.vo.QueryFieldInfoVO;
-import com.kraemer.domain.repositories.IUserRepository;
+import com.kraemer.domain.repositories.ICrudRepository;
 
-public class PgUserRepository implements IUserRepository {
+public class PgUserRepository implements ICrudRepository<UserBO> {
 
     @Override
     public UserBO create(UserBO bo) {

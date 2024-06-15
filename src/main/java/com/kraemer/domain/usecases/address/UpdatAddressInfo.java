@@ -2,18 +2,19 @@ package com.kraemer.domain.usecases.address;
 
 import java.util.List;
 
+import com.kraemer.domain.entities.AddressBO;
 import com.kraemer.domain.entities.dto.AddressDTO;
 import com.kraemer.domain.entities.enums.EnumErrorCode;
 import com.kraemer.domain.entities.mappers.AddressMapper;
 import com.kraemer.domain.entities.vo.QueryFieldInfoVO;
-import com.kraemer.domain.repositories.IAddressRepository;
+import com.kraemer.domain.repositories.ICrudRepository;
 import com.kraemer.domain.utils.exception.CrudException;
 
 public class UpdatAddressInfo {
     
-    private IAddressRepository addressRepository;
+    private ICrudRepository<AddressBO> addressRepository;
 
-    public UpdatAddressInfo(IAddressRepository addressRepository) {
+    public UpdatAddressInfo(ICrudRepository<AddressBO> addressRepository) {
         this.addressRepository = addressRepository;
     }
 
