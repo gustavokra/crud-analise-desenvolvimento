@@ -5,7 +5,7 @@ import java.util.List;
 import org.jboss.resteasy.annotations.jaxrs.HeaderParam;
 
 import com.kraemer.domain.entities.dto.AddressDTO;
-import com.kraemer.domain.entities.enums.EnumDBImpl;
+import com.kraemer.domain.entities.enums.EnumDataBase;
 import com.kraemer.service.AddressService;
 
 import jakarta.inject.Inject;
@@ -22,15 +22,15 @@ public class AddressController {
     
     @POST
     @Path("/create")
-    public Response createAddress(AddressDTO addressDTO, @HeaderParam EnumDBImpl dataBase) {
-        AddressDTO createdAdress = addressService.create(addressDTO, dataBase);
+    public Response createAddress(AddressDTO addressDTO, @HeaderParam EnumDataBase dataBase) {
+        AddressDTO createdAddress = addressService.createAddress(addressDTO, dataBase);
 
-        return Response.ok(createdAdress).build();
+        return Response.ok(createdAddress).build();
     }
 
     @GET
     @Path("/returnAll")
-    public Response returnAllAdress(@HeaderParam EnumDBImpl dataBase) {
+    public Response returnAllAddress(@HeaderParam EnumDataBase dataBase) {
         List<AddressDTO> allAdressReturned = addressService.returnAllAddress(dataBase);
         return Response.ok(allAdressReturned).build();
     }

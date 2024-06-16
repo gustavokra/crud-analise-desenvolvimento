@@ -2,7 +2,7 @@ package com.kraemer.domain.utils;
 
 import java.util.UUID;
 
-import com.kraemer.domain.entities.enums.EnumErrorCode;
+import com.kraemer.domain.entities.enums.EnumCrudError;
 import com.kraemer.domain.utils.exception.CrudException;
 
 public class Utils {
@@ -22,7 +22,7 @@ public class Utils {
         try {
             return UUID.fromString(str);
         } catch (Exception e) {
-            throw new CrudException(EnumErrorCode.CAMPO_INVALIDO, "UUID");
+            throw new CrudException(EnumCrudError.CAMPO_INVALIDO, "UUID");
         }
     }
 

@@ -9,55 +9,55 @@ import com.kraemer.domain.entities.vo.CreatedAtVO;
 
 public class AddressMapper {
 
-    public static AddressBO toBO(AddressDTO dto) {
+    public static AddressBO mapAddressDTOToBO(AddressDTO addressDTO) {
         CountryBO countryBO = null;
         StateBO stateBO = null;
         CityBO cityBO = null;
 
-        if (dto.getCountry() != null) {
-            countryBO = CountryMapper.toBO(dto.getCountry());
+        if (addressDTO.getCountry() != null) {
+            countryBO = CountryMapper.toBO(addressDTO.getCountry());
         }
 
-        if (dto.getState() != null) {
-            stateBO = StateMapper.toBO(dto.getState());
+        if (addressDTO.getState() != null) {
+            stateBO = StateMapper.toBO(addressDTO.getState());
         }
 
-        if (dto.getCity() != null) {
-            cityBO = CityMapper.toBO(dto.getCity());
+        if (addressDTO.getCity() != null) {
+            cityBO = CityMapper.toBO(addressDTO.getCity());
         }
 
         return new AddressBO(
-                dto.getId(),
+                addressDTO.getId(),
                 countryBO,
                 stateBO,
                 cityBO,
-                dto.getNeigborhood(),
-                dto.getStreet(),
-                dto.getNumber(),
-                new CreatedAtVO(dto.getCreatedAt()),
-                dto.getUpdatedAt(),
-                dto.getDisabledAt());
+                addressDTO.getNeigborhood(),
+                addressDTO.getStreet(),
+                addressDTO.getNumber(),
+                new CreatedAtVO(addressDTO.getCreatedAt()),
+                addressDTO.getUpdatedAt(),
+                addressDTO.getDisabledAt());
     }
 
-    public static AddressDTO toDTO(AddressBO bo) {
-        AddressDTO dto = new AddressDTO();
-        dto.setId(bo.getId());
-        if (bo.getCountryBO() != null) {
-            dto.setCountry(CountryMapper.toDTO(bo.getCountryBO()));
+    public static AddressDTO mapAddressBOToDTO(AddressBO addressBO) {
+        AddressDTO addressDTO = new AddressDTO();
+        addressDTO.setId(addressBO.getId());
+        if (addressBO.getCountryBO() != null) {
+            addressDTO.setCountry(CountryMapper.toDTO(addressBO.getCountryBO()));
         }
-        if (bo.getStateBO() != null) {
-            dto.setState(StateMapper.toDTO(bo.getStateBO()));
+        if (addressBO.getStateBO() != null) {
+            addressDTO.setState(StateMapper.toDTO(addressBO.getStateBO()));
         }
-        if (bo.getCityBO() != null) {
-            dto.setCity(CityMapper.toDTO(bo.getCityBO()));
+        if (addressBO.getCityBO() != null) {
+            addressDTO.setCity(CityMapper.toDTO(addressBO.getCityBO()));
         }
-        dto.setNeigborhood(bo.getNeighborhood());
-        dto.setStreet(bo.getStreet());
-        dto.setNumber(bo.getNumber());
-        dto.setCreatedAt(bo.getCreatedAt().getValue());
-        dto.setUpdatedAt(bo.getUpdatedAt());
-        dto.setDisabledAt(bo.getDisabledAt());
-        return dto;
+        addressDTO.setNeigborhood(addressBO.getNeighborhood());
+        addressDTO.setStreet(addressBO.getStreet());
+        addressDTO.setNumber(addressBO.getNumber());
+        addressDTO.setCreatedAt(addressBO.getCreatedAt().getValue());
+        addressDTO.setUpdatedAt(addressBO.getUpdatedAt());
+        addressDTO.setDisabledAt(addressBO.getDisabledAt());
+        return addressDTO;
     }
 
 }

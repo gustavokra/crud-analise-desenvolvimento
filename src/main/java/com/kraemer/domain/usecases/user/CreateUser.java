@@ -3,16 +3,16 @@ package com.kraemer.domain.usecases.user;
 import java.util.List;
 
 import com.kraemer.domain.entities.dto.UserDTO;
-import com.kraemer.domain.entities.enums.EnumErrorCode;
+import com.kraemer.domain.entities.enums.EnumCrudError;
 import com.kraemer.domain.entities.mappers.UserMapper;
 import com.kraemer.domain.entities.vo.QueryFieldInfoVO;
-import com.kraemer.domain.repositories.IUserRepository;
+import com.kraemer.domain.repositories.UserRepository;
 import com.kraemer.domain.utils.exception.CrudException;
 public class CreateUser {
     
-    private IUserRepository userRepository;
+    private UserRepository userRepository;
 
-    public CreateUser(IUserRepository userRepository) {
+    public CreateUser(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
@@ -20,10 +20,10 @@ public class CreateUser {
         verifyExistingUser(dto.getDocument());
         verifyExistingUsername(dto.getUsername());
 
-        var userBO = UserMapper.toBO(dto);
+        var userBO = UserMapper.mapUserDTOToBO(dto);
         userBO = userRepository.create(userBO);
 
-        return UserMapper.toDTO(userBO);
+        return UserMapper.mapUserBOtoDTO(userBO);
     }
 
     private void verifyExistingUser(String document) {
@@ -33,7 +33,7 @@ public class CreateUser {
         var existingUserBO = userRepository.findFirstBy(List.of(queryFieldDoc, queryFieldDisabled));
 
         if (existingUserBO != null) {
-            throw new CrudException(EnumErrorCode.ITEM_CADASTRADO);
+            throw new CrudException(EnumCrudError.ITEM_CADASTRADO);
         }
     }
 
@@ -43,7 +43,7 @@ public class CreateUser {
         var existingUserBO = userRepository.findFirstBy(List.of(queryFieldUserName));
 
         if (existingUserBO != null) {
-            throw new CrudException(EnumErrorCode.USERNAME_CADASTRADO);
+            throw new CrudException(EnumCrudError.USERNAME_JA_CADASTRADO);
         }
     }
 

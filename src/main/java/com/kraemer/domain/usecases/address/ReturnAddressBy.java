@@ -4,33 +4,33 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.kraemer.domain.entities.dto.AddressDTO;
-import com.kraemer.domain.entities.enums.EnumErrorCode;
+import com.kraemer.domain.entities.enums.EnumCrudError;
 import com.kraemer.domain.entities.mappers.AddressMapper;
 import com.kraemer.domain.entities.vo.QueryFieldInfoVO;
-import com.kraemer.domain.repositories.IAddressRepository;
+import com.kraemer.domain.repositories.AddressRepository;
 import com.kraemer.domain.utils.ListUtil;
 import com.kraemer.domain.utils.exception.CrudException;
 
-public class FindAddressBy {
+public class ReturnAddressBy {
 
-    private IAddressRepository addressRepository;
+    private AddressRepository addressRepository;
 
-    public FindAddressBy(IAddressRepository addressRepository) {
+    public ReturnAddressBy(AddressRepository addressRepository) {
         this.addressRepository = addressRepository;
     }
 
     public AddressDTO execute(List<QueryFieldInfoVO> queryFields, boolean throwsException) {
-        var addressBO = addressRepository.findFirstBy(queryFields);
+        var addressBO = addressRepository.returnFirstBy(queryFields);
 
         if (addressBO == null && throwsException) {
             var fields = ListUtil.stream(queryFields)
                     .map(QueryFieldInfoVO::getFieldName)
                     .collect(Collectors.joining(", "));
 
-            throw new CrudException(EnumErrorCode.ITEM_NAO_ENCONTRADO_FILTROS, fields);
+            throw new CrudException(EnumCrudError.ITEM_NAO_ENCONTRADO_FILTROS, fields);
         }
 
-        return addressBO != null ? AddressMapper.toDTO(addressBO) : null;
+        return addressBO != null ? AddressMapper.mapAddressBOToDTO(addressBO) : null;
     }
 
 }

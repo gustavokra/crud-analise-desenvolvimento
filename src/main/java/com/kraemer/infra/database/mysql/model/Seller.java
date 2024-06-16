@@ -15,7 +15,7 @@ public class Seller extends PanacheEntity implements Serializable {
 
     private String name;
 
-    private MysqlAddress address;
+    private MySqlAddress address;
 
     private LocalDateTime createdAt;
 

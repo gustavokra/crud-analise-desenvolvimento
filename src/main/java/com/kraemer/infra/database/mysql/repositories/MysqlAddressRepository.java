@@ -4,36 +4,36 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.kraemer.domain.entities.AddressBO;
-import com.kraemer.domain.entities.enums.EnumDBImpl;
+import com.kraemer.domain.entities.enums.EnumDataBase;
 import com.kraemer.domain.entities.vo.QueryFieldInfoVO;
-import com.kraemer.domain.repositories.IAddressRepository;
+import com.kraemer.domain.repositories.AddressRepository;
 import com.kraemer.domain.utils.ListUtil;
 import com.kraemer.domain.utils.StringUtil;
 import com.kraemer.infra.database.mysql.mappers.MysqlAddressMapper;
-import com.kraemer.infra.database.mysql.model.MysqlAddress;
+import com.kraemer.infra.database.mysql.model.MySqlAddress;
 
 import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
-public class MysqlAddressRepository implements IAddressRepository {
+public class MysqlAddressRepository implements AddressRepository {
 
     @Override
-    public AddressBO create(AddressBO bo) {
-        MysqlAddress mysqlAddress = MysqlAddressMapper.toEntity(bo);
+    public AddressBO create(AddressBO addressBO) {
+        MySqlAddress mysqlAddress = MysqlAddressMapper.addressBOToMySqlAddress(addressBO);
         mysqlAddress.persist();
-        return MysqlAddressMapper.toDomain(mysqlAddress);
+        return MysqlAddressMapper.mySqlAddressToAddressBO(mysqlAddress);
     }
 
     @Override
-    public AddressBO merge(AddressBO bo) {
-        MysqlAddress entity = MysqlAddressMapper.toEntity(bo);
-        MysqlAddress.getEntityManager().merge(entity);
-        return MysqlAddressMapper.toDomain(entity);
+    public AddressBO merge(AddressBO addressBO) {
+        MySqlAddress mySqlAddress = MysqlAddressMapper.addressBOToMySqlAddress(addressBO);
+        MySqlAddress.getEntityManager().merge(mySqlAddress);
+        return MysqlAddressMapper.mySqlAddressToAddressBO(mySqlAddress);
     }
 
     @Override
-    public List<AddressBO> findAllBy(List<QueryFieldInfoVO> queryFieldInfos) {
-        var params = ListUtil.stream(queryFieldInfos)
+    public List<AddressBO> returnAllFilterBy(List<QueryFieldInfoVO> queryFieldInfos) {
+        var queryParameters = ListUtil.stream(queryFieldInfos)
                         .filter(queryField -> queryField.getFieldValue() != null)
                         .collect(Collectors.toMap(
                             queryField -> StringUtil.replaceDot(queryField.getFieldName()),
@@ -42,7 +42,7 @@ public class MysqlAddressRepository implements IAddressRepository {
         var query = new StringBuilder();
 
         ListUtil.stream(queryFieldInfos).forEach(queryField -> {
-            var formatedFielValue = queryField.getFieldValue() != null 
+            String formatedFielValue = queryField.getFieldValue() != null 
             ? " = :".concat(StringUtil.replaceDot(queryField.getFieldName()))
             : " IS NULL";
 
@@ -53,26 +53,26 @@ public class MysqlAddressRepository implements IAddressRepository {
             }
         });
 
-        return ListUtil.stream(MysqlAddress.list(query.toString(), params))
-            .map(adress -> MysqlAddressMapper.toDomain((MysqlAddress) adress))
+        return ListUtil.stream(MySqlAddress.list(query.toString(), queryParameters))
+            .map(entityAddress -> MysqlAddressMapper.mySqlAddressToAddressBO((MySqlAddress) entityAddress))
             .collect(Collectors.toList());
     }
 
     @Override
-    public List<AddressBO> findAll() {
-        return ListUtil.stream(MysqlAddress.listAll())
-        .map(address -> MysqlAddressMapper.toDomain((MysqlAddress) address))
+    public List<AddressBO> returnAll() {
+        return ListUtil.stream(MySqlAddress.listAll())
+        .map(entityAddress -> MysqlAddressMapper.mySqlAddressToAddressBO((MySqlAddress) entityAddress))
         .collect(Collectors.toList());
     }
 
     @Override
-    public AddressBO findFirstBy(List<QueryFieldInfoVO> queryFieldInfo) {
+    public AddressBO returnFirstBy(List<QueryFieldInfoVO> queryFieldInfo) {
         return ListUtil.first(null);
     }
 
     @Override
-    public EnumDBImpl getType() {
-        return EnumDBImpl.MYSQL;
+    public EnumDataBase getDataBase() {
+        return EnumDataBase.MYSQL;
     }
     
 }

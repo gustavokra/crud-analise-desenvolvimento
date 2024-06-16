@@ -1,7 +1,7 @@
 package com.kraemer.presentation.controllers;
 
 import com.kraemer.domain.entities.dto.UserDTO;
-import com.kraemer.domain.entities.enums.EnumDBImpl;
+import com.kraemer.domain.entities.enums.EnumDataBase;
 import com.kraemer.service.UserService;
 import org.jboss.resteasy.annotations.jaxrs.HeaderParam;
 
@@ -21,7 +21,7 @@ public class UserController {
 
     @POST
     @Path("/create")
-    public Response create(UserDTO dto, @HeaderParam EnumDBImpl dbImpl) {
+    public Response create(UserDTO dto, @HeaderParam EnumDataBase dbImpl) {
         var createdUser = userService.create(dto, dbImpl);
 
         return Response.ok(createdUser).build();
@@ -29,7 +29,7 @@ public class UserController {
 
     @GET
     @Path("list-all")
-    public Response listAll(@HeaderParam EnumDBImpl dbImpl) {
+    public Response listAll(@HeaderParam EnumDataBase dbImpl) {
         var allUsers = userService.listAll(dbImpl);
 
         return Response.ok(allUsers).build();
@@ -37,7 +37,7 @@ public class UserController {
 
     @GET
     @Path("/browse-by-document")
-    public Response listAllBy(@HeaderParam String document, @HeaderParam EnumDBImpl dbImpl) {
+    public Response listAllBy(@HeaderParam String document, @HeaderParam EnumDataBase dbImpl) {
         var usersFound = userService.listBy(document, dbImpl);
 
         return Response.ok(usersFound).build();
@@ -45,7 +45,7 @@ public class UserController {
 
     @GET()
     @Path("/browse-by-id")
-    public Response browseById(@HeaderParam Long userId, @HeaderParam EnumDBImpl dbImpl) {
+    public Response browseById(@HeaderParam Long userId, @HeaderParam EnumDataBase dbImpl) {
         var userFound = userService.findBy(userId, dbImpl);
 
         return Response.ok(userFound).build();
@@ -53,7 +53,7 @@ public class UserController {
 
     @PUT
     @Path("/update")
-    public Response edit(UserDTO dto, @HeaderParam Long userId, @HeaderParam EnumDBImpl dbImpl) {
+    public Response edit(UserDTO dto, @HeaderParam Long userId, @HeaderParam EnumDataBase dbImpl) {
         var userUpdated = userService.updateInfo(dto, userId, dbImpl);
 
         return Response.ok(userUpdated).build();
@@ -61,7 +61,7 @@ public class UserController {
 
     @DELETE
     @Path("/disable")
-    public Response disable(@HeaderParam Long userId, @HeaderParam EnumDBImpl dbImpl) {
+    public Response disable(@HeaderParam Long userId, @HeaderParam EnumDataBase dbImpl) {
         var userDisabled = userService.disable(userId, dbImpl);
 
         return Response.ok(userDisabled).build();
@@ -71,7 +71,7 @@ public class UserController {
     @Path("/login")
     public Response findByLogin(@HeaderParam String username,
             @HeaderParam String password,
-            @HeaderParam EnumDBImpl dbImpl) {
+            @HeaderParam EnumDataBase dbImpl) {
         var userFound = userService.findByLogin(username, password, dbImpl);
 
         return Response.ok(userFound).build();

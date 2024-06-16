@@ -6,23 +6,23 @@ import com.kraemer.domain.entities.vo.CreatedAtVO;
 
 public class CityMapper {
 
-    public static CityBO toBO(CityDTO dto) {
+    public static CityBO toBO(CityDTO cityDTO) {
         return new CityBO(
-                dto.getId(),
-                dto.getDescription(),
-                new CreatedAtVO(dto.getCreatedAt()),
-                dto.getUpdatedAt(),
-                dto.getDisabledAt());
+                cityDTO.getId(),
+                cityDTO.getDescription(),
+                new CreatedAtVO(cityDTO.getCreatedAt()),
+                cityDTO.getUpdatedAt(),
+                cityDTO.getDisabledAt());
     }
 
-    public static CityDTO toDTO(CityBO bo) {
-        CityDTO dto = new CityDTO();
-        dto.setId(bo.getId());
-        dto.setDescription(bo.getDescription());
-        dto.setCreatedAt(bo.getCreatedAt().getValue());
-        dto.setUpdatedAt(bo.getUpdatedAt());
-        dto.setDisabledAt(bo.getDisabledAt());
-        return dto;
+    public static CityDTO toDTO(CityBO cityBO) {
+        CityDTO cityDTO = new CityDTO();
+        cityDTO.setId(cityBO.getId());
+        cityDTO.setDescription(cityBO.getDescription());
+        cityDTO.setCreatedAt(cityBO.getCreatedAt().getValue());
+        cityDTO.setUpdatedAt(cityBO.getUpdatedAt());
+        cityDTO.setDisabledAt(cityBO.getDisabledAt());
+        return cityDTO;
     }
 
 }

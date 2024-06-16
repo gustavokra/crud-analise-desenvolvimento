@@ -2,7 +2,7 @@ package com.kraemer.domain.entities.enums;
 
 import com.kraemer.domain.utils.EnumUtil;
 
-public enum EnumErrorCode implements IEnum {
+public enum EnumCrudError implements IEnum {
     // Internal errors
     CAMPO_OBRIGATORIO("001", "O campo {0} é obrigatório!", 400),
     JA_CADASTRADO("002", "Já existe cadastro ativo!", 400),
@@ -11,7 +11,7 @@ public enum EnumErrorCode implements IEnum {
     ITEM_CADASTRADO("005", "Usuário já cadastrado!", 400),
     ERRO_LISTAR_USUARIOS("006", "Erro ao listar os usuários!", 400),
     ITEM_NAO_EXISTE("007", "Usuário não existe!", 400),
-    USERNAME_CADASTRADO("008", "Já existe um usuário com esse username!", 400),
+    USERNAME_JA_CADASTRADO("008", "Já existe um usuário com esse username!", 400),
     // External errors
     ERRO_COMUNICACAO("050", "A requisição enviada ao parceiro retornou com erro!", 502);
     
@@ -21,7 +21,7 @@ public enum EnumErrorCode implements IEnum {
 
     private final int httpStatus;
 
-    private EnumErrorCode(String key, String error, int httpStatus) {
+    private EnumCrudError(String key, String error, int httpStatus) {
         this.key = key;
         this.erro = error;
         this.httpStatus = httpStatus;
@@ -45,7 +45,7 @@ public enum EnumErrorCode implements IEnum {
         return parseByKey(key) != null;
     }
 
-    public static EnumErrorCode parseByKey(String key) {
-        return (EnumErrorCode) EnumUtil.parseByKey(EnumErrorCode.class, key);
+    public static EnumCrudError parseByKey(String key) {
+        return (EnumCrudError) EnumUtil.parseByKey(EnumCrudError.class, key);
     }
 }

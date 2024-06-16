@@ -15,7 +15,7 @@ public class Client extends PanacheEntity implements Serializable {
 
     private String name;
 
-    private MysqlAddress address;
+    private MySqlAddress address;
 
     private boolean active;
 

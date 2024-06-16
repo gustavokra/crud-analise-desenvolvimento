@@ -4,18 +4,18 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.kraemer.domain.entities.dto.UserDTO;
-import com.kraemer.domain.entities.enums.EnumErrorCode;
+import com.kraemer.domain.entities.enums.EnumCrudError;
 import com.kraemer.domain.entities.mappers.UserMapper;
 import com.kraemer.domain.entities.vo.QueryFieldInfoVO;
-import com.kraemer.domain.repositories.IUserRepository;
+import com.kraemer.domain.repositories.UserRepository;
 import com.kraemer.domain.utils.ListUtil;
 import com.kraemer.domain.utils.exception.CrudException;
 
 public class FindUserBy {
 
-    IUserRepository userRepository;
+    UserRepository userRepository;
 
-    public FindUserBy(IUserRepository userRepository) {
+    public FindUserBy(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
@@ -27,10 +27,10 @@ public class FindUserBy {
                     .map(QueryFieldInfoVO::getFieldName)
                     .collect(Collectors.joining(", "));
 
-            throw new CrudException(EnumErrorCode.ITEM_NAO_ENCONTRADO_FILTROS, fields);
+            throw new CrudException(EnumCrudError.ITEM_NAO_ENCONTRADO_FILTROS, fields);
         }
 
-        return userBO != null ? UserMapper.toDTO(userBO) : null;
+        return userBO != null ? UserMapper.mapUserBOtoDTO(userBO) : null;
     }
 
 }

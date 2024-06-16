@@ -6,31 +6,31 @@ import com.kraemer.domain.entities.vo.CreatedAtVO;
 
 public class UserMapper {
 
-    public static UserDTO toDTO(UserBO bo) {
-        var dto = new UserDTO();
-        dto.setId(bo.getId());
-        dto.setDocument(bo.getDocument());
-        dto.setName(bo.getName());
-        dto.setUsername(bo.getUsername());
-        dto.setPassword(bo.getPassword());
-        dto.setCreatedAt(bo.getCreatedAt() != null ? bo.getCreatedAt().getValue() : null);
-        dto.setDisabledAt(bo.getDisabledAt());
-        dto.setUpdatedAt(bo.getUpdatedAt());
+    public static UserDTO mapUserBOtoDTO(UserBO userBO) {
+        var userDTO = new UserDTO();
+        userDTO.setId(userBO.getId());
+        userDTO.setDocument(userBO.getDocument());
+        userDTO.setName(userBO.getName());
+        userDTO.setUsername(userBO.getUsername());
+        userDTO.setPassword(userBO.getPassword());
+        userDTO.setCreatedAt(userBO.getCreatedAt() != null ? userBO.getCreatedAt().getValue() : null);
+        userDTO.setDisabledAt(userBO.getDisabledAt());
+        userDTO.setUpdatedAt(userBO.getUpdatedAt());
 
-        return dto;
+        return userDTO;
     }
 
-    public static UserBO toBO(UserDTO dto) {
-        var bo = new UserBO(dto.getId(),
-                dto.getDocument(),
-                dto.getName(),
-                dto.getUsername(),
-                dto.getPassword(),
-                new CreatedAtVO(dto.getCreatedAt()),
-                dto.getUpdatedAt(),
-                dto.getDisabledAt());
+    public static UserBO mapUserDTOToBO(UserDTO userDTO) {
+        var userBO = new UserBO(userDTO.getId(),
+                userDTO.getDocument(),
+                userDTO.getName(),
+                userDTO.getUsername(),
+                userDTO.getPassword(),
+                new CreatedAtVO(userDTO.getCreatedAt()),
+                userDTO.getUpdatedAt(),
+                userDTO.getDisabledAt());
 
-        return bo;
+        return userBO;
     }
 
 }

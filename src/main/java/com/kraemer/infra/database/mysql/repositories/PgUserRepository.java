@@ -3,11 +3,11 @@ package com.kraemer.infra.database.mysql.repositories;
 import java.util.List;
 
 import com.kraemer.domain.entities.UserBO;
-import com.kraemer.domain.entities.enums.EnumDBImpl;
+import com.kraemer.domain.entities.enums.EnumDataBase;
 import com.kraemer.domain.entities.vo.QueryFieldInfoVO;
-import com.kraemer.domain.repositories.IUserRepository;
+import com.kraemer.domain.repositories.UserRepository;
 
-public class PgUserRepository implements IUserRepository {
+public class PgUserRepository implements UserRepository {
 
     @Override
     public UserBO create(UserBO bo) {
@@ -34,7 +34,7 @@ public class PgUserRepository implements IUserRepository {
     }
 
     @Override
-    public EnumDBImpl getType() {
+    public EnumDataBase getDataBase() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getType'");
     }

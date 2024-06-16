@@ -36,7 +36,7 @@ public enum EnumErrorUser implements IEnum {
         return parseByKey(key) != null;
     }
 
-    public static EnumErrorCode parseByKey(String key) {
-        return (EnumErrorCode) EnumUtil.parseByKey(EnumErrorCode.class, key);
+    public static EnumCrudError parseByKey(String key) {
+        return (EnumCrudError) EnumUtil.parseByKey(EnumCrudError.class, key);
     }
 }

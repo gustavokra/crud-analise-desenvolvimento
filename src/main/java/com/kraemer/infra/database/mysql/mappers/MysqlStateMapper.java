@@ -2,11 +2,11 @@ package com.kraemer.infra.database.mysql.mappers;
 
 import com.kraemer.domain.entities.StateBO;
 import com.kraemer.domain.entities.vo.CreatedAtVO;
-import com.kraemer.infra.database.mysql.model.MysqlState;
+import com.kraemer.infra.database.mysql.model.MySqlState;
 
 public class MysqlStateMapper {
 
-    public static StateBO toDomain(MysqlState mysqlAddress) {
+    public static StateBO toDomain(MySqlState mysqlAddress) {
         return new StateBO(mysqlAddress.getId(),
         mysqlAddress.getDescription(),
         mysqlAddress.getAcronym(),
@@ -15,8 +15,8 @@ public class MysqlStateMapper {
         mysqlAddress.getDisabledAt());
     }
     
-    public static MysqlState toEntity(StateBO stateBO) {
-        MysqlState mysqlState = new MysqlState();
+    public static MySqlState toEntity(StateBO stateBO) {
+        MySqlState mysqlState = new MySqlState();
         mysqlState.setId(stateBO.getId());
         mysqlState.setDescription(stateBO.getDescription());
         mysqlState.setAcronym(stateBO.getAcronym());

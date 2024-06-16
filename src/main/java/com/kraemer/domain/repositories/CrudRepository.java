@@ -2,10 +2,10 @@ package com.kraemer.domain.repositories;
 
 import java.util.List;
 
-import com.kraemer.domain.entities.enums.EnumDBImpl;
+import com.kraemer.domain.entities.enums.EnumDataBase;
 import com.kraemer.domain.entities.vo.QueryFieldInfoVO;
 
-public interface ICrudRepository<T> {
+public interface CrudRepository<T> {
 
     T create(T bo);
 
@@ -17,6 +17,6 @@ public interface ICrudRepository<T> {
 
     T findFirstBy(List<QueryFieldInfoVO> queryFieldInfo);
 
-    EnumDBImpl getType();
+    EnumDataBase getType();
 
 }

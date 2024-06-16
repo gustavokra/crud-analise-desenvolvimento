@@ -1,13 +1,13 @@
 package com.kraemer.infra.database.mysql.model;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
-
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,21 +15,26 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "crud_country")
-public class MysqlCountry extends CrudModel implements Serializable {
+@Table(name = "crud_address")
+public class MySqlAddress extends CrudModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String description;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private MySqlCity city;
 
-    private String acronym;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private MySqlState state;
 
-    private LocalDateTime createdAt;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private MySqlCountry country;
 
-    private LocalDateTime updatedAt;
+    private String neighborhood;
 
-    private LocalDateTime disableAt;
+    private String street;
+
+    private String number;
 
 }

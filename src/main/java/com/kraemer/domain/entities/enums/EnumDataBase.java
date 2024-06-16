@@ -2,7 +2,7 @@ package com.kraemer.domain.entities.enums;
 
 import com.kraemer.domain.utils.EnumUtil;
 
-public enum EnumDBImpl implements IEnum {
+public enum EnumDataBase implements IEnum {
 
     POSTGRES("POSTGRES"),
     MONGO("MONGO"),
@@ -10,7 +10,7 @@ public enum EnumDBImpl implements IEnum {
 
     private final String key;
 
-    private EnumDBImpl(String key) {
+    private EnumDataBase(String key) {
         this.key = key;
     }
 
@@ -21,10 +21,10 @@ public enum EnumDBImpl implements IEnum {
 
     @Override
     public boolean containsInEnum(String key) {
-        return parseByKey(key) != null;
+        return parseToEnumByKey(key) != null;
     }
 
-    public static EnumDBImpl parseByKey(String key) {
-        return (EnumDBImpl) EnumUtil.parseByKey(EnumDBImpl.class, key);
+    public static EnumDataBase parseToEnumByKey(String key) {
+        return (EnumDataBase) EnumUtil.parseByKey(EnumDataBase.class, key);
     }
 }

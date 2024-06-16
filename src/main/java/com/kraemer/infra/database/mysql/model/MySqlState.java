@@ -16,7 +16,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "crud_state")
-public class MysqlState extends CrudModel implements Serializable {
+public class MySqlState extends CrudModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,6 +27,6 @@ public class MysqlState extends CrudModel implements Serializable {
     private String acronym; 
 
     @ManyToOne
-    private MysqlCountry country;
+    private MySqlCountry country;
 
 }

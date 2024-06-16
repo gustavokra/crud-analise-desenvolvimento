@@ -1,6 +1,6 @@
 package com.kraemer.domain.utils.exception;
 
-import com.kraemer.domain.entities.enums.EnumErrorCode;
+import com.kraemer.domain.entities.enums.EnumCrudError;
 import com.kraemer.domain.utils.StringUtil;
 
 public class CrudException extends RuntimeException {
@@ -12,12 +12,12 @@ public class CrudException extends RuntimeException {
         this.errorCode = errorCode;
     }
 
-    public CrudException(EnumErrorCode error) {
+    public CrudException(EnumCrudError error) {
         super(error.getErro());
         this.errorCode = error.getKey();
     }
 
-    public CrudException(EnumErrorCode error, Object... args) {
+    public CrudException(EnumCrudError error, Object... args) {
         super(StringUtil.stringPatternFormat(error.getErro(), args));
         this.errorCode = error.getKey();
     }

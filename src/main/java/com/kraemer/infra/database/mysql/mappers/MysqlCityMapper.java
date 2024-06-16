@@ -2,11 +2,11 @@ package com.kraemer.infra.database.mysql.mappers;
 
 import com.kraemer.domain.entities.CityBO;
 import com.kraemer.domain.entities.vo.CreatedAtVO;
-import com.kraemer.infra.database.mysql.model.MysqlCity;
+import com.kraemer.infra.database.mysql.model.MySqlCity;
 
 public class MysqlCityMapper {
     
-    public static CityBO toDomain(MysqlCity entity) {
+    public static CityBO toDomain(MySqlCity entity) {
         return new CityBO(entity.getId(), 
         entity.getDescription(), 
         new CreatedAtVO(entity.getCreatedAt()), 
@@ -14,8 +14,8 @@ public class MysqlCityMapper {
         entity.getDisabledAt());
     }
 
-    public static MysqlCity toEntity(CityBO bo) {
-        MysqlCity mysqlCity = new MysqlCity();
+    public static MySqlCity toEntity(CityBO bo) {
+        MySqlCity mysqlCity = new MySqlCity();
         mysqlCity.setId(bo.getId());
         mysqlCity.setDescription(bo.getDescription());
         mysqlCity.setCreatedAt(bo.getCreatedAt() != null ? bo.getCreatedAt().getValue() : null);

@@ -6,6 +6,6 @@ import jakarta.inject.Inject;
 public class AbstractService {
 
     @Inject
-    DbFactory dbFactory;
+    RepositoryFactoryImp repositoryFactory;
 
 }
