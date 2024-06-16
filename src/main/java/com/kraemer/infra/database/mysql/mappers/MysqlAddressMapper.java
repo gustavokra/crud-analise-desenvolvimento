@@ -28,6 +28,9 @@ public class MysqlAddressMapper {
         mysqlAddress.setNeighborhood(addressBO.getNeighborhood());
         mysqlAddress.setStreet(addressBO.getStreet());
         mysqlAddress.setNumber(addressBO.getNumber());
+        mysqlAddress.setCreatedAt(addressBO.getCreatedAt().getValue());
+        mysqlAddress.setUpdatedAt(addressBO.getUpdatedAt());
+        mysqlAddress.setDisabledAt(addressBO.getDisabledAt());
         return mysqlAddress;
     }
 

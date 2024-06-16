@@ -9,30 +9,28 @@ import com.kraemer.domain.entities.vo.QueryFieldInfoVO;
 import com.kraemer.domain.repositories.AddressRepository;
 import com.kraemer.domain.utils.exception.CrudException;
 
-public class UpdatAddressInfo {
-    
+public class UpdateAddressInfo {
+
     private AddressRepository addressRepository;
 
-    public UpdatAddressInfo(AddressRepository addressRepository) {
+    public UpdateAddressInfo(AddressRepository addressRepository) {
         this.addressRepository = addressRepository;
     }
 
-    public AddressDTO execute(AddressDTO dto, Long userId) {
+    public AddressDTO execute(AddressDTO addressDTO, Long idAddressToUpdate) {
+        var queryFieldId = new QueryFieldInfoVO("id", idAddressToUpdate);
 
-        var queryFieldDoc = new QueryFieldInfoVO("id", userId);
+        var addressToUpdate = addressRepository.returnFirstBy(List.of(queryFieldId));
 
-        var existingAddressBO = addressRepository.returnFirstBy(List.of(queryFieldDoc));
-
-        if (existingAddressBO == null) {
+        if (addressToUpdate == null) {
             throw new CrudException(EnumCrudError.ITEM_NAO_ENCONTRADO_FILTROS, "identificador");
         }
 
-        existingAddressBO.handleUpdateInfo(AddressMapper.mapAddressDTOToBO(dto));
+        addressToUpdate.handleUpdateInfo(AddressMapper.mapAddressDTOToBO(addressDTO));
 
-        addressRepository.merge(existingAddressBO);
+        addressRepository.merge(addressToUpdate);
 
-        return AddressMapper.mapAddressBOToDTO(existingAddressBO);
-
+        return AddressMapper.mapAddressBOToDTO(addressToUpdate);
     }
 
 }

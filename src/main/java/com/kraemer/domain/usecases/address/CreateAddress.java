@@ -1,5 +1,6 @@
 package com.kraemer.domain.usecases.address;
 
+import com.kraemer.domain.entities.AddressBO;
 import com.kraemer.domain.entities.dto.AddressDTO;
 import com.kraemer.domain.entities.mappers.AddressMapper;
 import com.kraemer.domain.repositories.AddressRepository;
@@ -13,7 +14,7 @@ public class CreateAddress {
     }
 
     public AddressDTO execute(AddressDTO dto) {
-        var addressBO = AddressMapper.mapAddressDTOToBO(dto);
+        AddressBO addressBO = AddressMapper.mapAddressDTOToBO(dto);
         addressBO = addressRepository.create(addressBO);
 
         return AddressMapper.mapAddressBOToDTO(addressBO);

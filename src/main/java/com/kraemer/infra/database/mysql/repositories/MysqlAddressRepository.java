@@ -46,7 +46,7 @@ public class MysqlAddressRepository implements AddressRepository {
             ? " = :".concat(StringUtil.replaceDot(queryField.getFieldName()))
             : " IS NULL";
 
-            if(StringUtil.isNotNullOrEmpty(query.toString())) {
+            if(StringUtil.isNullOrEmpty(query.toString())) {
                 query.append(queryField.getFieldName()).append(formatedFielValue);
             } else {
                 query.append(" AND ").append(queryField.getFieldName()).append(formatedFielValue);
@@ -67,7 +67,7 @@ public class MysqlAddressRepository implements AddressRepository {
 
     @Override
     public AddressBO returnFirstBy(List<QueryFieldInfoVO> queryFieldInfo) {
-        return ListUtil.first(null);
+        return ListUtil.first(returnAllFilterBy(queryFieldInfo));
     }
 
     @Override

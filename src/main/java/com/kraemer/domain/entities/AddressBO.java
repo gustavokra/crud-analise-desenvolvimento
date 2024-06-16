@@ -6,7 +6,9 @@ import java.util.Optional;
 import com.kraemer.domain.entities.vo.CreatedAtVO;
 import com.kraemer.domain.utils.StringUtil;
 
-public class AddressBO extends CrudBO {
+public class AddressBO {
+
+    public Long id;
 
     private CountryBO countryBO;
 
@@ -20,8 +22,14 @@ public class AddressBO extends CrudBO {
 
     private String number;
 
-    public AddressBO(Long id, CountryBO countryBO, StateBO stateBO, CityBO cityBO, String street, String number,
-            String neighborhood, CreatedAtVO createdAt, LocalDateTime updatedAt, LocalDateTime disabledAt) {
+    public CreatedAtVO createdAt;
+
+    public LocalDateTime updatedAt;
+
+    public LocalDateTime disabledAt;
+
+    public AddressBO(Long id, CountryBO countryBO, StateBO stateBO, CityBO cityBO, String neighborhood, 
+        String street, String number, CreatedAtVO createdAt, LocalDateTime updatedAt, LocalDateTime disabledAt) {
         this.id = id;
         this.countryBO = countryBO;
         this.stateBO = stateBO;
@@ -33,7 +41,7 @@ public class AddressBO extends CrudBO {
         this.updatedAt = updatedAt;
         this.disabledAt = disabledAt;
     }
-
+    
     public void handleUpdateInfo(AddressBO bo) {
 
         Optional.ofNullable(bo.getCountryBO()).ifPresent(this.countryBO::handleUpdateInfo);
@@ -53,6 +61,10 @@ public class AddressBO extends CrudBO {
         }
 
         this.updatedAt = LocalDateTime.now();
+    }
+
+    public void handleDisable() {
+        this.disabledAt = LocalDateTime.now();
     }
 
     public CountryBO getCountryBO() {
@@ -77,6 +89,22 @@ public class AddressBO extends CrudBO {
 
     public String getNumber() {
         return number;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public CreatedAtVO getCreatedAt() {
+        return createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public LocalDateTime getDisabledAt() {
+        return disabledAt;
     }
 
 }

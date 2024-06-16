@@ -1,6 +1,8 @@
 package com.kraemer.infra.database.mysql.model;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
+
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -16,7 +18,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "crud_address")
-public class MySqlAddress extends CrudModel implements Serializable {
+public class MySqlAddress extends PanacheEntityBase implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,5 +38,11 @@ public class MySqlAddress extends CrudModel implements Serializable {
     private String street;
 
     private String number;
+
+    private LocalDateTime createdAt;
+
+    private LocalDateTime updatedAt;
+
+    private LocalDateTime disabledAt;
 
 }
