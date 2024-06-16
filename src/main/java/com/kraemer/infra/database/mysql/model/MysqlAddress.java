@@ -2,6 +2,7 @@ package com.kraemer.infra.database.mysql.model;
 
 import java.io.Serializable;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,13 +22,13 @@ public class MysqlAddress extends CrudModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private MysqlCity city;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private MysqlState state;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private MysqlCountry country;
 
     private String neighborhood;

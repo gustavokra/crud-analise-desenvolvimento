@@ -15,7 +15,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "mysql_city")
+@Table(name = "crud_city")
 public class MysqlCity extends CrudModel implements Serializable {
 
     @Id

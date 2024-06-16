@@ -2,11 +2,11 @@ package com.kraemer.domain.entities.dto;
 
 public class AddressDTO extends CrudDTO {
 
-    private CountryDTO countryDTO;
+    private CountryDTO country;
 
-    private StateDTO stateDTO;
+    private StateDTO state;
 
-    private CityDTO cityDTO;
+    private CityDTO city;
 
     private String neigborhood;
 
@@ -14,28 +14,29 @@ public class AddressDTO extends CrudDTO {
 
     private String number;
 
-    public CountryDTO getCountryDTO() {
-        return countryDTO;
+
+    public CountryDTO getCountry() {
+        return country;
     }
 
-    public void setCountryDTO(CountryDTO countryDTO) {
-        this.countryDTO = countryDTO;
+    public void setCountry(CountryDTO country) {
+        this.country = country;
     }
 
-    public StateDTO getStateDTO() {
-        return stateDTO;
+    public StateDTO getState() {
+        return state;
     }
 
-    public void setStateDTO(StateDTO stateDTO) {
-        this.stateDTO = stateDTO;
+    public void setState(StateDTO state) {
+        this.state = state;
     }
 
-    public CityDTO getCityDTO() {
-        return cityDTO;
+    public CityDTO getCity() {
+        return city;
     }
 
-    public void setCityDTO(CityDTO cityDTO) {
-        this.cityDTO = cityDTO;
+    public void setCity(CityDTO city) {
+        this.city = city;
     }
 
     public String getStreet() {

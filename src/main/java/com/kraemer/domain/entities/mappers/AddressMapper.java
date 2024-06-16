@@ -14,16 +14,16 @@ public class AddressMapper {
         StateBO stateBO = null;
         CityBO cityBO = null;
 
-        if (dto.getCountryDTO() != null) {
-            countryBO = CountryMapper.toBO(dto.getCountryDTO());
+        if (dto.getCountry() != null) {
+            countryBO = CountryMapper.toBO(dto.getCountry());
         }
 
-        if (dto.getStateDTO() != null) {
-            stateBO = StateMapper.toBO(dto.getStateDTO());
+        if (dto.getState() != null) {
+            stateBO = StateMapper.toBO(dto.getState());
         }
 
-        if (dto.getCityDTO() != null) {
-            cityBO = CityMapper.toBO(dto.getCityDTO());
+        if (dto.getCity() != null) {
+            cityBO = CityMapper.toBO(dto.getCity());
         }
 
         return new AddressBO(
@@ -43,13 +43,13 @@ public class AddressMapper {
         AddressDTO dto = new AddressDTO();
         dto.setId(bo.getId());
         if (bo.getCountryBO() != null) {
-            dto.setCountryDTO(CountryMapper.toDTO(bo.getCountryBO()));
+            dto.setCountry(CountryMapper.toDTO(bo.getCountryBO()));
         }
         if (bo.getStateBO() != null) {
-            dto.setStateDTO(StateMapper.toDTO(bo.getStateBO()));
+            dto.setState(StateMapper.toDTO(bo.getStateBO()));
         }
         if (bo.getCityBO() != null) {
-            dto.setCityDTO(CityMapper.toDTO(bo.getCityBO()));
+            dto.setCity(CityMapper.toDTO(bo.getCityBO()));
         }
         dto.setNeigborhood(bo.getNeighborhood());
         dto.setStreet(bo.getStreet());

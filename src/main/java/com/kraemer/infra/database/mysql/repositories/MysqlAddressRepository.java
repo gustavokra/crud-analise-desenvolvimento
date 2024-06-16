@@ -12,6 +12,9 @@ import com.kraemer.domain.utils.StringUtil;
 import com.kraemer.infra.database.mysql.mappers.MysqlAddressMapper;
 import com.kraemer.infra.database.mysql.model.MysqlAddress;
 
+import jakarta.enterprise.context.ApplicationScoped;
+
+@ApplicationScoped
 public class MysqlAddressRepository implements IAddressRepository {
 
     @Override

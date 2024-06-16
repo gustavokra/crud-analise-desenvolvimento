@@ -18,6 +18,8 @@ import jakarta.enterprise.context.ApplicationScoped;
 public class DbFactory {
     @All
     private List<IUserRepository> userRepositoryimplementations;
+
+    @All
     private List<IAddressRepository> adressRepositoryimplementations;
 
     private static final Map<EnumDBImpl, IUserRepository> userServiceCache = new HashMap<>();

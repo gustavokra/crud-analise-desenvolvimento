@@ -14,17 +14,12 @@ import com.kraemer.domain.usecases.user.FindUsersBy;
 import com.kraemer.domain.usecases.user.UpdateUserInfo;
 import com.kraemer.domain.utils.StringUtil;
 import com.kraemer.domain.utils.exception.CrudException;
-import com.kraemer.infra.database.mysql.repositories.MySqlUserRepository;
 
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 
 @ApplicationScoped
 public class UserService extends AbstractService {
-
-    @Inject
-    MySqlUserRepository mySqlUserRepository;
 
     @Transactional
     public UserDTO create(UserDTO dto, EnumDBImpl dbImpl) {
