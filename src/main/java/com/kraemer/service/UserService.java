@@ -5,13 +5,13 @@ import java.util.List;
 import com.kraemer.domain.entities.dto.UserDTO;
 import com.kraemer.domain.entities.enums.EnumDataBase;
 import com.kraemer.domain.entities.enums.EnumCrudError;
-import com.kraemer.domain.entities.vo.QueryFieldInfoVO;
+import com.kraemer.domain.entities.vo.QueryFieldVO;
 import com.kraemer.domain.usecases.user.CreateUser;
 import com.kraemer.domain.usecases.user.DisableUser;
 import com.kraemer.domain.usecases.user.FindUserBy;
-import com.kraemer.domain.usecases.user.FindAllUsers;
-import com.kraemer.domain.usecases.user.FindUsersBy;
-import com.kraemer.domain.usecases.user.UpdateUserInfo;
+import com.kraemer.domain.usecases.user.ReturnAllUsers;
+import com.kraemer.domain.usecases.user.ListUsersBy;
+import com.kraemer.domain.usecases.user.UpdateUser;
 import com.kraemer.domain.utils.StringUtil;
 import com.kraemer.domain.utils.exception.CrudException;
 
@@ -29,27 +29,27 @@ public class UserService extends AbstractService {
         return createUser.execute(dto);
     }
 
-    public List<UserDTO> listAll(EnumDataBase dbImpl) {
+    public List<UserDTO> returnAll(EnumDataBase dbImpl) {
         var repository = repositoryFactory.getUserRepository(dbImpl);
-        var listAll = new FindAllUsers(repository);
+        var returnAll = new ReturnAllUsers(repository);
 
-        return listAll.execute(true);
+        return returnAll.execute(true);
     }
 
-    public List<UserDTO> listBy(String document, EnumDataBase dbImpl) {
+    public List<UserDTO> listByDocument(String document, EnumDataBase dbImpl) {
 
         if (StringUtil.isNullOrEmpty(document)) {
             throw new CrudException(EnumCrudError.CAMPO_OBRIGATORIO, "document");
         }
 
         var repository = repositoryFactory.getUserRepository(dbImpl);
-        var findAllBy = new FindUsersBy(repository);
-        var queryFieldUserId = new QueryFieldInfoVO("document", document);
+        var findAllBy = new ListUsersBy(repository);
+        var queryFieldUserId = new QueryFieldVO("document", document);
 
         return findAllBy.execute(List.of(queryFieldUserId), true);
     }
 
-    public UserDTO findBy(Long userId, EnumDataBase dbImpl) {
+    public UserDTO findById(Long userId, EnumDataBase dbImpl) {
 
         if (userId == null) {
             throw new CrudException(EnumCrudError.CAMPO_OBRIGATORIO, "userId");
@@ -57,15 +57,15 @@ public class UserService extends AbstractService {
 
         var repository = repositoryFactory.getUserRepository(dbImpl);
         var findUserBy = new FindUserBy(repository);
-        var queryFieldUserId = new QueryFieldInfoVO("id", userId);
+        var queryFieldUserId = new QueryFieldVO("id", userId);
 
         return findUserBy.execute(List.of(queryFieldUserId), true);
     }
 
     @Transactional
-    public UserDTO updateInfo(UserDTO dto, Long userId, EnumDataBase dbImpl) {
+    public UserDTO update(UserDTO dto, Long userId, EnumDataBase dbImpl) {
         var repository = repositoryFactory.getUserRepository(dbImpl);
-        var updateUserInfo = new UpdateUserInfo(repository);
+        var updateUserInfo = new UpdateUser(repository);
 
         return updateUserInfo.execute(dto, userId);
     }
@@ -90,8 +90,8 @@ public class UserService extends AbstractService {
 
         var repository = repositoryFactory.getUserRepository(dbImpl);
         var findUserBy = new FindUserBy(repository);
-        var queryFieldUsername = new QueryFieldInfoVO("username", username);
-        var queryFieldPassword = new QueryFieldInfoVO("password", password);
+        var queryFieldUsername = new QueryFieldVO("username", username);
+        var queryFieldPassword = new QueryFieldVO("password", password);
 
         return findUserBy.execute(List.of(queryFieldUsername, queryFieldPassword), true);
     }

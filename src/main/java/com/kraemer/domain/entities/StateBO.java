@@ -2,7 +2,7 @@ package com.kraemer.domain.entities;
 
 import java.time.LocalDateTime;
 
-import com.kraemer.domain.entities.vo.CreatedAtVO;
+import com.kraemer.domain.entities.vo.CreationDateVO;
 import com.kraemer.domain.utils.StringUtil;
 
 public class StateBO extends CrudBO {
@@ -11,7 +11,7 @@ public class StateBO extends CrudBO {
 
     private String acronym;
 
-    public StateBO(Long id, String description, String acronym, CreatedAtVO createdAt, LocalDateTime updatedAt,
+    public StateBO(Long id, String description, String acronym, CreationDateVO createdAt, LocalDateTime updatedAt,
             LocalDateTime disabledAt) {
         this.id = id;
         this.description = description;

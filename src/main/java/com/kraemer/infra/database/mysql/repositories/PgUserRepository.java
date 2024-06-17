@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.kraemer.domain.entities.UserBO;
 import com.kraemer.domain.entities.enums.EnumDataBase;
-import com.kraemer.domain.entities.vo.QueryFieldInfoVO;
+import com.kraemer.domain.entities.vo.QueryFieldVO;
 import com.kraemer.domain.repositories.UserRepository;
 
 public class PgUserRepository implements UserRepository {
@@ -22,29 +22,28 @@ public class PgUserRepository implements UserRepository {
     }
 
     @Override
-    public List<UserBO> findAllBy(List<QueryFieldInfoVO> queryFieldInfo) {
+    public List<UserBO> returnAll() {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findAllBy'");
+        throw new UnsupportedOperationException("Unimplemented method 'returnAll'");
     }
 
     @Override
-    public UserBO findFirstBy(List<QueryFieldInfoVO> queryFieldInfo) {
+    public List<UserBO> listAllBy(List<QueryFieldVO> queryFieldInfo) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findFirstBy'");
+        throw new UnsupportedOperationException("Unimplemented method 'listAllFilterBy'");
+    }
+
+    @Override
+    public UserBO findBy(List<QueryFieldVO> queryFieldInfo) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findFilterBy'");
     }
 
     @Override
     public EnumDataBase getDataBase() {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getType'");
+        throw new UnsupportedOperationException("Unimplemented method 'getDataBase'");
     }
-
-    @Override
-    public List<UserBO> findAll() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
-    }
-
 
     
 }

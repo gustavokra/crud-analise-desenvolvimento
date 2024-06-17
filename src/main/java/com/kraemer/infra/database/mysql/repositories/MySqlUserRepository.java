@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 import com.kraemer.domain.entities.UserBO;
 import com.kraemer.domain.entities.enums.EnumDataBase;
-import com.kraemer.domain.entities.vo.QueryFieldInfoVO;
+import com.kraemer.domain.entities.vo.QueryFieldVO;
 import com.kraemer.domain.repositories.UserRepository;
 import com.kraemer.domain.utils.ListUtil;
 import com.kraemer.domain.utils.StringUtil;
@@ -27,23 +27,23 @@ public class MySqlUserRepository implements UserRepository {
     }
 
     @Override
-    public List<UserBO> findAll() {
+    public List<UserBO> returnAll() {
         return ListUtil.stream(MySqlUser.listAll())
             .map(value -> MysqlUserMapper.toDomain(((MySqlUser) value)))
             .collect(Collectors.toList());
     }
 
     @Override
-    public List<UserBO> findAllBy(List<QueryFieldInfoVO> queryFieldsInfoVO) {
-        var params = ListUtil.stream(queryFieldsInfoVO)
+    public List<UserBO> listAllBy(List<QueryFieldVO> queryFieldsVO) {
+        var params = ListUtil.stream(queryFieldsVO)
                 .filter(item -> item.getFieldValue() != null)
                 .collect(Collectors.toMap(
                         item -> StringUtil.replaceDot(item.getFieldName()),
-                        QueryFieldInfoVO::getFieldValue));
+                        QueryFieldVO::getFieldValue));
 
         var query = new StringBuilder();
 
-        queryFieldsInfoVO.stream().forEach(val -> {
+        queryFieldsVO.stream().forEach(val -> {
             var formatedFieldName = val.getFieldValue() != null
                     ? " = :".concat(StringUtil.replaceDot(val.getFieldName()))
                     : " is NULL";
@@ -61,8 +61,8 @@ public class MySqlUserRepository implements UserRepository {
     }
 
     @Override
-    public UserBO findFirstBy(List<QueryFieldInfoVO> queryFieldsInfoVO) {
-        return ListUtil.first(findAllBy(queryFieldsInfoVO));
+    public UserBO findBy(List<QueryFieldVO> queryFieldsVO) {
+        return ListUtil.first(listAllBy(queryFieldsVO));
     }
 
     @Override

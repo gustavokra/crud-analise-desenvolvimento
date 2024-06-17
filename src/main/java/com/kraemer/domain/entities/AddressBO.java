@@ -3,7 +3,7 @@ package com.kraemer.domain.entities;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
-import com.kraemer.domain.entities.vo.CreatedAtVO;
+import com.kraemer.domain.entities.vo.CreationDateVO;
 import com.kraemer.domain.utils.StringUtil;
 
 public class AddressBO {
@@ -22,14 +22,14 @@ public class AddressBO {
 
     private String number;
 
-    public CreatedAtVO createdAt;
+    public CreationDateVO createdAt;
 
     public LocalDateTime updatedAt;
 
     public LocalDateTime disabledAt;
 
     public AddressBO(Long id, CountryBO countryBO, StateBO stateBO, CityBO cityBO, String neighborhood, 
-        String street, String number, CreatedAtVO createdAt, LocalDateTime updatedAt, LocalDateTime disabledAt) {
+        String street, String number, CreationDateVO createdAt, LocalDateTime updatedAt, LocalDateTime disabledAt) {
         this.id = id;
         this.countryBO = countryBO;
         this.stateBO = stateBO;
@@ -95,7 +95,7 @@ public class AddressBO {
         return id;
     }
 
-    public CreatedAtVO getCreatedAt() {
+    public CreationDateVO getCreatedAt() {
         return createdAt;
     }
 

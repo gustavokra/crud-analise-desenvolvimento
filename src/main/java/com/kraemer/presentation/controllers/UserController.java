@@ -28,33 +28,33 @@ public class UserController {
     }
 
     @GET
-    @Path("list-all")
-    public Response listAll(@HeaderParam EnumDataBase dbImpl) {
-        var allUsers = userService.listAll(dbImpl);
+    @Path("/return-all")
+    public Response returnAll(@HeaderParam EnumDataBase dbImpl) {
+        var allUsers = userService.returnAll(dbImpl);
 
         return Response.ok(allUsers).build();
     }
 
     @GET
-    @Path("/browse-by-document")
-    public Response listAllBy(@HeaderParam String document, @HeaderParam EnumDataBase dbImpl) {
-        var usersFound = userService.listBy(document, dbImpl);
+    @Path("/list-by-document")
+    public Response listByDocument(@HeaderParam String document, @HeaderParam EnumDataBase dbImpl) {
+        var usersFound = userService.listByDocument(document, dbImpl);
 
         return Response.ok(usersFound).build();
     }
 
     @GET()
-    @Path("/browse-by-id")
-    public Response browseById(@HeaderParam Long userId, @HeaderParam EnumDataBase dbImpl) {
-        var userFound = userService.findBy(userId, dbImpl);
+    @Path("/find-by-id")
+    public Response findById(@HeaderParam Long userId, @HeaderParam EnumDataBase dbImpl) {
+        var userFound = userService.findById(userId, dbImpl);
 
         return Response.ok(userFound).build();
     }
 
     @PUT
     @Path("/update")
-    public Response edit(UserDTO dto, @HeaderParam Long userId, @HeaderParam EnumDataBase dbImpl) {
-        var userUpdated = userService.updateInfo(dto, userId, dbImpl);
+    public Response update(UserDTO dto, @HeaderParam Long userId, @HeaderParam EnumDataBase dbImpl) {
+        var userUpdated = userService.update(dto, userId, dbImpl);
 
         return Response.ok(userUpdated).build();
     }

@@ -11,20 +11,20 @@ import com.kraemer.domain.repositories.UserRepository;
 import com.kraemer.domain.utils.ListUtil;
 import com.kraemer.domain.utils.exception.CrudException;
 
-public class FindAllUsers {
+public class ReturnAllUsers {
 
     private UserRepository userRepository;
 
-    public FindAllUsers(UserRepository userRepository) {
+    public ReturnAllUsers(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
     public List<UserDTO> execute(boolean throwsException) {
         try {
-            List<UserBO> usersBO = userRepository.findAll();
+            List<UserBO> usersBO = userRepository.returnAll();
             
             return ListUtil.stream(usersBO)
-                    .map(UserMapper::mapUserBOtoDTO)
+                    .map(UserMapper::mapBOtoDTO)
                     .collect(Collectors.toList());
         } catch (CrudException ce) {
             throw new CrudException(EnumCrudError.ERRO_LISTAR_USUARIOS);

@@ -2,14 +2,14 @@ package com.kraemer.domain.entities;
 
 import java.time.LocalDateTime;
 
-import com.kraemer.domain.entities.vo.CreatedAtVO;
+import com.kraemer.domain.entities.vo.CreationDateVO;
 import com.kraemer.domain.utils.StringUtil;
 
 public class CityBO extends CrudBO {
 
     private String description;
 
-    public CityBO(Long id, String description, CreatedAtVO createdAt, LocalDateTime updatedAt,
+    public CityBO(Long id, String description, CreationDateVO createdAt, LocalDateTime updatedAt,
             LocalDateTime disabledAt) {
         this.id = id;
         this.description = description;

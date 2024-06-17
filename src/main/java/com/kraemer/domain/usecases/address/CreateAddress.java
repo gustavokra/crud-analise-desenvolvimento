@@ -14,10 +14,10 @@ public class CreateAddress {
     }
 
     public AddressDTO execute(AddressDTO dto) {
-        AddressBO addressBO = AddressMapper.mapAddressDTOToBO(dto);
+        AddressBO addressBO = AddressMapper.toBO(dto);
         addressBO = addressRepository.create(addressBO);
 
-        return AddressMapper.mapAddressBOToDTO(addressBO);
+        return AddressMapper.toDTO(addressBO);
     }
 
 }

@@ -1,12 +1,12 @@
 package com.kraemer.domain.entities.vo;
 
-public class QueryFieldInfoVO {
+public class QueryFieldVO {
 
     private String fieldName;
 
     private Object fieldValue;
 
-    public QueryFieldInfoVO(final String fieldName, final Object fieldValue) {
+    public QueryFieldVO(final String fieldName, final Object fieldValue) {
         this.fieldName = fieldName;
         this.fieldValue = fieldValue;
     }

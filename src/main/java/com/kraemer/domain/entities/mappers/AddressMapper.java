@@ -5,11 +5,11 @@ import com.kraemer.domain.entities.CityBO;
 import com.kraemer.domain.entities.CountryBO;
 import com.kraemer.domain.entities.StateBO;
 import com.kraemer.domain.entities.dto.AddressDTO;
-import com.kraemer.domain.entities.vo.CreatedAtVO;
+import com.kraemer.domain.entities.vo.CreationDateVO;
 
 public class AddressMapper {
 
-    public static AddressBO mapAddressDTOToBO(AddressDTO addressDTO) {
+    public static AddressBO toBO(AddressDTO addressDTO) {
         CountryBO countryBO = null;
         StateBO stateBO = null;
         CityBO cityBO = null;
@@ -34,12 +34,12 @@ public class AddressMapper {
                 addressDTO.getNeigborhood(),
                 addressDTO.getStreet(),
                 addressDTO.getNumber(),
-                new CreatedAtVO(addressDTO.getCreatedAt()),
+                new CreationDateVO(addressDTO.getCreatedAt()),
                 addressDTO.getUpdatedAt(),
                 addressDTO.getDisabledAt());
     }
 
-    public static AddressDTO mapAddressBOToDTO(AddressBO addressBO) {
+    public static AddressDTO toDTO(AddressBO addressBO) {
         AddressDTO addressDTO = new AddressDTO();
         addressDTO.setId(addressBO.getId());
         if (addressBO.getCountryBO() != null) {

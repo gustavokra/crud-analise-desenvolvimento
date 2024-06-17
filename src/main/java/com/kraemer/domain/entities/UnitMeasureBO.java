@@ -2,7 +2,7 @@ package com.kraemer.domain.entities;
 
 import java.time.LocalDateTime;
 
-import com.kraemer.domain.entities.vo.CreatedAtVO;
+import com.kraemer.domain.entities.vo.CreationDateVO;
 
 public class UnitMeasureBO extends CrudBO {
 
@@ -14,7 +14,7 @@ public class UnitMeasureBO extends CrudBO {
 
     private boolean active;
 
-    public UnitMeasureBO(Long id, String acronym, String description, boolean active, CreatedAtVO createdAt,
+    public UnitMeasureBO(Long id, String acronym, String description, boolean active, CreationDateVO createdAt,
             LocalDateTime updatedAt, LocalDateTime disabledAt) {
         this.id = id;
         this.acronym = acronym;

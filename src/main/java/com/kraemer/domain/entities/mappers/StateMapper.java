@@ -2,7 +2,7 @@ package com.kraemer.domain.entities.mappers;
 
 import com.kraemer.domain.entities.StateBO;
 import com.kraemer.domain.entities.dto.StateDTO;
-import com.kraemer.domain.entities.vo.CreatedAtVO;
+import com.kraemer.domain.entities.vo.CreationDateVO;
 
 public class StateMapper {
     public static StateBO toBO(StateDTO dto) {
@@ -10,7 +10,7 @@ public class StateMapper {
             dto.getId(),
             dto.getDescription(),
             dto.getAcronym(),
-            new CreatedAtVO(dto.getCreatedAt()), 
+            new CreationDateVO(dto.getCreatedAt()), 
             dto.getUpdatedAt(),
             dto.getDisabledAt()
         );

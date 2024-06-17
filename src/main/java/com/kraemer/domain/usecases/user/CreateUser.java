@@ -5,7 +5,7 @@ import java.util.List;
 import com.kraemer.domain.entities.dto.UserDTO;
 import com.kraemer.domain.entities.enums.EnumCrudError;
 import com.kraemer.domain.entities.mappers.UserMapper;
-import com.kraemer.domain.entities.vo.QueryFieldInfoVO;
+import com.kraemer.domain.entities.vo.QueryFieldVO;
 import com.kraemer.domain.repositories.UserRepository;
 import com.kraemer.domain.utils.exception.CrudException;
 public class CreateUser {
@@ -20,17 +20,17 @@ public class CreateUser {
         verifyExistingUser(dto.getDocument());
         verifyExistingUsername(dto.getUsername());
 
-        var userBO = UserMapper.mapUserDTOToBO(dto);
+        var userBO = UserMapper.mapDTOToBO(dto);
         userBO = userRepository.create(userBO);
 
-        return UserMapper.mapUserBOtoDTO(userBO);
+        return UserMapper.mapBOtoDTO(userBO);
     }
 
     private void verifyExistingUser(String document) {
-        var queryFieldDoc = new QueryFieldInfoVO("document", document);
-        var queryFieldDisabled = new QueryFieldInfoVO("disabledAt", null);
+        var queryFieldDoc = new QueryFieldVO("document", document);
+        var queryFieldDisabled = new QueryFieldVO("disabledAt", null);
 
-        var existingUserBO = userRepository.findFirstBy(List.of(queryFieldDoc, queryFieldDisabled));
+        var existingUserBO = userRepository.findBy(List.of(queryFieldDoc, queryFieldDisabled));
 
         if (existingUserBO != null) {
             throw new CrudException(EnumCrudError.ITEM_CADASTRADO);
@@ -38,9 +38,9 @@ public class CreateUser {
     }
 
     private void verifyExistingUsername(String username) {
-        var queryFieldUserName = new QueryFieldInfoVO("username", username);
+        var queryFieldUserName = new QueryFieldVO("username", username);
 
-        var existingUserBO = userRepository.findFirstBy(List.of(queryFieldUserName));
+        var existingUserBO = userRepository.findBy(List.of(queryFieldUserName));
 
         if (existingUserBO != null) {
             throw new CrudException(EnumCrudError.USERNAME_JA_CADASTRADO);

@@ -4,13 +4,13 @@ import java.util.List;
 
 import com.kraemer.domain.entities.dto.AddressDTO;
 import com.kraemer.domain.entities.enums.EnumDataBase;
-import com.kraemer.domain.entities.vo.QueryFieldInfoVO;
+import com.kraemer.domain.entities.vo.QueryFieldVO;
 import com.kraemer.domain.repositories.AddressRepository;
 import com.kraemer.domain.usecases.address.CreateAddress;
 import com.kraemer.domain.usecases.address.DisableAddress;
-import com.kraemer.domain.usecases.address.ReturnAddressBy;
+import com.kraemer.domain.usecases.address.FindAddressBy;
 import com.kraemer.domain.usecases.address.ReturnAllAddress;
-import com.kraemer.domain.usecases.address.UpdateAddressInfo;
+import com.kraemer.domain.usecases.address.UpdateAddress;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
@@ -19,7 +19,7 @@ import jakarta.transaction.Transactional;
 public class AddressService extends AbstractService {
 
     @Transactional
-    public AddressDTO createAddress(AddressDTO dto, EnumDataBase dataBase) {
+    public AddressDTO create(AddressDTO dto, EnumDataBase dataBase) {
         AddressRepository repository = repositoryFactory.getAddressRepository(dataBase);
 
         var createAddress = new CreateAddress(repository);
@@ -27,7 +27,7 @@ public class AddressService extends AbstractService {
         return createAddress.execute(dto);
     }
 
-    public List<AddressDTO> returnAllAddress(EnumDataBase dataBase) {
+    public List<AddressDTO> returnAll(EnumDataBase dataBase) {
         AddressRepository repository = repositoryFactory.getAddressRepository(dataBase);
 
         var findAllAddress = new ReturnAllAddress(repository);
@@ -35,27 +35,27 @@ public class AddressService extends AbstractService {
         return findAllAddress.execute(true);
     }
 
-    public AddressDTO returnAddress(Long id, EnumDataBase database) {
+    public AddressDTO findById(Long id, EnumDataBase database) {
         AddressRepository addressRepository = repositoryFactory.getAddressRepository(database);
 
-        var returnAddressBy = new ReturnAddressBy(addressRepository);
+        var findAddressBy = new FindAddressBy(addressRepository);
 
-        QueryFieldInfoVO queryFieldInfo = new QueryFieldInfoVO("id", id);
+        QueryFieldVO queryFieldInfo = new QueryFieldVO("id", id);
 
-        return returnAddressBy.execute(List.of(queryFieldInfo), true);
+        return findAddressBy.execute(List.of(queryFieldInfo), true);
     }
 
     @Transactional
-    public AddressDTO updateAddressInfo(AddressDTO addressDTO, Long idAddressToUpdate, EnumDataBase dataBase) {
+    public AddressDTO update(AddressDTO addressDTO, Long idAddressToUpdate, EnumDataBase dataBase) {
         AddressRepository addressRepository = repositoryFactory.getAddressRepository(dataBase);
 
-        var updateAddressInfo = new UpdateAddressInfo(addressRepository);
+        var updateAddressInfo = new UpdateAddress(addressRepository);
 
         return updateAddressInfo.execute(addressDTO, idAddressToUpdate);
     }
 
     @Transactional
-    public AddressDTO disableAddress(Long id, EnumDataBase dataBase) {
+    public AddressDTO disable(Long id, EnumDataBase dataBase) {
         AddressRepository addressRepository = repositoryFactory.getAddressRepository(dataBase);
 
         var disableAddress = new DisableAddress(addressRepository);

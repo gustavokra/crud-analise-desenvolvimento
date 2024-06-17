@@ -2,7 +2,7 @@ package com.kraemer.domain.entities;
 
 import java.time.LocalDateTime;
 
-import com.kraemer.domain.entities.vo.CreatedAtVO;
+import com.kraemer.domain.entities.vo.CreationDateVO;
 
 public class ClientBO extends CrudBO {
 
@@ -12,7 +12,7 @@ public class ClientBO extends CrudBO {
 
     private boolean active;
 
-    public ClientBO(Long id, String name, AddressBO addressBO, boolean active, CreatedAtVO createdAt,
+    public ClientBO(Long id, String name, AddressBO addressBO, boolean active, CreationDateVO createdAt,
             LocalDateTime updatedAt, LocalDateTime disabledAt) {
         this.id = id;
         this.name = name;

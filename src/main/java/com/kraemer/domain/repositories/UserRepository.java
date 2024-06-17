@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.kraemer.domain.entities.UserBO;
 import com.kraemer.domain.entities.enums.EnumDataBase;
-import com.kraemer.domain.entities.vo.QueryFieldInfoVO;
+import com.kraemer.domain.entities.vo.QueryFieldVO;
 
 public interface UserRepository {
     
@@ -12,11 +12,11 @@ public interface UserRepository {
 
     UserBO merge(UserBO bo);
 
-    List<UserBO> findAll();
+    List<UserBO> returnAll();
 
-    List<UserBO> findAllBy(List<QueryFieldInfoVO> queryFieldInfo);
+    List<UserBO> listAllBy(List<QueryFieldVO> queryField);
     
-    UserBO findFirstBy(List<QueryFieldInfoVO> queryFieldInfo);
+    UserBO findBy(List<QueryFieldVO> queryField);
 
     EnumDataBase getDataBase();
 

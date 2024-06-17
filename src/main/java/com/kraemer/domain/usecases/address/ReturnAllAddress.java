@@ -24,7 +24,7 @@ public class ReturnAllAddress {
             List<AddressBO> addressBO = addressRepository.returnAll();
 
             return ListUtil.stream(addressBO)
-                    .map(AddressMapper::mapAddressBOToDTO)
+                    .map(AddressMapper::toDTO)
                     .collect(Collectors.toList());
         } catch (CrudException ce) {
             throw new CrudException(EnumCrudError.ERRO_LISTAR_USUARIOS);

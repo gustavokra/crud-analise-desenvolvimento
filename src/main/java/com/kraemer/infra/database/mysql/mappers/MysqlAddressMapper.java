@@ -1,12 +1,12 @@
 package com.kraemer.infra.database.mysql.mappers;
 
 import com.kraemer.domain.entities.AddressBO;
-import com.kraemer.domain.entities.vo.CreatedAtVO;
+import com.kraemer.domain.entities.vo.CreationDateVO;
 import com.kraemer.infra.database.mysql.model.MySqlAddress;
 
 public class MysqlAddressMapper {
 
-    public static AddressBO mySqlAddressToAddressBO(MySqlAddress mySqlAddress) {
+    public static AddressBO toBO(MySqlAddress mySqlAddress) {
         return new AddressBO(mySqlAddress.getId(),
                 MysqlCountryMapper.toDomain(mySqlAddress.getCountry()),
                 MysqlStateMapper.toDomain(mySqlAddress.getState()),
@@ -14,12 +14,12 @@ public class MysqlAddressMapper {
                 mySqlAddress.getNeighborhood(),
                 mySqlAddress.getStreet(),
                 mySqlAddress.getNumber(),
-                new CreatedAtVO(mySqlAddress.getCreatedAt()),
+                new CreationDateVO(mySqlAddress.getCreatedAt()),
                 mySqlAddress.getUpdatedAt(),
                 mySqlAddress.getDisabledAt());
     }
 
-    public static MySqlAddress addressBOToMySqlAddress(AddressBO addressBO) {
+    public static MySqlAddress toEntity(AddressBO addressBO) {
         MySqlAddress mysqlAddress = new MySqlAddress();
         mysqlAddress.setId(addressBO.getId());
         mysqlAddress.setCountry(MysqlCountryMapper.toEntity(addressBO.getCountryBO()));

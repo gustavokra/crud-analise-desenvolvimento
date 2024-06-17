@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import com.kraemer.domain.entities.dto.UserDTO;
 import com.kraemer.domain.entities.enums.EnumCrudError;
 import com.kraemer.domain.entities.mappers.UserMapper;
-import com.kraemer.domain.entities.vo.QueryFieldInfoVO;
+import com.kraemer.domain.entities.vo.QueryFieldVO;
 import com.kraemer.domain.repositories.UserRepository;
 import com.kraemer.domain.utils.ListUtil;
 import com.kraemer.domain.utils.exception.CrudException;
@@ -19,18 +19,18 @@ public class FindUserBy {
         this.userRepository = userRepository;
     }
 
-    public UserDTO execute(List<QueryFieldInfoVO> queryFields, boolean throwsException) {
-        var userBO = userRepository.findFirstBy(queryFields);
+    public UserDTO execute(List<QueryFieldVO> queryFields, boolean throwsException) {
+        var userBO = userRepository.findBy(queryFields);
 
         if (userBO == null && throwsException) {
             var fields = ListUtil.stream(queryFields)
-                    .map(QueryFieldInfoVO::getFieldName)
+                    .map(QueryFieldVO::getFieldName)
                     .collect(Collectors.joining(", "));
 
             throw new CrudException(EnumCrudError.ITEM_NAO_ENCONTRADO_FILTROS, fields);
         }
 
-        return userBO != null ? UserMapper.mapUserBOtoDTO(userBO) : null;
+        return userBO != null ? UserMapper.mapBOtoDTO(userBO) : null;
     }
 
 }

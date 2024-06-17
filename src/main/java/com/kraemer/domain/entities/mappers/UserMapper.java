@@ -2,11 +2,11 @@ package com.kraemer.domain.entities.mappers;
 
 import com.kraemer.domain.entities.UserBO;
 import com.kraemer.domain.entities.dto.UserDTO;
-import com.kraemer.domain.entities.vo.CreatedAtVO;
+import com.kraemer.domain.entities.vo.CreationDateVO;
 
 public class UserMapper {
 
-    public static UserDTO mapUserBOtoDTO(UserBO userBO) {
+    public static UserDTO mapBOtoDTO(UserBO userBO) {
         var userDTO = new UserDTO();
         userDTO.setId(userBO.getId());
         userDTO.setDocument(userBO.getDocument());
@@ -20,13 +20,13 @@ public class UserMapper {
         return userDTO;
     }
 
-    public static UserBO mapUserDTOToBO(UserDTO userDTO) {
+    public static UserBO mapDTOToBO(UserDTO userDTO) {
         var userBO = new UserBO(userDTO.getId(),
                 userDTO.getDocument(),
                 userDTO.getName(),
                 userDTO.getUsername(),
                 userDTO.getPassword(),
-                new CreatedAtVO(userDTO.getCreatedAt()),
+                new CreationDateVO(userDTO.getCreatedAt()),
                 userDTO.getUpdatedAt(),
                 userDTO.getDisabledAt());
 

@@ -2,7 +2,7 @@ package com.kraemer.domain.entities;
 
 import java.time.LocalDateTime;
 
-import com.kraemer.domain.entities.vo.CreatedAtVO;
+import com.kraemer.domain.entities.vo.CreationDateVO;
 import com.kraemer.domain.utils.StringUtil;
 
 public class UserBO extends CrudBO {
@@ -16,7 +16,7 @@ public class UserBO extends CrudBO {
     private String password;
 
     public UserBO(Long id, String document, String name, String username, String password,
-            CreatedAtVO createdAt,
+            CreationDateVO createdAt,
             LocalDateTime updatedAt, LocalDateTime disabledAt) {
         this.id = id;
         this.document = document;

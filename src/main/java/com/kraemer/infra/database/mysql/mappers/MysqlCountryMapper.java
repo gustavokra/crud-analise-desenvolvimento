@@ -1,7 +1,7 @@
 package com.kraemer.infra.database.mysql.mappers;
 
 import com.kraemer.domain.entities.CountryBO;
-import com.kraemer.domain.entities.vo.CreatedAtVO;
+import com.kraemer.domain.entities.vo.CreationDateVO;
 import com.kraemer.infra.database.mysql.model.MySqlCountry;
 
 public class MysqlCountryMapper {
@@ -10,7 +10,7 @@ public class MysqlCountryMapper {
         return new CountryBO(entity.getId(),
                 entity.getDescription(),
                 entity.getAcronym(),
-                new CreatedAtVO(entity.getCreatedAt()),
+                new CreationDateVO(entity.getCreatedAt()),
                 entity.getUpdatedAt(),
                 entity.getDisabledAt());
     }

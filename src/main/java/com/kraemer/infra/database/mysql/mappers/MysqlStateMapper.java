@@ -1,7 +1,7 @@
 package com.kraemer.infra.database.mysql.mappers;
 
 import com.kraemer.domain.entities.StateBO;
-import com.kraemer.domain.entities.vo.CreatedAtVO;
+import com.kraemer.domain.entities.vo.CreationDateVO;
 import com.kraemer.infra.database.mysql.model.MySqlState;
 
 public class MysqlStateMapper {
@@ -10,7 +10,7 @@ public class MysqlStateMapper {
         return new StateBO(mysqlAddress.getId(),
         mysqlAddress.getDescription(),
         mysqlAddress.getAcronym(),
-        new CreatedAtVO(mysqlAddress.getCreatedAt()),
+        new CreationDateVO(mysqlAddress.getCreatedAt()),
         mysqlAddress.getUpdatedAt(),
         mysqlAddress.getDisabledAt());
     }

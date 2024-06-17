@@ -1,7 +1,7 @@
 package com.kraemer.infra.database.mysql.mappers;
 
 import com.kraemer.domain.entities.UserBO;
-import com.kraemer.domain.entities.vo.CreatedAtVO;
+import com.kraemer.domain.entities.vo.CreationDateVO;
 import com.kraemer.infra.database.mysql.model.MySqlUser;
 
 public class MysqlUserMapper {
@@ -13,7 +13,7 @@ public class MysqlUserMapper {
                 entity.getName(),
                 entity.getUsername(),
                 entity.getPassword(),
-                new CreatedAtVO(entity.getCreatedAt()),
+                new CreationDateVO(entity.getCreatedAt()),
                 entity.getUpdatedAt(),
                 entity.getDisabledAt());
 

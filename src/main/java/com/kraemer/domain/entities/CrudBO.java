@@ -2,13 +2,13 @@ package com.kraemer.domain.entities;
 
 import java.time.LocalDateTime;
 
-import com.kraemer.domain.entities.vo.CreatedAtVO;
+import com.kraemer.domain.entities.vo.CreationDateVO;
 
 public abstract class CrudBO {
 
     public Long id;
 
-    public CreatedAtVO createdAt;
+    public CreationDateVO createdAt;
 
     public LocalDateTime updatedAt;
 
@@ -18,7 +18,7 @@ public abstract class CrudBO {
         return id;
     }
 
-    public CreatedAtVO getCreatedAt() {
+    public CreationDateVO getCreatedAt() {
         return createdAt;
     }
 

@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 import com.kraemer.domain.entities.AddressBO;
 import com.kraemer.domain.entities.enums.EnumDataBase;
-import com.kraemer.domain.entities.vo.QueryFieldInfoVO;
+import com.kraemer.domain.entities.vo.QueryFieldVO;
 import com.kraemer.domain.repositories.AddressRepository;
 import com.kraemer.domain.utils.ListUtil;
 import com.kraemer.domain.utils.StringUtil;
@@ -19,25 +19,25 @@ public class MysqlAddressRepository implements AddressRepository {
 
     @Override
     public AddressBO create(AddressBO addressBO) {
-        MySqlAddress mysqlAddress = MysqlAddressMapper.addressBOToMySqlAddress(addressBO);
+        MySqlAddress mysqlAddress = MysqlAddressMapper.toEntity(addressBO);
         mysqlAddress.persist();
-        return MysqlAddressMapper.mySqlAddressToAddressBO(mysqlAddress);
+        return MysqlAddressMapper.toBO(mysqlAddress);
     }
 
     @Override
     public AddressBO merge(AddressBO addressBO) {
-        MySqlAddress mySqlAddress = MysqlAddressMapper.addressBOToMySqlAddress(addressBO);
+        MySqlAddress mySqlAddress = MysqlAddressMapper.toEntity(addressBO);
         MySqlAddress.getEntityManager().merge(mySqlAddress);
-        return MysqlAddressMapper.mySqlAddressToAddressBO(mySqlAddress);
+        return MysqlAddressMapper.toBO(mySqlAddress);
     }
 
     @Override
-    public List<AddressBO> returnAllFilterBy(List<QueryFieldInfoVO> queryFieldInfos) {
+    public List<AddressBO> listAllBy(List<QueryFieldVO> queryFieldInfos) {
         var queryParameters = ListUtil.stream(queryFieldInfos)
                         .filter(queryField -> queryField.getFieldValue() != null)
                         .collect(Collectors.toMap(
                             queryField -> StringUtil.replaceDot(queryField.getFieldName()),
-                            QueryFieldInfoVO::getFieldValue));
+                            QueryFieldVO::getFieldValue));
 
         var query = new StringBuilder();
 
@@ -54,20 +54,20 @@ public class MysqlAddressRepository implements AddressRepository {
         });
 
         return ListUtil.stream(MySqlAddress.list(query.toString(), queryParameters))
-            .map(entityAddress -> MysqlAddressMapper.mySqlAddressToAddressBO((MySqlAddress) entityAddress))
+            .map(entityAddress -> MysqlAddressMapper.toBO((MySqlAddress) entityAddress))
             .collect(Collectors.toList());
     }
 
     @Override
     public List<AddressBO> returnAll() {
         return ListUtil.stream(MySqlAddress.listAll())
-        .map(entityAddress -> MysqlAddressMapper.mySqlAddressToAddressBO((MySqlAddress) entityAddress))
+        .map(entityAddress -> MysqlAddressMapper.toBO((MySqlAddress) entityAddress))
         .collect(Collectors.toList());
     }
 
     @Override
-    public AddressBO returnFirstBy(List<QueryFieldInfoVO> queryFieldInfo) {
-        return ListUtil.first(returnAllFilterBy(queryFieldInfo));
+    public AddressBO findFirstBy(List<QueryFieldVO> queryFieldInfo) {
+        return ListUtil.first(listAllBy(queryFieldInfo));
     }
 
     @Override

@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.kraemer.domain.entities.AddressBO;
 import com.kraemer.domain.entities.enums.EnumDataBase;
-import com.kraemer.domain.entities.vo.QueryFieldInfoVO;
+import com.kraemer.domain.entities.vo.QueryFieldVO;
 
 public interface AddressRepository {
 
@@ -12,11 +12,11 @@ public interface AddressRepository {
 
     AddressBO merge(AddressBO bo);
 
-    List<AddressBO> returnAllFilterBy(List<QueryFieldInfoVO> queryFieldInfo);
-
     List<AddressBO> returnAll();
+
+    List<AddressBO> listAllBy(List<QueryFieldVO> queryField);
     
-    AddressBO returnFirstBy(List<QueryFieldInfoVO> queryFieldInfo);
+    AddressBO findFirstBy(List<QueryFieldVO> queryField);
 
     EnumDataBase getDataBase();
 
