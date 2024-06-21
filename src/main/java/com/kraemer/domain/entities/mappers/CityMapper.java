@@ -2,7 +2,7 @@ package com.kraemer.domain.entities.mappers;
 
 import com.kraemer.domain.entities.CityBO;
 import com.kraemer.domain.entities.dto.CityDTO;
-import com.kraemer.domain.entities.vo.CreationDateVO;
+import com.kraemer.domain.entities.vo.CreatedAtVO;
 
 public class CityMapper {
 
@@ -10,7 +10,7 @@ public class CityMapper {
         return new CityBO(
                 cityDTO.getId(),
                 cityDTO.getDescription(),
-                new CreationDateVO(cityDTO.getCreatedAt()),
+                new CreatedAtVO(cityDTO.getCreatedAt()),
                 cityDTO.getUpdatedAt(),
                 cityDTO.getDisabledAt());
     }

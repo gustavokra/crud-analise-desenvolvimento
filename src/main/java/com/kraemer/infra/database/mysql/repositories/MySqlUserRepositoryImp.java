@@ -15,7 +15,7 @@ import com.kraemer.infra.database.mysql.model.MySqlUser;
 import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
-public class MySqlUserRepository implements UserRepository {
+public class MySqlUserRepositoryImp implements UserRepository {
     
     @Override
     public UserBO create(UserBO bo) {
@@ -34,7 +34,7 @@ public class MySqlUserRepository implements UserRepository {
     }
 
     @Override
-    public List<UserBO> listAllBy(List<QueryFieldVO> queryFieldsVO) {
+    public List<UserBO> listBy(List<QueryFieldVO> queryFieldsVO) {
         var params = ListUtil.stream(queryFieldsVO)
                 .filter(item -> item.getFieldValue() != null)
                 .collect(Collectors.toMap(
@@ -62,7 +62,7 @@ public class MySqlUserRepository implements UserRepository {
 
     @Override
     public UserBO findBy(List<QueryFieldVO> queryFieldsVO) {
-        return ListUtil.first(listAllBy(queryFieldsVO));
+        return ListUtil.first(listBy(queryFieldsVO));
     }
 
     @Override

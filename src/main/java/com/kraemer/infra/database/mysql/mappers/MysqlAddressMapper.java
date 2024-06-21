@@ -1,7 +1,7 @@
 package com.kraemer.infra.database.mysql.mappers;
 
 import com.kraemer.domain.entities.AddressBO;
-import com.kraemer.domain.entities.vo.CreationDateVO;
+import com.kraemer.domain.entities.vo.CreatedAtVO;
 import com.kraemer.infra.database.mysql.model.MySqlAddress;
 
 public class MysqlAddressMapper {
@@ -14,7 +14,7 @@ public class MysqlAddressMapper {
                 mySqlAddress.getNeighborhood(),
                 mySqlAddress.getStreet(),
                 mySqlAddress.getNumber(),
-                new CreationDateVO(mySqlAddress.getCreatedAt()),
+                new CreatedAtVO(mySqlAddress.getCreatedAt()),
                 mySqlAddress.getUpdatedAt(),
                 mySqlAddress.getDisabledAt());
     }

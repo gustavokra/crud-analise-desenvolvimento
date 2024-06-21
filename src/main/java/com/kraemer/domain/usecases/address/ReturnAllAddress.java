@@ -27,7 +27,7 @@ public class ReturnAllAddress {
                     .map(AddressMapper::toDTO)
                     .collect(Collectors.toList());
         } catch (CrudException ce) {
-            throw new CrudException(EnumCrudError.ERRO_LISTAR_USUARIOS);
+            throw new CrudException(EnumCrudError.ERRO_LISTAR);
         }
     }
 }

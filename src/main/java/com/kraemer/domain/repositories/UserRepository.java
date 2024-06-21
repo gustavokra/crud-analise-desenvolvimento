@@ -14,7 +14,7 @@ public interface UserRepository {
 
     List<UserBO> returnAll();
 
-    List<UserBO> listAllBy(List<QueryFieldVO> queryField);
+    List<UserBO> listBy(List<QueryFieldVO> queryField);
     
     UserBO findBy(List<QueryFieldVO> queryField);
 

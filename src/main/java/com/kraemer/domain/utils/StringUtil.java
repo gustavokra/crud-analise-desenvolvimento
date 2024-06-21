@@ -4,6 +4,13 @@ import java.text.MessageFormat;
 
 public class StringUtil {
 
+    public static boolean equalsIgnoreCase(String string, String compare) {
+        if(isNotNullOrEmpty(string) && isNotNullOrEmpty(compare)) {
+            return string.equalsIgnoreCase(compare);
+        }
+        return false;
+    }
+
     public static String stringPatternFormat(String pattern, Object... arguments) {
         return MessageFormat.format(pattern, arguments);
     }

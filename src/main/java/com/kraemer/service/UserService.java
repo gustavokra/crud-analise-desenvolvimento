@@ -23,76 +23,62 @@ public class UserService extends AbstractService {
 
     @Transactional
     public UserDTO create(UserDTO dto, EnumDataBase dbImpl) {
-        var repository = repositoryFactory.getUserRepository(dbImpl);
+        var repository = userRepositoryFactory.getRepository(dbImpl);
         var createUser = new CreateUser(repository);
-
         return createUser.execute(dto);
     }
 
     public List<UserDTO> returnAll(EnumDataBase dbImpl) {
-        var repository = repositoryFactory.getUserRepository(dbImpl);
+        var repository = userRepositoryFactory.getRepository(dbImpl);
         var returnAll = new ReturnAllUsers(repository);
-
         return returnAll.execute(true);
     }
 
     public List<UserDTO> listByDocument(String document, EnumDataBase dbImpl) {
-
         if (StringUtil.isNullOrEmpty(document)) {
             throw new CrudException(EnumCrudError.CAMPO_OBRIGATORIO, "document");
         }
-
-        var repository = repositoryFactory.getUserRepository(dbImpl);
+        var repository = userRepositoryFactory.getRepository(dbImpl);
         var findAllBy = new ListUsersBy(repository);
         var queryFieldUserId = new QueryFieldVO("document", document);
-
         return findAllBy.execute(List.of(queryFieldUserId), true);
     }
 
     public UserDTO findById(Long userId, EnumDataBase dbImpl) {
-
         if (userId == null) {
             throw new CrudException(EnumCrudError.CAMPO_OBRIGATORIO, "userId");
         }
-
-        var repository = repositoryFactory.getUserRepository(dbImpl);
+        var repository = userRepositoryFactory.getRepository(dbImpl);
         var findUserBy = new FindUserBy(repository);
         var queryFieldUserId = new QueryFieldVO("id", userId);
-
         return findUserBy.execute(List.of(queryFieldUserId), true);
     }
 
     @Transactional
     public UserDTO update(UserDTO dto, Long userId, EnumDataBase dbImpl) {
-        var repository = repositoryFactory.getUserRepository(dbImpl);
+        var repository = userRepositoryFactory.getRepository(dbImpl);
         var updateUserInfo = new UpdateUser(repository);
-
         return updateUserInfo.execute(dto, userId);
     }
 
     @Transactional
     public UserDTO disable(Long userId, EnumDataBase dbImpl) {
-        var repository = repositoryFactory.getUserRepository(dbImpl);
+        var repository = userRepositoryFactory.getRepository(dbImpl);
         var disableUser = new DisableUser(repository);
-
         return disableUser.execute(userId);
     }
 
     public UserDTO findByLogin(String username, String password, EnumDataBase dbImpl) {
-
         if (StringUtil.isNullOrEmpty(username)) {
             throw new CrudException(EnumCrudError.CAMPO_OBRIGATORIO, username);
         }
-
         if (StringUtil.isNullOrEmpty(password)) {
             throw new CrudException(EnumCrudError.CAMPO_OBRIGATORIO, password);
         }
-
-        var repository = repositoryFactory.getUserRepository(dbImpl);
+        var repository = userRepositoryFactory.getRepository(dbImpl);
         var findUserBy = new FindUserBy(repository);
         var queryFieldUsername = new QueryFieldVO("username", username);
         var queryFieldPassword = new QueryFieldVO("password", password);
-
         return findUserBy.execute(List.of(queryFieldUsername, queryFieldPassword), true);
     }
 

@@ -9,9 +9,10 @@ public enum EnumCrudError implements IEnum {
     ITEM_NAO_ENCONTRADO_FILTROS("003", "Nenhum cadastro encontrado para ({0}) informado!", 404),
     CAMPO_INVALIDO("004", "{0} informado inválido!", 404),
     ITEM_CADASTRADO("005", "Usuário já cadastrado!", 400),
-    ERRO_LISTAR_USUARIOS("006", "Erro ao listar os usuários!", 400),
+    ERRO_LISTAR("006", "Erro ao listar!", 400),
     ITEM_NAO_EXISTE("007", "Usuário não existe!", 400),
     USERNAME_JA_CADASTRADO("008", "Já existe um usuário com esse username!", 400),
+    ITEM_ESTA_DESABILITADO("008", "Esse item está desabilitado", 400),
     // External errors
     ERRO_COMUNICACAO("050", "A requisição enviada ao parceiro retornou com erro!", 502);
     

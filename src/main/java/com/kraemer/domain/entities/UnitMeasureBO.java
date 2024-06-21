@@ -2,27 +2,44 @@ package com.kraemer.domain.entities;
 
 import java.time.LocalDateTime;
 
-import com.kraemer.domain.entities.vo.CreationDateVO;
+import com.kraemer.domain.entities.enums.EnumCrudError;
+import com.kraemer.domain.entities.vo.CreatedAtVO;
+import com.kraemer.domain.utils.exception.CrudException;
 
-public class UnitMeasureBO extends CrudBO {
+public class UnitMeasureBO {
 
-
+    public Long id;
 
     private String acronym;
 
     private String description;
 
-    private boolean active;
+    public CreatedAtVO createdAt;
 
-    public UnitMeasureBO(Long id, String acronym, String description, boolean active, CreationDateVO createdAt,
+    public LocalDateTime updatedAt;
+
+    public LocalDateTime disabledAt;
+
+    public UnitMeasureBO(Long id, String acronym, String description, CreatedAtVO createdAt,
             LocalDateTime updatedAt, LocalDateTime disabledAt) {
         this.id = id;
         this.acronym = acronym;
         this.description = description;
-        this.active = active;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.disabledAt = disabledAt;
+    }
+
+    public void handleDisable() {
+        if (this.disabledAt != null) {
+            throw new CrudException(EnumCrudError.ITEM_ESTA_DESABILITADO);
+        }
+
+        this.disabledAt = LocalDateTime.now();
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getAcronym() {
@@ -33,8 +50,16 @@ public class UnitMeasureBO extends CrudBO {
         return description;
     }
 
-    public boolean isActive() {
-        return active;
+    public CreatedAtVO getCreatedAt() {
+        return createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public LocalDateTime getDisabledAt() {
+        return disabledAt;
     }
 
 }

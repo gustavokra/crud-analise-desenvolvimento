@@ -5,7 +5,7 @@ import com.kraemer.domain.entities.CityBO;
 import com.kraemer.domain.entities.CountryBO;
 import com.kraemer.domain.entities.StateBO;
 import com.kraemer.domain.entities.dto.AddressDTO;
-import com.kraemer.domain.entities.vo.CreationDateVO;
+import com.kraemer.domain.entities.vo.CreatedAtVO;
 
 public class AddressMapper {
 
@@ -34,7 +34,7 @@ public class AddressMapper {
                 addressDTO.getNeigborhood(),
                 addressDTO.getStreet(),
                 addressDTO.getNumber(),
-                new CreationDateVO(addressDTO.getCreatedAt()),
+                new CreatedAtVO(addressDTO.getCreatedAt()),
                 addressDTO.getUpdatedAt(),
                 addressDTO.getDisabledAt());
     }

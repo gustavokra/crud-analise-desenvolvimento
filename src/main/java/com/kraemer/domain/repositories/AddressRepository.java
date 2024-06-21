@@ -14,7 +14,7 @@ public interface AddressRepository {
 
     List<AddressBO> returnAll();
 
-    List<AddressBO> listAllBy(List<QueryFieldVO> queryField);
+    List<AddressBO> listBy(List<QueryFieldVO> queryField);
     
     AddressBO findFirstBy(List<QueryFieldVO> queryField);
 

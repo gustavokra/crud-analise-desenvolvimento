@@ -1,6 +1,10 @@
 package com.kraemer.domain.entities.dto;
 
-public class AddressDTO extends CrudDTO {
+import java.time.LocalDateTime;
+
+public class AddressDTO {
+
+    private Long id;
 
     private CountryDTO country;
 
@@ -14,6 +18,19 @@ public class AddressDTO extends CrudDTO {
 
     private String number;
 
+    public LocalDateTime createdAt;
+
+    public LocalDateTime updatedAt;
+
+    public LocalDateTime disabledAt;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public CountryDTO getCountry() {
         return country;
@@ -39,6 +56,14 @@ public class AddressDTO extends CrudDTO {
         this.city = city;
     }
 
+    public String getNeigborhood() {
+        return neigborhood;
+    }
+
+    public void setNeigborhood(String neigborhood) {
+        this.neigborhood = neigborhood;
+    }
+
     public String getStreet() {
         return street;
     }
@@ -55,11 +80,30 @@ public class AddressDTO extends CrudDTO {
         this.number = number;
     }
 
-    public String getNeigborhood() {
-        return neigborhood;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
-    public void setNeigborhood(String neigborhood) {
-        this.neigborhood = neigborhood;
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public LocalDateTime getDisabledAt() {
+        return disabledAt;
+    }
+
+    public void setDisabledAt(LocalDateTime disabledAt) {
+        this.disabledAt = disabledAt;
+    }
+
+    
+
 }

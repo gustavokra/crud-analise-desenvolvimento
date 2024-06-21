@@ -1,18 +1,18 @@
 package com.kraemer.infra.database.mysql.mappers;
 
 import com.kraemer.domain.entities.StateBO;
-import com.kraemer.domain.entities.vo.CreationDateVO;
+import com.kraemer.domain.entities.vo.CreatedAtVO;
 import com.kraemer.infra.database.mysql.model.MySqlState;
 
 public class MysqlStateMapper {
 
-    public static StateBO toDomain(MySqlState mysqlAddress) {
-        return new StateBO(mysqlAddress.getId(),
-        mysqlAddress.getDescription(),
-        mysqlAddress.getAcronym(),
-        new CreationDateVO(mysqlAddress.getCreatedAt()),
-        mysqlAddress.getUpdatedAt(),
-        mysqlAddress.getDisabledAt());
+    public static StateBO toDomain(MySqlState mySqlState) {
+        return new StateBO(mySqlState.getId(),
+        mySqlState.getDescription(),
+        mySqlState.getAcronym(),
+        new CreatedAtVO(mySqlState.getCreatedAt()),
+        mySqlState.getUpdatedAt(),
+        mySqlState.getDisabledAt());
     }
     
     public static MySqlState toEntity(StateBO stateBO) {

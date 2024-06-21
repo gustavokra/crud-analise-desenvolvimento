@@ -2,7 +2,7 @@ package com.kraemer.domain.entities.mappers;
 
 import com.kraemer.domain.entities.UserBO;
 import com.kraemer.domain.entities.dto.UserDTO;
-import com.kraemer.domain.entities.vo.CreationDateVO;
+import com.kraemer.domain.entities.vo.CreatedAtVO;
 
 public class UserMapper {
 
@@ -26,7 +26,7 @@ public class UserMapper {
                 userDTO.getName(),
                 userDTO.getUsername(),
                 userDTO.getPassword(),
-                new CreationDateVO(userDTO.getCreatedAt()),
+                new CreatedAtVO(userDTO.getCreatedAt()),
                 userDTO.getUpdatedAt(),
                 userDTO.getDisabledAt());
 

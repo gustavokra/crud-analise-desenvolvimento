@@ -16,7 +16,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "crud_country")
-public class MySqlCountry extends CrudModel implements Serializable {
+public class MySqlCountry extends PanacheEntityBase implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,5 +25,11 @@ public class MySqlCountry extends CrudModel implements Serializable {
     private String description;
 
     private String acronym;
+
+    private LocalDateTime createdAt;
+
+    private LocalDateTime updatedAt;
+
+    private LocalDateTime disabledAt;
 
 }

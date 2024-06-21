@@ -2,7 +2,7 @@ package com.kraemer.domain.entities.mappers;
 
 import com.kraemer.domain.entities.CountryBO;
 import com.kraemer.domain.entities.dto.CountryDTO;
-import com.kraemer.domain.entities.vo.CreationDateVO;
+import com.kraemer.domain.entities.vo.CreatedAtVO;
 
 public class CountryMapper {
 
@@ -11,7 +11,7 @@ public class CountryMapper {
                 dto.getId(),
                 dto.getDescription(),
                 dto.getAcronym(),
-                new CreationDateVO(dto.getCreatedAt()),
+                new CreatedAtVO(dto.getCreatedAt()),
                 dto.getUpdatedAt(),
                 dto.getDisabledAt());
     }

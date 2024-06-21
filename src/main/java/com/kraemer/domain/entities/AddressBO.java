@@ -3,8 +3,10 @@ package com.kraemer.domain.entities;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
-import com.kraemer.domain.entities.vo.CreationDateVO;
+import com.kraemer.domain.entities.enums.EnumCrudError;
+import com.kraemer.domain.entities.vo.CreatedAtVO;
 import com.kraemer.domain.utils.StringUtil;
+import com.kraemer.domain.utils.exception.CrudException;
 
 public class AddressBO {
 
@@ -22,14 +24,14 @@ public class AddressBO {
 
     private String number;
 
-    public CreationDateVO createdAt;
+    public CreatedAtVO createdAt;
 
     public LocalDateTime updatedAt;
 
     public LocalDateTime disabledAt;
 
     public AddressBO(Long id, CountryBO countryBO, StateBO stateBO, CityBO cityBO, String neighborhood, 
-        String street, String number, CreationDateVO createdAt, LocalDateTime updatedAt, LocalDateTime disabledAt) {
+        String street, String number, CreatedAtVO createdAt, LocalDateTime updatedAt, LocalDateTime disabledAt) {
         this.id = id;
         this.countryBO = countryBO;
         this.stateBO = stateBO;
@@ -64,9 +66,13 @@ public class AddressBO {
     }
 
     public void handleDisable() {
+        if (this.disabledAt != null) {
+            throw new CrudException(EnumCrudError.ITEM_ESTA_DESABILITADO);
+        }
+
         this.disabledAt = LocalDateTime.now();
     }
-
+    
     public CountryBO getCountryBO() {
         return countryBO;
     }
@@ -95,7 +101,7 @@ public class AddressBO {
         return id;
     }
 
-    public CreationDateVO getCreatedAt() {
+    public CreatedAtVO getCreatedAt() {
         return createdAt;
     }
 

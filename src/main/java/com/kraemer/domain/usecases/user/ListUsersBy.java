@@ -20,7 +20,7 @@ public class ListUsersBy {
     }
 
     public List<UserDTO> execute(List<QueryFieldVO> queryFields, boolean throwsException) {
-        var usersBO = userRepository.listAllBy(queryFields);
+        var usersBO = userRepository.listBy(queryFields);
 
         if (ListUtil.isNullOrEmpty(usersBO) && throwsException) {
             var fields = ListUtil.stream(queryFields)

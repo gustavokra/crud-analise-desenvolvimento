@@ -23,7 +23,6 @@ public class UserController {
     @Path("/create")
     public Response create(UserDTO dto, @HeaderParam EnumDataBase dbImpl) {
         var createdUser = userService.create(dto, dbImpl);
-
         return Response.ok(createdUser).build();
     }
 
@@ -31,7 +30,6 @@ public class UserController {
     @Path("/return-all")
     public Response returnAll(@HeaderParam EnumDataBase dbImpl) {
         var allUsers = userService.returnAll(dbImpl);
-
         return Response.ok(allUsers).build();
     }
 
@@ -39,7 +37,6 @@ public class UserController {
     @Path("/list-by-document")
     public Response listByDocument(@HeaderParam String document, @HeaderParam EnumDataBase dbImpl) {
         var usersFound = userService.listByDocument(document, dbImpl);
-
         return Response.ok(usersFound).build();
     }
 
@@ -47,7 +44,6 @@ public class UserController {
     @Path("/find-by-id")
     public Response findById(@HeaderParam Long userId, @HeaderParam EnumDataBase dbImpl) {
         var userFound = userService.findById(userId, dbImpl);
-
         return Response.ok(userFound).build();
     }
 
@@ -55,7 +51,6 @@ public class UserController {
     @Path("/update")
     public Response update(UserDTO dto, @HeaderParam Long userId, @HeaderParam EnumDataBase dbImpl) {
         var userUpdated = userService.update(dto, userId, dbImpl);
-
         return Response.ok(userUpdated).build();
     }
 
@@ -63,7 +58,6 @@ public class UserController {
     @Path("/disable")
     public Response disable(@HeaderParam Long userId, @HeaderParam EnumDataBase dbImpl) {
         var userDisabled = userService.disable(userId, dbImpl);
-
         return Response.ok(userDisabled).build();
     }
 
@@ -73,7 +67,6 @@ public class UserController {
             @HeaderParam String password,
             @HeaderParam EnumDataBase dbImpl) {
         var userFound = userService.findByLogin(username, password, dbImpl);
-
         return Response.ok(userFound).build();
     }
 }

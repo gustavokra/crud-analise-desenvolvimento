@@ -15,7 +15,7 @@ import com.kraemer.infra.database.mysql.model.MySqlAddress;
 import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
-public class MysqlAddressRepository implements AddressRepository {
+public class MySqlAddressRepositoryImp implements AddressRepository {
 
     @Override
     public AddressBO create(AddressBO addressBO) {
@@ -32,7 +32,7 @@ public class MysqlAddressRepository implements AddressRepository {
     }
 
     @Override
-    public List<AddressBO> listAllBy(List<QueryFieldVO> queryFieldInfos) {
+    public List<AddressBO> listBy(List<QueryFieldVO> queryFieldInfos) {
         var queryParameters = ListUtil.stream(queryFieldInfos)
                         .filter(queryField -> queryField.getFieldValue() != null)
                         .collect(Collectors.toMap(
@@ -67,7 +67,7 @@ public class MysqlAddressRepository implements AddressRepository {
 
     @Override
     public AddressBO findFirstBy(List<QueryFieldVO> queryFieldInfo) {
-        return ListUtil.first(listAllBy(queryFieldInfo));
+        return ListUtil.first(listBy(queryFieldInfo));
     }
 
     @Override

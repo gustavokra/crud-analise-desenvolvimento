@@ -7,7 +7,7 @@ import com.kraemer.domain.entities.enums.EnumDataBase;
 import com.kraemer.domain.entities.vo.QueryFieldVO;
 import com.kraemer.domain.repositories.UserRepository;
 
-public class PgUserRepository implements UserRepository {
+public class PgUserRepositoryImp implements UserRepository {
 
     @Override
     public UserBO create(UserBO bo) {
@@ -28,7 +28,7 @@ public class PgUserRepository implements UserRepository {
     }
 
     @Override
-    public List<UserBO> listAllBy(List<QueryFieldVO> queryFieldInfo) {
+    public List<UserBO> listBy(List<QueryFieldVO> queryFieldInfo) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'listAllFilterBy'");
     }
