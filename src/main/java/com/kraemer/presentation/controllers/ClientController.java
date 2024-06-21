@@ -3,7 +3,6 @@ package com.kraemer.presentation.controllers;
 import com.kraemer.domain.entities.dto.ClientDTO;
 import com.kraemer.domain.entities.enums.EnumDataBase;
 import com.kraemer.service.ClientService;
-import com.kraemer.service.ProductService;
 
 import jakarta.inject.Inject;
 import jakarta.ws.rs.DELETE;
