@@ -20,7 +20,7 @@ public class FindUserBy {
     }
 
     public UserDTO execute(List<QueryFieldVO> queryFields, boolean throwsException) {
-        var userBO = userRepository.findBy(queryFields);
+        var userBO = userRepository.findFirstBy(queryFields);
 
         if (userBO == null && throwsException) {
             var fields = ListUtil.stream(queryFields)

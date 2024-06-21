@@ -30,7 +30,7 @@ public class CreateUser {
         var queryFieldDoc = new QueryFieldVO("document", document);
         var queryFieldDisabled = new QueryFieldVO("disabledAt", null);
 
-        var existingUserBO = userRepository.findBy(List.of(queryFieldDoc, queryFieldDisabled));
+        var existingUserBO = userRepository.findFirstBy(List.of(queryFieldDoc, queryFieldDisabled));
 
         if (existingUserBO != null) {
             throw new CrudException(EnumCrudError.ITEM_CADASTRADO);
@@ -40,7 +40,7 @@ public class CreateUser {
     private void verifyExistingUsername(String username) {
         var queryFieldUserName = new QueryFieldVO("username", username);
 
-        var existingUserBO = userRepository.findBy(List.of(queryFieldUserName));
+        var existingUserBO = userRepository.findFirstBy(List.of(queryFieldUserName));
 
         if (existingUserBO != null) {
             throw new CrudException(EnumCrudError.USERNAME_JA_CADASTRADO);

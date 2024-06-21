@@ -1,6 +1,7 @@
 package com.kraemer.domain.entities;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 import com.kraemer.domain.entities.enums.EnumCrudError;
 import com.kraemer.domain.entities.vo.CreatedAtVO;
@@ -28,6 +29,16 @@ public class SellerBO {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.disabledAt = disabledAt;
+    }
+
+    public void handleUpdate(SellerBO bo) {
+        if (bo.getName() != null) {
+            this.name = bo.getName();
+        }
+
+        Optional.ofNullable(bo.getAddressBO()).ifPresent(this.addressBO::handleUpdateInfo);
+
+        this.updatedAt = LocalDateTime.now();
     }
 
     public void handleDisable() {

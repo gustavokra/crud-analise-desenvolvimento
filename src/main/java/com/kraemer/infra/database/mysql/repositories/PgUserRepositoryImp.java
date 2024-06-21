@@ -34,7 +34,7 @@ public class PgUserRepositoryImp implements UserRepository {
     }
 
     @Override
-    public UserBO findBy(List<QueryFieldVO> queryFieldInfo) {
+    public UserBO findFirstBy(List<QueryFieldVO> queryFieldInfo) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'findFilterBy'");
     }

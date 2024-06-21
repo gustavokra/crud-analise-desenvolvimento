@@ -16,7 +16,7 @@ public interface UserRepository {
 
     List<UserBO> listBy(List<QueryFieldVO> queryField);
     
-    UserBO findBy(List<QueryFieldVO> queryField);
+    UserBO findFirstBy(List<QueryFieldVO> queryField);
 
     EnumDataBase getDataBase();
 

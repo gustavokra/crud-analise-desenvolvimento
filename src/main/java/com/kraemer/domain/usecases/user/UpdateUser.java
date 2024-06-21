@@ -20,7 +20,7 @@ public class UpdateUser {
 
         var queryFieldDoc = new QueryFieldVO("id", userId);
 
-        var existingUserBO = userRepository.findBy(List.of(queryFieldDoc));
+        var existingUserBO = userRepository.findFirstBy(List.of(queryFieldDoc));
 
         if (existingUserBO == null) {
             throw new CrudException(EnumCrudError.ITEM_NAO_ENCONTRADO_FILTROS, "identificador");

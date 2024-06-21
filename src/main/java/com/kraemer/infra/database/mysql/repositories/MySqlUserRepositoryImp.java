@@ -61,7 +61,7 @@ public class MySqlUserRepositoryImp implements UserRepository {
     }
 
     @Override
-    public UserBO findBy(List<QueryFieldVO> queryFieldsVO) {
+    public UserBO findFirstBy(List<QueryFieldVO> queryFieldsVO) {
         return ListUtil.first(listBy(queryFieldsVO));
     }
 
