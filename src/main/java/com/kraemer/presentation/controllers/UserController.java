@@ -21,43 +21,43 @@ public class UserController {
 
     @POST
     @Path("/create")
-    public Response create(UserDTO dto, @HeaderParam EnumDataBase dbImpl) {
-        var createdUser = userService.create(dto, dbImpl);
+    public Response create(UserDTO dto, @HeaderParam EnumDataBase dataBase) {
+        var createdUser = userService.create(dto, dataBase);
         return Response.ok(createdUser).build();
     }
 
     @GET
     @Path("/return-all")
-    public Response returnAll(@HeaderParam EnumDataBase dbImpl) {
-        var allUsers = userService.returnAll(dbImpl);
+    public Response returnAll(@HeaderParam EnumDataBase dataBase) {
+        var allUsers = userService.returnAll(dataBase);
         return Response.ok(allUsers).build();
     }
 
     @GET
     @Path("/list-by-document")
-    public Response listByDocument(@HeaderParam String document, @HeaderParam EnumDataBase dbImpl) {
-        var usersFound = userService.listByDocument(document, dbImpl);
+    public Response listByDocument(@HeaderParam String document, @HeaderParam EnumDataBase dataBase) {
+        var usersFound = userService.listByDocument(document, dataBase);
         return Response.ok(usersFound).build();
     }
 
     @GET()
     @Path("/find-by-id")
-    public Response findById(@HeaderParam Long userId, @HeaderParam EnumDataBase dbImpl) {
-        var userFound = userService.findById(userId, dbImpl);
+    public Response findById(@HeaderParam Long userId, @HeaderParam EnumDataBase dataBase) {
+        var userFound = userService.findById(userId, dataBase);
         return Response.ok(userFound).build();
     }
 
     @PUT
     @Path("/update")
-    public Response update(UserDTO dto, @HeaderParam Long userId, @HeaderParam EnumDataBase dbImpl) {
-        var userUpdated = userService.update(dto, userId, dbImpl);
+    public Response update(UserDTO dto, @HeaderParam Long userId, @HeaderParam EnumDataBase dataBase) {
+        var userUpdated = userService.update(dto, userId, dataBase);
         return Response.ok(userUpdated).build();
     }
 
     @DELETE
     @Path("/disable")
-    public Response disable(@HeaderParam Long userId, @HeaderParam EnumDataBase dbImpl) {
-        var userDisabled = userService.disable(userId, dbImpl);
+    public Response disable(@HeaderParam Long userId, @HeaderParam EnumDataBase dataBase) {
+        var userDisabled = userService.disable(userId, dataBase);
         return Response.ok(userDisabled).build();
     }
 
@@ -65,8 +65,8 @@ public class UserController {
     @Path("/login")
     public Response findByLogin(@HeaderParam String username,
             @HeaderParam String password,
-            @HeaderParam EnumDataBase dbImpl) {
-        var userFound = userService.findByLogin(username, password, dbImpl);
+            @HeaderParam EnumDataBase dataBase) {
+        var userFound = userService.findByLogin(username, password, dataBase);
         return Response.ok(userFound).build();
     }
 }

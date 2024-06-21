@@ -8,6 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,6 +25,7 @@ public class MySqlClient extends PanacheEntityBase implements Serializable {
 
     private String name;
 
+    @OneToOne
     private MySqlAddress address;
 
     private LocalDateTime createdAt;

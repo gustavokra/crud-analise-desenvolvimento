@@ -26,6 +26,10 @@ public class UpdateAddress {
             throw new CrudException(EnumCrudError.ITEM_NAO_ENCONTRADO_FILTROS, "identificador");
         }
 
+        if (addressToUpdate.getDisabledAt() != null) {
+            throw new CrudException(EnumCrudError.ITEM_ESTA_DESABILITADO, "identificador");
+        }
+
         addressToUpdate.handleUpdateInfo(AddressMapper.toBO(addressDTO));
 
         addressRepository.merge(addressToUpdate);

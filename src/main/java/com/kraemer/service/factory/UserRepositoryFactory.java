@@ -14,7 +14,7 @@ import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
-public class UserRepositoryFactoryImp {
+public class UserRepositoryFactory {
     @All
     private List<UserRepository> repositoryImplementations;
 

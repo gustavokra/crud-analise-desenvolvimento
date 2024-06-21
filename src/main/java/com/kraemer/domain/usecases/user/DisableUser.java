@@ -26,6 +26,10 @@ public class DisableUser {
             throw new CrudException(EnumCrudError.ITEM_NAO_ENCONTRADO_FILTROS, "identificador");
         }
 
+        if (existingUserBO.getDisabledAt() != null) {
+            throw new CrudException(EnumCrudError.ITEM_ESTA_DESABILITADO);
+        }
+
         existingUserBO.handleDisable();
 
         userRepository.merge(existingUserBO);

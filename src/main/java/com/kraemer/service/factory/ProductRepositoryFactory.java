@@ -11,7 +11,9 @@ import com.kraemer.domain.utils.exception.CrudException;
 
 import io.quarkus.arc.All;
 import jakarta.annotation.PostConstruct;
+import jakarta.enterprise.context.ApplicationScoped;
 
+@ApplicationScoped
 public class ProductRepositoryFactory {
     @All
     private List<ProductRepository> repositoryImplementations;

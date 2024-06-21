@@ -11,11 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
 @Entity
 @Table(name = "crud_address")
 public class MySqlAddress extends PanacheEntityBase implements Serializable {
@@ -44,5 +40,85 @@ public class MySqlAddress extends PanacheEntityBase implements Serializable {
     private LocalDateTime updatedAt;
 
     private LocalDateTime disabledAt;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public MySqlCity getCity() {
+        return city;
+    }
+
+    public void setCity(MySqlCity city) {
+        this.city = city;
+    }
+
+    public MySqlState getState() {
+        return state;
+    }
+
+    public void setState(MySqlState state) {
+        this.state = state;
+    }
+
+    public MySqlCountry getCountry() {
+        return country;
+    }
+
+    public void setCountry(MySqlCountry country) {
+        this.country = country;
+    }
+
+    public String getNeighborhood() {
+        return neighborhood;
+    }
+
+    public void setNeighborhood(String neighborhood) {
+        this.neighborhood = neighborhood;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public LocalDateTime getDisabledAt() {
+        return disabledAt;
+    }
+
+    public void setDisabledAt(LocalDateTime disabledAt) {
+        this.disabledAt = disabledAt;
+    }
 
 }

@@ -5,14 +5,14 @@ import com.kraemer.service.factory.ClientRepositoryFactory;
 import com.kraemer.service.factory.ProductRepositoryFactory;
 import com.kraemer.service.factory.SellerRepositoryFactory;
 import com.kraemer.service.factory.StockRepositoryFactory;
-import com.kraemer.service.factory.UserRepositoryFactoryImp;
+import com.kraemer.service.factory.UserRepositoryFactory;
 
 import jakarta.inject.Inject;
 
 public class AbstractService {
 
     @Inject
-    UserRepositoryFactoryImp userRepositoryFactory;
+    UserRepositoryFactory userRepositoryFactory;
 
     @Inject
     AddressRepositoryFactory addressRepositoryFactory;
@@ -25,7 +25,6 @@ public class AbstractService {
 
     @Inject 
     ClientRepositoryFactory clientRepositoryFactory;
-
 
     @Inject 
     SellerRepositoryFactory sellerRepositoryFactory;
