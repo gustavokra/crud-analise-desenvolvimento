@@ -38,12 +38,14 @@ public class ProductService extends AbstractService {
         return findStockBy.execute(List.of(queryField), true);
     }
 
+    @Transactional
     public ProductDTO update(ProductDTO dto, Long id, EnumDataBase dataBase) {
         ProductRepository repository = productRepositoryFactory.getRepository(dataBase);
         var updateStock = new UpdateProduct(repository);
         return updateStock.execute(dto, id);
     }
 
+    @Transactional
     public ProductDTO disable(Long id, EnumDataBase dataBase) {
         ProductRepository repository = productRepositoryFactory.getRepository(dataBase);
         var disableStock = new DisableProduct(repository);

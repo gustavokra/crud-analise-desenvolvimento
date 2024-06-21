@@ -38,12 +38,14 @@ public class StockService extends AbstractService {
         return findStockBy.execute(List.of(queryField), true);
     }
 
+    @Transactional
     public StockDTO update(StockDTO dto, Long id, EnumDataBase dataBase) {
         StockRepository repository = stockRepositoryFactory.getRepository(dataBase);
         var updateStock = new UpdateStock(repository);
         return updateStock.execute(dto, id);
     }
 
+    @Transactional
     public StockDTO disable(Long id, EnumDataBase dataBase) {
         StockRepository repository = stockRepositoryFactory.getRepository(dataBase);
         var disableStock = new DisableStock(repository);

@@ -6,7 +6,7 @@ import java.util.Map;
 
 import com.kraemer.domain.entities.enums.EnumCrudError;
 import com.kraemer.domain.entities.enums.EnumDataBase;
-import com.kraemer.domain.repositories.ClientRepository;
+import com.kraemer.domain.repositories.SellerRepository;
 import com.kraemer.domain.utils.exception.CrudException;
 
 import io.quarkus.arc.All;
@@ -14,20 +14,21 @@ import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
-public class ClientRepositoryFactory {
+public class SellerRepositoryFactory {
+    
     @All
-    private List<ClientRepository> repositoryImplementations;
+    private List<SellerRepository> repositoryImplementations;
 
-    private static final Map<EnumDataBase, ClientRepository> serviceCache = new HashMap<>();
+    private static final Map<EnumDataBase, SellerRepository> serviceCache = new HashMap<>();
 
     @PostConstruct
     public void init() {
-        for (ClientRepository implementation : repositoryImplementations) {
+        for (SellerRepository implementation : repositoryImplementations) {
             serviceCache.put(implementation.getDataBase(), implementation);
         }
     }
 
-    public ClientRepository getRepository(EnumDataBase database) {
+    public SellerRepository getRepository(EnumDataBase database) {
         var repository = serviceCache.get(database);
 
         if (repository == null) {

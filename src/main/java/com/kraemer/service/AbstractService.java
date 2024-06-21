@@ -3,6 +3,7 @@ package com.kraemer.service;
 import com.kraemer.service.factory.AddressRepositoryFactory;
 import com.kraemer.service.factory.ClientRepositoryFactory;
 import com.kraemer.service.factory.ProductRepositoryFactory;
+import com.kraemer.service.factory.SellerRepositoryFactory;
 import com.kraemer.service.factory.StockRepositoryFactory;
 import com.kraemer.service.factory.UserRepositoryFactoryImp;
 
@@ -24,5 +25,9 @@ public class AbstractService {
 
     @Inject 
     ClientRepositoryFactory clientRepositoryFactory;
+
+
+    @Inject 
+    SellerRepositoryFactory sellerRepositoryFactory;
 
 }
