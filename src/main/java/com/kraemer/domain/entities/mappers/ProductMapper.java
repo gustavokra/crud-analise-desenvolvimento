@@ -9,7 +9,7 @@ public class ProductMapper {
     public static ProductBO toBO(ProductDTO dto) {
         return new ProductBO(
                 dto.getId(),
-                StockMapper.toBO(dto.getStockDTO()),
+                StockMapper.toBO(dto.getStock()),
                 dto.getDescription(),
                 new CreatedAtVO(dto.getCreatedAt()),
                 dto.getUpdatedAt(),

@@ -6,7 +6,7 @@ public class ProductDTO {
 
     public Long id;
 
-    private StockDTO stockDTO;
+    private StockDTO stock;
 
     private String description;
 
@@ -15,14 +15,6 @@ public class ProductDTO {
     public LocalDateTime updatedAt;
 
     public LocalDateTime disabledAt;
-
-    public StockDTO getStockDTO() {
-        return stockDTO;
-    }
-
-    public void setStockDTO(StockDTO stockDTO) {
-        this.stockDTO = stockDTO;
-    }
 
     public String getDescription() {
         return description;
@@ -62,6 +54,14 @@ public class ProductDTO {
 
     public void setDisabledAt(LocalDateTime disabledAt) {
         this.disabledAt = disabledAt;
+    }
+
+    public StockDTO getStock() {
+        return stock;
+    }
+
+    public void setStock(StockDTO stock) {
+        this.stock = stock;
     }
 
     

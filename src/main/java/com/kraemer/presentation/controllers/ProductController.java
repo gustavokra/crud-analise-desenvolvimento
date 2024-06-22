@@ -1,5 +1,7 @@
 package com.kraemer.presentation.controllers;
 
+import org.jboss.resteasy.annotations.jaxrs.HeaderParam;
+
 import com.kraemer.domain.entities.dto.ProductDTO;
 import com.kraemer.domain.entities.enums.EnumDataBase;
 import com.kraemer.service.ProductService;
@@ -20,35 +22,35 @@ public class ProductController {
     
     @POST
     @Path("/create")
-    public Response create(ProductDTO dto, EnumDataBase dataBase) {
+    public Response create(ProductDTO dto, @HeaderParam EnumDataBase dataBase) {
         var createdStock = productService.create(dto, dataBase);
         return Response.ok(createdStock).build();
     }
 
     @GET
-    @Path("/returnAll")
-    public Response returnAll(ProductDTO dto, EnumDataBase dataBase) {
+    @Path("/return-all")
+    public Response returnAll(@HeaderParam EnumDataBase dataBase) {
         var allStocks = productService.returnAll(dataBase);
         return Response.ok(allStocks).build();
     }
 
     @GET
-    @Path("/findById")
-    public Response findById(Long id, EnumDataBase dataBase) {
+    @Path("/find-by-id")
+    public Response findById(Long id, @HeaderParam EnumDataBase dataBase) {
         var stockFound = productService.findById(id, dataBase);
         return Response.ok(stockFound).build();
     }
 
     @PUT
     @Path("/update")
-    public Response update(ProductDTO dto, Long id, EnumDataBase dataBase) {
+    public Response update(ProductDTO dto, Long id, @HeaderParam EnumDataBase dataBase) {
         var stockUpdated = productService.update(dto, id, dataBase);
         return Response.ok(stockUpdated).build();
     }
 
     @DELETE
     @Path("/disable")
-    public Response disable(Long id, EnumDataBase dataBase) {
+    public Response disable(Long id, @HeaderParam EnumDataBase dataBase) {
         var disabledStock = productService.disable(id, dataBase);
         return Response.ok(disabledStock).build();
     }

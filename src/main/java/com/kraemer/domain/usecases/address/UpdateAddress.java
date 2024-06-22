@@ -2,6 +2,7 @@ package com.kraemer.domain.usecases.address;
 
 import java.util.List;
 
+import com.kraemer.domain.entities.AddressBO;
 import com.kraemer.domain.entities.dto.AddressDTO;
 import com.kraemer.domain.entities.enums.EnumCrudError;
 import com.kraemer.domain.entities.mappers.AddressMapper;
@@ -18,23 +19,34 @@ public class UpdateAddress {
     }
 
     public AddressDTO execute(AddressDTO addressDTO, Long idAddressToUpdate) {
-        var queryFieldId = new QueryFieldVO("id", idAddressToUpdate);
+        AddressBO updatedAddress = merge(addressDTO, idAddressToUpdate);
+        return AddressMapper.toDTO(updatedAddress);
+    }
 
-        var addressToUpdate = addressRepository.findFirstBy(List.of(queryFieldId));
+    private AddressBO merge(AddressDTO addressDTO, Long idAddressToUpdate) {
+        AddressBO addressToUpdate = findAddress(idAddressToUpdate);
+        addressToUpdate.handleUpdateInfo(AddressMapper.toBO(addressDTO));
+        return addressRepository.merge(addressToUpdate);
+    }
 
+    private AddressBO findAddress(Long idAddressToUpdate) {
+        var addressToUpdate = addressRepository.findFirstBy(createIdQueryFields(idAddressToUpdate));
+        validateAddresToUpdate(addressToUpdate);
+        return addressToUpdate;
+    }
+
+    private List<QueryFieldVO> createIdQueryFields(Long idAddressToUpdate) {
+        QueryFieldVO field = new QueryFieldVO("id", idAddressToUpdate);
+        return List.of(field);
+    }
+
+    private void validateAddresToUpdate(AddressBO addressToUpdate) {
         if (addressToUpdate == null) {
             throw new CrudException(EnumCrudError.ITEM_NAO_ENCONTRADO_FILTROS, "identificador");
         }
-
         if (addressToUpdate.getDisabledAt() != null) {
             throw new CrudException(EnumCrudError.ITEM_ESTA_DESABILITADO, "identificador");
         }
-
-        addressToUpdate.handleUpdateInfo(AddressMapper.toBO(addressDTO));
-
-        addressRepository.merge(addressToUpdate);
-
-        return AddressMapper.toDTO(addressToUpdate);
     }
 
 }

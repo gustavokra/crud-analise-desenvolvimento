@@ -18,7 +18,7 @@ import jakarta.transaction.Transactional;
 @ApplicationScoped
 public class ProductService extends AbstractService {
     
-     @Transactional
+    @Transactional
     public ProductDTO create(ProductDTO dto, EnumDataBase dataBase) {
         ProductRepository repository = productRepositoryFactory.getRepository(dataBase);
         var createProduct = new CreateProduct(repository);
