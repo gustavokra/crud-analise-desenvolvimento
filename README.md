@@ -11,7 +11,7 @@ Em seguida, inicie o modo desenvolvimento do quarkus:
 ```
 ./mnvwn quarkus:dev
 ```
-Após isso, as os endpoints de CRUD para USER e ADDRESS estarão funcionando.
+Após isso, os endpoints de CRUD para USER e ADDRESS estarão funcionando.
 Elas estão localizadas em src/main/java/com/kraemer/presentation/controllers
 
 
