@@ -1,7 +1,7 @@
 # CRUD USER - ADDRESS
 O projeto se trata de uma API que cadastra usuários e endereços em um banco de dados MySql.
 
-A API feita usando Quarkus, arquitetura limpa, API RESTful e banco de dados relacional MySql.
+A API foi desenvolvida usando Quarkus, arquitetura limpa, API RESTful e banco de dados relacional MySql.
 
 Para subir o projeto, primeiro rode o seguinte comando, para subir o container com o banco de dados:
 ```
